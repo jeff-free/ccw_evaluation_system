@@ -1,0 +1,30 @@
+<nav id="navbar-container" class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <div class="navbar-brand">
+        <%= link_to("公民監督國會聯盟網路評鑑系統", root_path) %>
+      </div>
+    </div>
+    <div id="navbar" class="navbar-collapse collapse">
+      <div class="container">
+        <div class="row">
+          <ul class="nav navbar-nav navbar-right">
+          <% if current_user.present? %>
+            <li><%= link_to("登出系統", destroy_user_session_path, method: :DELETE) %></li>
+          <% else %>
+            <li>
+              <%= link_to("登入", new_user_session_path) %>
+            </li>
+          <% end %>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </div>
+</nav>

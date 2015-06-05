@@ -1,0 +1,29 @@
+<script>
+  $('.city_select').on('change', function(e) {
+    $('.district_select').find('option').remove();
+    city_id = $('.city_select option:selected').val();
+    get_districts_in_city(city_id);
+  });
+  function get_districts_in_city(city_id){
+    $.ajax({
+      url: "<%= api_v1_locations_districts_index_path %>" + "?city_id=" + city_id,
+      format: "json",
+      success: function(data){
+        var i ;
+        var select = $('.district_select')[0];
+        console.log(select);
+        for(i in data){
+          option = document.createElement("option");
+          option.text = data[i].name;
+          option.value = data[i].id;
+          select.appendChild(option);
+        }
+      },
+      error: function(){
+        alert("沒有資料");
+      }
+    })
+  }
+
+  // api_v1_locations_districts_index_path
+</script>

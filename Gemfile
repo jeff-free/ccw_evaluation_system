@@ -26,16 +26,22 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 
 # Form
 gem 'simple_form'
+gem 'momentjs-rails', '>= 2.9.0'
+gem 'bootstrap3-datetimepicker-rails', '~> 4.7.14'
 
 # User authentication
 gem 'devise'
 gem 'pundit'
+gem 'taiwanese_id_builder'
 
 # State machine
 gem 'workflow'
 
 gem 'pry'
 gem 'pry-remote'
+
+# Assistant
+gem 'annotate'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
