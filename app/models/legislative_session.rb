@@ -11,6 +11,9 @@
 
 class LegislativeSession < ActiveRecord::Base
   enum session_number: ["第一會期", "第二會期"]
+  has_one :evalution
 
-  validate_presence_of :year, :session_number
+  validates_presence_of :year, :session_number
+
+  after_create :create_evalution
 end
