@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :admin, controllers: {
         sessions: 'admin/sessions',
         registrations: 'admin/registrations'
@@ -9,6 +10,7 @@ Rails.application.routes.draw do
       }
 
   namespace :admin do
+    resources :legislative_sessions
     get "/dashboard", to: "base#dashboard"
   end
 
