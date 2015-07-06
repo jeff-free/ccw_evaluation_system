@@ -4,6 +4,11 @@
 #
 #  id                     :integer          not null, primary key
 #  email                  :string(255)      default(""), not null
+#  name                   :string(255)
+#  identity               :string(255)
+#  birthdate              :date
+#  district_id            :integer
+#  role                   :integer
 #  encrypted_password     :string(255)      default(""), not null
 #  reset_password_token   :string(255)
 #  reset_password_sent_at :datetime
@@ -13,11 +18,6 @@
 #  last_sign_in_at        :datetime
 #  current_sign_in_ip     :string(255)
 #  last_sign_in_ip        :string(255)
-#  name                   :string(255)
-#  identity               :string(255)
-#  birthdate              :string(255)
-#  district_id            :integer
-#  role                   :integer
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #

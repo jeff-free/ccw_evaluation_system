@@ -15,12 +15,7 @@
       <div class="container">
         <div class="row">
           <ul class="nav navbar-nav navbar-right">
-          <% if current_user.present? %>
-            <li><%= link_to("登出系統", destroy_user_session_path, method: :DELETE) %></li>
-          <% else %>
-            <li><%= link_to("註冊", new_user_registration_path) %></li>  
-            <li><%= link_to("登入", new_user_session_path) %></li>
-          <% end %>
+          <li><%= link_to("登出系統", destroy_admin_session_path, method: :DELETE) %></li>
           </ul>
         </div>
       </div>
