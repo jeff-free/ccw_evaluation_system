@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
 
-  devise_for :admin, controllers: {
-        sessions: 'admin/sessions',
-        registrations: 'admin/registrations'
-      }
+  namespace :users do
+    resources :surveys, only: [:new, :create]
+  end
   devise_for :users, controllers: {
         sessions: 'users/sessions',
         registrations: 'users/registrations'
@@ -15,6 +14,11 @@ Rails.application.routes.draw do
     end
     get "/dashboard", to: "base#dashboard"
   end
+
+  devise_for :admin, controllers: {
+        sessions: 'admin/sessions',
+        registrations: 'admin/registrations'
+      }
 
   namespace :api do
     namespace :v1 do

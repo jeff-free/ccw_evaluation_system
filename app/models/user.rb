@@ -28,6 +28,7 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  has_many :surveys
   belongs_to :district
   enum role: [:student, :citizen, :volunteer, :regular]
   attr_reader :city

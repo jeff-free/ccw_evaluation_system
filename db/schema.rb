@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150706154921) do
+ActiveRecord::Schema.define(version: 20150707085423) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "name",                   limit: 255
@@ -31,6 +31,18 @@ ActiveRecord::Schema.define(version: 20150706154921) do
 
   add_index "admins", ["email"], name: "index_admins_on_email", unique: true, using: :btree
   add_index "admins", ["reset_password_token"], name: "index_admins_on_reset_password_token", unique: true, using: :btree
+
+  create_table "answers", force: :cascade do |t|
+    t.integer  "question_id", limit: 4
+    t.integer  "survey_id",   limit: 4
+    t.integer  "point",       limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
+  add_index "answers", ["point"], name: "index_answers_on_point", using: :btree
+  add_index "answers", ["question_id"], name: "index_answers_on_question_id", using: :btree
+  add_index "answers", ["survey_id"], name: "index_answers_on_survey_id", using: :btree
 
   create_table "cities", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -86,6 +98,16 @@ ActiveRecord::Schema.define(version: 20150706154921) do
 
   add_index "questions", ["question_type_id"], name: "index_questions_on_question_type_id", using: :btree
 
+  create_table "surveys", force: :cascade do |t|
+    t.integer  "user_id",      limit: 4
+    t.integer  "evalution_id", limit: 4
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
+
+  add_index "surveys", ["evalution_id"], name: "index_surveys_on_evalution_id", using: :btree
+  add_index "surveys", ["user_id"], name: "index_surveys_on_user_id", using: :btree
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
     t.string   "name",                   limit: 255
@@ -111,7 +133,11 @@ ActiveRecord::Schema.define(version: 20150706154921) do
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["role"], name: "index_users_on_role", using: :btree
 
+  add_foreign_key "answers", "questions"
+  add_foreign_key "answers", "surveys"
   add_foreign_key "evalution_sets", "evalutions"
   add_foreign_key "evalution_sets", "questions"
   add_foreign_key "questions", "question_types"
+  add_foreign_key "surveys", "evalutions"
+  add_foreign_key "surveys", "users"
 end

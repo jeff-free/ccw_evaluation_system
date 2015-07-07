@@ -4,7 +4,6 @@
 #
 #  id               :integer          not null, primary key
 #  name             :string(255)
-#  point            :integer
 #  question_type_id :integer
 #  created_at       :datetime         not null
 #  updated_at       :datetime         not null
