@@ -10,7 +10,9 @@ Rails.application.routes.draw do
       }
 
   namespace :admin do
-    resources :legislative_sessions
+    resources :legislative_sessions do
+      resources :questions
+    end
     get "/dashboard", to: "base#dashboard"
   end
 

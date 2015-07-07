@@ -9,5 +9,7 @@
 #
 
 class Evalution < ActiveRecord::Base
+  has_many :evalution_sets
+  has_many :questions, through: :evalution_sets
   belongs_to :legislative_session
 end

@@ -1,0 +1,28 @@
+<h1>本次評鑑所有題目</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>主指標</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% if @question_types.present? %>
+    <% @question_types.each do |question_type| %>
+    <tr>
+      <td><%= question_type.name %></td>
+      <td><%= question_type.description %></td>
+      <td>
+        <% question_type.questions.each do |question| %>
+        <ul>
+          <li><%= question.name %></li>
+        </ul>
+        <% end %>
+      </td>
+      
+    </tr>
+    <% end %>
+    <% end %>
+  </tbody>
+
+  
+</table>
