@@ -14,7 +14,7 @@ class Admin::LegislativeSessionsController < Admin::BaseController
   def create
     @legislative_session = LegislativeSession.new(legislative_session_params)
     if @legislative_session.save
-      redirect_to legislative_session_path(@legislative_session)
+      redirect_to admin_legislative_session_path(@legislative_session)
     else
       render :new
     end
