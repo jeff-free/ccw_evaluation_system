@@ -38,6 +38,6 @@ class Users::SurveysController < Users::BaseController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def survey_params
-    params[:survey].permit(:user_id, :evalution_id, answers_attributes: [:question_id, :point]) rescue nil
+    params[:survey].permit(:user_id, :evaluation_id, answers_attributes: [:question_id, :point]) rescue nil
   end
 end

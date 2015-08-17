@@ -1,6 +1,6 @@
 # == Schema Information
 #
-# Table name: evalutions
+# Table name: evaluations
 #
 #  id                     :integer          not null, primary key
 #  legislative_session_id :integer
@@ -10,6 +10,6 @@
 
 class Evaluation < ActiveRecord::Base
   has_many :evaluation_sets
-  has_many :questions, through: :evalution_sets
+  has_many :questions, through: :evaluation_sets
   belongs_to :legislative_session
 end

@@ -10,7 +10,7 @@
 #
 
 class Question < ActiveRecord::Base
-  has_many :evalution_sets
-  has_many :evalutions, through: :evalution_sets
+  has_many :evaluation_sets
+  has_many :evaluations, through: :evaluation_sets
   belongs_to :question_type
 end

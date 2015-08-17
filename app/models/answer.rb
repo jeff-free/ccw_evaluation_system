@@ -5,6 +5,7 @@
 #  id          :integer          not null, primary key
 #  question_id :integer
 #  survey_id   :integer
+#  point       :integer
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
