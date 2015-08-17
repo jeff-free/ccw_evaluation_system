@@ -9,7 +9,7 @@
 #  updated_at   :datetime         not null
 #
 
-class EvalutionSet < ActiveRecord::Base
-  belongs_to :evalution
+class EvaluationSet < ActiveRecord::Base
+  belongs_to :evaluation
   belongs_to :question
 end

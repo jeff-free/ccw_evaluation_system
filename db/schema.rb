@@ -59,17 +59,17 @@ ActiveRecord::Schema.define(version: 20150707085423) do
 
   add_index "districts", ["city_id"], name: "index_districts_on_city_id", using: :btree
 
-  create_table "evalution_sets", force: :cascade do |t|
-    t.integer  "evalution_id", limit: 4
-    t.integer  "question_id",  limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+  create_table "evaluation_sets", force: :cascade do |t|
+    t.integer  "evaluation_id", limit: 4
+    t.integer  "question_id",   limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
-  add_index "evalution_sets", ["evalution_id"], name: "index_evalution_sets_on_evalution_id", using: :btree
-  add_index "evalution_sets", ["question_id"], name: "index_evalution_sets_on_question_id", using: :btree
+  add_index "evaluation_sets", ["evaluation_id"], name: "index_evaluation_sets_on_evaluation_id", using: :btree
+  add_index "evaluation_sets", ["question_id"], name: "index_evaluation_sets_on_question_id", using: :btree
 
-  create_table "evalutions", force: :cascade do |t|
+  create_table "evaluations", force: :cascade do |t|
     t.integer  "legislative_session_id", limit: 4
     t.datetime "created_at",                       null: false
     t.datetime "updated_at",                       null: false
@@ -99,13 +99,13 @@ ActiveRecord::Schema.define(version: 20150707085423) do
   add_index "questions", ["question_type_id"], name: "index_questions_on_question_type_id", using: :btree
 
   create_table "surveys", force: :cascade do |t|
-    t.integer  "user_id",      limit: 4
-    t.integer  "evalution_id", limit: 4
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
+    t.integer  "user_id",       limit: 4
+    t.integer  "evaluation_id", limit: 4
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
 
-  add_index "surveys", ["evalution_id"], name: "index_surveys_on_evalution_id", using: :btree
+  add_index "surveys", ["evaluation_id"], name: "index_surveys_on_evaluation_id", using: :btree
   add_index "surveys", ["user_id"], name: "index_surveys_on_user_id", using: :btree
 
   create_table "users", force: :cascade do |t|
@@ -135,9 +135,9 @@ ActiveRecord::Schema.define(version: 20150707085423) do
 
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "surveys"
-  add_foreign_key "evalution_sets", "evalutions"
-  add_foreign_key "evalution_sets", "questions"
+  add_foreign_key "evaluation_sets", "evaluations"
+  add_foreign_key "evaluation_sets", "questions"
   add_foreign_key "questions", "question_types"
-  add_foreign_key "surveys", "evalutions"
+  add_foreign_key "surveys", "evaluations"
   add_foreign_key "surveys", "users"
 end

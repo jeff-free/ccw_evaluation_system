@@ -11,7 +11,7 @@
 
 class Survey < ActiveRecord::Base
   belongs_to :user
-  belongs_to :evalution
+  belongs_to :evaluation
   has_many :answers
   accepts_nested_attributes_for :answers
 end

@@ -1,6 +1,6 @@
-class CreateEvalutions < ActiveRecord::Migration
+class CreateEvaluations < ActiveRecord::Migration
   def change
-    create_table :evalutions do |t|
+    create_table :evaluations do |t|
       t.references :legislative_session
 
       t.timestamps null: false
