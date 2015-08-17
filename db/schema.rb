@@ -59,28 +59,22 @@ ActiveRecord::Schema.define(version: 20150707085423) do
 
   add_index "districts", ["city_id"], name: "index_districts_on_city_id", using: :btree
 
-  create_table "evaluation_sets", force: :cascade do |t|
+  create_table "evaluations", force: :cascade do |t|
+    t.integer  "year",           limit: 4
+    t.integer  "session_number", limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  create_table "evaluations_questions", force: :cascade do |t|
     t.integer  "evaluation_id", limit: 4
     t.integer  "question_id",   limit: 4
     t.datetime "created_at",              null: false
     t.datetime "updated_at",              null: false
   end
 
-  add_index "evaluation_sets", ["evaluation_id"], name: "index_evaluation_sets_on_evaluation_id", using: :btree
-  add_index "evaluation_sets", ["question_id"], name: "index_evaluation_sets_on_question_id", using: :btree
-
-  create_table "evaluations", force: :cascade do |t|
-    t.integer  "legislative_session_id", limit: 4
-    t.datetime "created_at",                       null: false
-    t.datetime "updated_at",                       null: false
-  end
-
-  create_table "legislative_sessions", force: :cascade do |t|
-    t.integer  "year",           limit: 4
-    t.integer  "session_number", limit: 4
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
-  end
+  add_index "evaluations_questions", ["evaluation_id"], name: "index_evaluations_questions_on_evaluation_id", using: :btree
+  add_index "evaluations_questions", ["question_id"], name: "index_evaluations_questions_on_question_id", using: :btree
 
   create_table "question_types", force: :cascade do |t|
     t.string   "name",        limit: 255
@@ -135,8 +129,8 @@ ActiveRecord::Schema.define(version: 20150707085423) do
 
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "surveys"
-  add_foreign_key "evaluation_sets", "evaluations"
-  add_foreign_key "evaluation_sets", "questions"
+  add_foreign_key "evaluations_questions", "evaluations"
+  add_foreign_key "evaluations_questions", "questions"
   add_foreign_key "questions", "question_types"
   add_foreign_key "surveys", "evaluations"
   add_foreign_key "surveys", "users"

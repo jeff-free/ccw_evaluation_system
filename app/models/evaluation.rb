@@ -9,7 +9,13 @@
 #
 
 class Evaluation < ActiveRecord::Base
-  has_many :evaluation_sets
-  has_many :questions, through: :evaluation_sets
-  belongs_to :legislative_session
+  has_and_belongs_to_many :questions
+  has_many :question_types, through: :questions
+  enum session_number: ["第一會期", "第二會期"]
+
+  validates_presence_of :year, :session_number
+
+  def full_name
+    "#{year} - #{session_number}"
+  end
 end

@@ -1,6 +1,6 @@
-class CreateEvaluationSets < ActiveRecord::Migration
+class CreateEvaluationQuestions < ActiveRecord::Migration
   def change
-    create_table :evaluation_sets do |t|
+    create_table :evaluations_questions do |t|
       t.references :evaluation, index: true, foreign_key: true
       t.references :question, index: true, foreign_key: true
 

@@ -1,7 +1,0 @@
-<%= simple_form_for(@legislative_session, url: admin_legislative_sessions_path) do |f| %>
-  <h3>會期</h3>
-  <%= f.input :year, label: "民國年次" %>
-  <%= f.input :session_number, as: :select, collection: LegislativeSession.session_numbers.keys.to_a, label: "第幾會期" %>
-  <%= f.button :submit, "新增會期" %>
-<% end %>
-  

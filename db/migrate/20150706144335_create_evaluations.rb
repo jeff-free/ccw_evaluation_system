@@ -1,7 +1,8 @@
 class CreateEvaluations < ActiveRecord::Migration
   def change
     create_table :evaluations do |t|
-      t.references :legislative_session
+      t.integer :year
+      t.integer :session_number
 
       t.timestamps null: false
     end
