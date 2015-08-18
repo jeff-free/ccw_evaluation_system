@@ -1,28 +1,25 @@
 <h1>本次評鑑所有題目</h1>
+<%= link_to("編輯評鑑和題目", edit_admin_evaluation_path(@evaluation), class: "btn btn-primary ") %>
 <table class="table">
-  <thead>
+  <thead> 
     <tr>
       <th>主指標</th>
     </tr>
   </thead>
   <tbody>
-    <% if @question_types.present? %>
+  <% if @question_types.present? %>
     <% @question_types.each do |question_type| %>
     <tr>
       <td><%= question_type.name %></td>
-      <td><%= question_type.description %></td>
       <td>
+        <ol>
         <% question_type.questions.each do |question| %>
-        <ul>
           <li><%= question.name %></li>
-        </ul>
         <% end %>
+        </ol>
       </td>
-      
     </tr>
     <% end %>
-    <% end %>
+  <% end %>
   </tbody>
-
-  
 </table>

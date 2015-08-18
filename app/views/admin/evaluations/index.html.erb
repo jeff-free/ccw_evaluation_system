@@ -4,6 +4,7 @@
     <tr>
       <th>年次</th>
       <th>期次</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -11,6 +12,7 @@
     <tr>
       <td><%= evaluation.year %></td>
       <td><%= link_to(evaluation.session_number, admin_evaluation_path(evaluation)) %></td>
+      <td><%= link_to("瀏覽本會期所有評鑑題目", admin_evaluation_questions_path(evaluation)) %></td>
     </tr>
     <% end %>
   </tbody>  

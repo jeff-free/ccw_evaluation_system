@@ -18,4 +18,5 @@
 //= require nprogress-turbolinks
 //= require moment
 //= require bootstrap-datetimepicker
+//= require cocoon
 //= require turbolinks

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150707085423) do
+ActiveRecord::Schema.define(version: 20150818041803) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "name",                   limit: 255
@@ -66,21 +66,10 @@ ActiveRecord::Schema.define(version: 20150707085423) do
     t.datetime "updated_at",               null: false
   end
 
-  create_table "evaluations_questions", force: :cascade do |t|
-    t.integer  "evaluation_id", limit: 4
-    t.integer  "question_id",   limit: 4
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
-  end
-
-  add_index "evaluations_questions", ["evaluation_id"], name: "index_evaluations_questions_on_evaluation_id", using: :btree
-  add_index "evaluations_questions", ["question_id"], name: "index_evaluations_questions_on_question_id", using: :btree
-
   create_table "question_types", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.string   "description", limit: 255
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
   end
 
   create_table "questions", force: :cascade do |t|
@@ -88,8 +77,10 @@ ActiveRecord::Schema.define(version: 20150707085423) do
     t.integer  "question_type_id", limit: 4
     t.datetime "created_at",                   null: false
     t.datetime "updated_at",                   null: false
+    t.integer  "evaluation_id",    limit: 4
   end
 
+  add_index "questions", ["evaluation_id"], name: "index_questions_on_evaluation_id", using: :btree
   add_index "questions", ["question_type_id"], name: "index_questions_on_question_type_id", using: :btree
 
   create_table "surveys", force: :cascade do |t|
@@ -129,8 +120,6 @@ ActiveRecord::Schema.define(version: 20150707085423) do
 
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "surveys"
-  add_foreign_key "evaluations_questions", "evaluations"
-  add_foreign_key "evaluations_questions", "questions"
   add_foreign_key "questions", "question_types"
   add_foreign_key "surveys", "evaluations"
   add_foreign_key "surveys", "users"

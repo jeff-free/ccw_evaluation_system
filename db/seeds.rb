@@ -8,3 +8,8 @@ CSV.foreach("#{Rails.root}/taiwan_districts.csv", headers: false) do |row|
   district = city.districts.create(name: district_data)
   puts "#{city.id}-#{city.name}:#{district.city.name}-#{district.name}"
 end
+
+# 匯入問題指標
+["問政專業", "價值立場", "問題解決", "問政態度與技巧"].each do |name|
+  QuestionType.create(name: name)
+end

@@ -1,2 +1,4 @@
-<h1>Admin::LegislativeSessions#edit</h1>
-<p>Find me in app/views/admin/legislative_sessions/edit.html.erb</p>
+<h1>編輯本次評鑑</h1>
+<%= simple_form_for(@evaluation, url: admin_evaluation_path(@evaluation)) do |f| %>
+  <%= render 'form', f: f %>
+<% end %>

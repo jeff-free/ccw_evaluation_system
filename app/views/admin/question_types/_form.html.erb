@@ -1,0 +1,12 @@
+<div class="row">
+  <div class="col-xs-12">
+    <%= f.input :name, label: "主指標名稱" %>
+  </div>
+  <%= f.simple_fields_for :questions do |question| %>
+    <%= render 'question_fields', f: question %>
+  <% end %>
+  <div class="col-xs-12">
+    <%= link_to_add_association("新增問題", f, :questions) %>
+    <%= f.button :submit, "送出" %>
+  </div>
+</div>
