@@ -1,9 +1,9 @@
 <div class="nested-fields">
   <div class="col-sm-6">
-  <%= f.input :name %>
+    <%= f.input :name %>
   </div>
   <div class="col-sm-5">
-  <%= f.association :question_type %>
+    <%= f.association :evaluation, label_method: :full_name %>
   </div>
   <div class="col-sm-1">
   <%= link_to_remove_association(icon('times', '', class: 'fa-lg'), f) %>

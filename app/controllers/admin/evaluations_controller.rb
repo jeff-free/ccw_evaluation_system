@@ -17,14 +17,13 @@ class Admin::EvaluationsController < Admin::BaseController
   def create
     @evaluation = Evaluation.new(evaluation_params)
     if @evaluation.save
-      respond_with @evaluation, admin_evaluations_path, notice: "成功新增會期評鑑"
+      respond_with @evaluation, location: admin_evaluations_path, notice: "成功新增會期評鑑"
     else
       render :new, alert: "資料錯誤"
     end
   end
 
   def edit
-    @question_types = @evaluation.question_types.includes(:questions).uniq
     @question = @evaluation.questions.build
   end
 

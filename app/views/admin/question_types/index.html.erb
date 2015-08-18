@@ -1,12 +1,15 @@
 <h1>評鑑主指標</h1>
 <%= link_to("新增主指標", new_admin_question_type_path, class: "btn btn-primary") %>
-<table>
+<table class="table">
   <% @question_types.each do |question_type| %>
   <tr>
     <td>
       <h3>
         <%= question_type.name %>
       </h3>
+      <td>
+        <%= link_to(icon('edit', '', class: 'fa-2x'), edit_admin_question_type_path(question_type)) %>
+      </td>
     </td>
   </tr>
   <% end %>

@@ -13,4 +13,5 @@
 class Question < ActiveRecord::Base
   belongs_to :evaluation
   belongs_to :question_type
+  default_scope ->{order(question_type_id: :asc)}
 end

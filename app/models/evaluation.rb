@@ -10,7 +10,7 @@
 #
 
 class Evaluation < ActiveRecord::Base
-  has_many :questions
+  has_many :questions, dependent: :destroy
   has_many :question_types, through: :questions
   enum session_number: ["第一會期", "第二會期"]
 
