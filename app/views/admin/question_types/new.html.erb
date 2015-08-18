@@ -1,0 +1,6 @@
+<h1>新增評鑑主指標</h1>
+<%= simple_form_for(@question_type, url: admin_question_types_path) do |f| %>
+  <%= f.input :name, label: "主指標名稱" %>
+  <%= f.button :submit, "送出" %>
+<% end %>
+

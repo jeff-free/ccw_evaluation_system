@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     resources :evaluations do
       resources :questions
     end
+    resources :question_types
     get "/dashboard", to: "base#dashboard"
   end
 
