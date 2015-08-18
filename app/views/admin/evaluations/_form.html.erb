@@ -1,0 +1,16 @@
+<div class="row">
+  <div class="col-sm-6">
+    <%= f.input :year, label: "民國年次" %>
+  </div>
+  <div class="col-sm-6">
+    <%= f.input :session_number, as: :select, collection: Evaluation.session_numbers.keys.to_a, label: "第幾會期" %>
+  </div>
+  <h3>評鑑題目</h3>
+  <%= f.simple_fields_for :questions do |question| %>
+    <%= render 'question_fields', f: question %>
+  <% end %>
+  <div class="col-xs-12">
+    <%= link_to_add_association("新增問題", f, :questions) %>
+    <%= f.button :submit, "送出" %>
+  </div>
+</div>

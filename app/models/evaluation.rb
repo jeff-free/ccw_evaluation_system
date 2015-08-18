@@ -16,6 +16,8 @@ class Evaluation < ActiveRecord::Base
 
   validates_presence_of :year, :session_number
 
+  accepts_nested_attributes_for :questions, reject_if: :all_blank, allow_destroy: true
+
   def full_name
     "#{year} - #{session_number}"
   end
