@@ -1,4 +1,4 @@
-class CreateEvaluationQuestions < ActiveRecord::Migration
+class CreateEvaluationsQuestions < ActiveRecord::Migration
   def change
     create_table :evaluations_questions do |t|
       t.references :evaluation, index: true, foreign_key: true
