@@ -1,0 +1,31 @@
+<h1>立委屆數</h1>
+<%= link_to("新增國會屆次", new_admin_term_path, class: "btn btn-primary pull-right") %>
+<table class="table">
+  <thead>
+    <tr>
+      <th>屆數</th>
+      <th>會期</th>
+      <!-- <th>立委評鑑資料</th> -->
+    </tr>
+  </thead>
+  <tbody>
+    <% @terms.each do |term| %>
+    <tr>
+      <td><%= link_to("第 #{term.term_number} 屆", admin_term_path(term.term_number)) %></td>
+      <td><% term.evaluations.each do |evaluation| %>
+        <table class="table">
+          <tr>
+            <td><%= link_to("第 #{evaluation.session_number} 會期", admin_term_evaluation_path(term.term_number, evaluation)) %></td>
+            <td>立委評鑑結果</td>
+          </tr>
+        </table>
+        <ul>
+          
+        </ul>
+        <% end %>
+      </td>
+      <!-- <td>查看</td> -->
+    </tr>
+    <% end %>
+  </tbody>  
+</table>

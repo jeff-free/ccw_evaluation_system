@@ -1,0 +1,21 @@
+# == Schema Information
+#
+# Table name: terms
+#
+#  id          :integer          not null, primary key
+#  term_number :integer
+#  created_at  :datetime         not null
+#  updated_at  :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  term_number: 1
+  start_date: 2015-08-20 15:51:19
+  end_date: 2015-08-20 15:51:19
+
+two:
+  term_number: 1
+  start_date: 2015-08-20 15:51:19
+  end_date: 2015-08-20 15:51:19

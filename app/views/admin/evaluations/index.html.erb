@@ -2,7 +2,7 @@
 <table class="table">
   <thead>
     <tr>
-      <th>年次</th>
+      <th>屆數</th>
       <th>期次</th>
       <th></th>
     </tr>
@@ -10,7 +10,7 @@
   <tbody>
     <% @evaluations.each do |evaluation| %>
     <tr>
-      <td><%= evaluation.year %></td>
+      <td><%= evaluation.term_number rescue nil %></td>
       <td><%= link_to(evaluation.session_number, admin_evaluation_path(evaluation)) %></td>
       <td><%= link_to("瀏覽本會期所有評鑑題目", admin_evaluation_questions_path(evaluation)) %></td>
     </tr>
