@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150820075200) do
+ActiveRecord::Schema.define(version: 20150821055856) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "name",                   limit: 255
@@ -67,6 +67,12 @@ ActiveRecord::Schema.define(version: 20150820075200) do
   end
 
   add_index "evaluations", ["term_id"], name: "index_evaluations_on_term_id", using: :btree
+
+  create_table "parties", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.datetime "created_at",             null: false
+    t.datetime "updated_at",             null: false
+  end
 
   create_table "question_types", force: :cascade do |t|
     t.string   "name",       limit: 255

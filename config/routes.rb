@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   namespace :users do
     resources :surveys, only: [:new, :create]
   end
@@ -16,6 +15,7 @@ Rails.application.routes.draw do
       resources :questions
     end
     resources :question_types
+    resources :parties
     get "/dashboard", to: "base#dashboard"
   end
 
