@@ -12,6 +12,8 @@ class Term < ActiveRecord::Base
   has_many :evaluations
   validates :term_number, presence: true, uniqueness: true
 
+  default_scope {order(term_number: :desc)}
+
   def to_param
     term_number
   end

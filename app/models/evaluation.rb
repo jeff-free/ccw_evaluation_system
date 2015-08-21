@@ -22,6 +22,6 @@ class Evaluation < ActiveRecord::Base
   accepts_nested_attributes_for :questions, reject_if: :all_blank, allow_destroy: true
 
   def full_name
-    "#{term_number} - #{session_number}"
+    "第 #{term_number} - #{session_number} 會期"
   end
 end
