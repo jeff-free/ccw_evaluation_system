@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150818041803) do
+ActiveRecord::Schema.define(version: 20150820075200) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "name",                   limit: 255
@@ -60,11 +60,13 @@ ActiveRecord::Schema.define(version: 20150818041803) do
   add_index "districts", ["city_id"], name: "index_districts_on_city_id", using: :btree
 
   create_table "evaluations", force: :cascade do |t|
-    t.integer  "year",           limit: 4
+    t.integer  "term_id",        limit: 4
     t.integer  "session_number", limit: 4
     t.datetime "created_at",               null: false
     t.datetime "updated_at",               null: false
   end
+
+  add_index "evaluations", ["term_id"], name: "index_evaluations_on_term_id", using: :btree
 
   create_table "question_types", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -93,6 +95,12 @@ ActiveRecord::Schema.define(version: 20150818041803) do
   add_index "surveys", ["evaluation_id"], name: "index_surveys_on_evaluation_id", using: :btree
   add_index "surveys", ["user_id"], name: "index_surveys_on_user_id", using: :btree
 
+  create_table "terms", force: :cascade do |t|
+    t.integer  "term_number", limit: 4
+    t.datetime "created_at",            null: false
+    t.datetime "updated_at",            null: false
+  end
+
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
     t.string   "name",                   limit: 255
@@ -120,6 +128,7 @@ ActiveRecord::Schema.define(version: 20150818041803) do
 
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "surveys"
+  add_foreign_key "evaluations", "terms"
   add_foreign_key "questions", "question_types"
   add_foreign_key "surveys", "evaluations"
   add_foreign_key "surveys", "users"

@@ -45,6 +45,6 @@ class Admin::EvaluationsController < Admin::BaseController
     end
 
     def evaluation_params
-      params[:evaluation].permit(:year, :session_number, questions_attributes: [:id, :name, :question_type_id, :_destroy])
+      params[:evaluation].permit(:session_number, questions_attributes: [:id, :name, :question_type_id, :_destroy])
     end
 end

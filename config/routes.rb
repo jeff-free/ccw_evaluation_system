@@ -9,6 +9,9 @@ Rails.application.routes.draw do
       }
 
   namespace :admin do
+    resources :terms do
+      resources :evaluations
+    end
     resources :evaluations do
       resources :questions
     end
