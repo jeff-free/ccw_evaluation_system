@@ -1,9 +1,9 @@
 class Admin::PartiesController < Admin::BaseController
-  before_action :set_admin_party, only: [:show, :edit, :update, :destroy]
+  before_action :set_party, only: [:show, :edit, :update, :destroy]
 
   # GET /admin/parties
   def index
-    @admin_parties = Admin::Party.all
+    @parties = Party.all
   end
 
   # GET /admin/parties/1
@@ -12,7 +12,7 @@ class Admin::PartiesController < Admin::BaseController
 
   # GET /admin/parties/new
   def new
-    @admin_party = Admin::Party.new
+    @party = Party.new
   end
 
   # GET /admin/parties/1/edit
@@ -21,10 +21,10 @@ class Admin::PartiesController < Admin::BaseController
 
   # POST /admin/parties
   def create
-    @admin_party = Admin::Party.new(admin_party_params)
+    @party = Party.new(party_params)
 
-    if @admin_party.save
-      redirect_to @admin_party, notice: 'Party was successfully created.'
+    if @party.save
+      redirect_to admin_party_path(@party), notice: '成功建立政黨'
     else
       render :new
     end
@@ -32,8 +32,8 @@ class Admin::PartiesController < Admin::BaseController
 
   # PATCH/PUT /admin/parties/1
   def update
-    if @admin_party.update(admin_party_params)
-      redirect_to @admin_party, notice: 'Party was successfully updated.'
+    if @party.update(party_params)
+      redirect_to admin_party_path, notice: '成功更新政黨資料'
     else
       render :edit
     end
@@ -41,18 +41,18 @@ class Admin::PartiesController < Admin::BaseController
 
   # DELETE /admin/parties/1
   def destroy
-    @admin_party.destroy
-    redirect_to admin_parties_url, notice: 'Party was successfully destroyed.'
+    @party.destroy
+    redirect_to admin_parties_url, notice: '成功刪除政黨.'
   end
 
   private
     # Use callbacks to share common setup or constraints between actions.
-    def set_admin_party
-      @admin_party = Admin::Party.find(params[:id])
+    def set_party
+      @party = Party.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
-    def admin_party_params
-      params.require(:admin_party).permit(:name)
+    def party_params
+      params.require(:party).permit(:name)
     end
 end

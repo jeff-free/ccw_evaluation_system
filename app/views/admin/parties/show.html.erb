@@ -1,9 +1,9 @@
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Name:</strong>
-  <%= @admin_party.name %>
+  <strong>政黨名稱</strong>
+  <%= @party.name %>
 </p>
 
-<%= link_to 'Edit', edit_admin_party_path(@admin_party) %> |
-<%= link_to 'Back', admin_parties_path %>
+<%= link_to '編輯政黨資料', edit_admin_party_path(@party) %> |
+<%= link_to '返回', admin_parties_path %>

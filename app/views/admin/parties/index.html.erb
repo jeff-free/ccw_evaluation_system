@@ -1,22 +1,21 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Listing Admin Parties</h1>
+<h1>政黨列表</h1>
 
-<table>
+<table class="table">
   <thead>
     <tr>
-      <th>Name</th>
-      <th colspan="3"></th>
+      <th>政黨名稱</th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
-    <% @admin_parties.each do |admin_party| %>
+    <% @parties.each do |party| %>
       <tr>
-        <td><%= admin_party.name %></td>
-        <td><%= link_to 'Show', admin_party %></td>
-        <td><%= link_to 'Edit', edit_admin_party_path(admin_party) %></td>
-        <td><%= link_to 'Destroy', admin_party, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to party.name, admin_party_path(party) %></td>
+        <td><%= link_to '編輯政黨資料', edit_admin_party_path(party) %></td>
+        <td><%= link_to '刪除政黨資料', admin_party_path(party), method: :delete, data: { confirm: '確定刪除？' } %></td>
       </tr>
     <% end %>
   </tbody>
@@ -24,4 +23,4 @@
 
 <br>
 
-<%= link_to 'New Party', new_admin_party_path %>
+<%= link_to '建立政黨', new_admin_party_path, class: "btn btn-primary" %>

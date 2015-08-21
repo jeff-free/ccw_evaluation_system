@@ -1,6 +1,6 @@
 <h1>Editing Admin Party</h1>
+<%= simple_form_for(@party, url: admin_party_path) do |f| %>
+  <%= render 'form', f: f %>
+<% end %>
 
-<%= render 'form' %>
-
-<%= link_to 'Show', @admin_party %> |
 <%= link_to 'Back', admin_parties_path %>
