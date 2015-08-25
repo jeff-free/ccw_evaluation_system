@@ -21,4 +21,6 @@ class Congressman < ActiveRecord::Base
   has_one :party, through: :congressmen_evaluations
   has_one :party_group, through: :congressmen_evaluations
   has_many :terms, through: :evaluations
+
+  enum sex: [:male, :female, :third_sex]
 end

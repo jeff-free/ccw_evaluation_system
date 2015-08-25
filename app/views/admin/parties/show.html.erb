@@ -4,6 +4,6 @@
   <strong>政黨名稱</strong>
   <%= @party.name %>
 </p>
-
+<%= link_to('政黨所有立委', admin_party_congressmen_path(@party)) %>
 <%= link_to '編輯政黨資料', edit_admin_party_path(@party) %> |
 <%= link_to '返回', admin_parties_path %>

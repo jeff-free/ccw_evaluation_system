@@ -15,7 +15,10 @@ Rails.application.routes.draw do
       resources :questions
     end
     resources :question_types
-    resources :parties
+    resources :parties do
+      resources :congressmen, shallow: true
+    end
+    resources :congressmen, only: [:show, :edit, :update, :destroy]
     get "/dashboard", to: "base#dashboard"
   end
 
