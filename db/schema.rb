@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150825033356) do
+ActiveRecord::Schema.define(version: 20150825065818) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "name",                   limit: 255
@@ -56,6 +56,33 @@ ActiveRecord::Schema.define(version: 20150825033356) do
     t.datetime "created_at",                null: false
     t.datetime "updated_at",                null: false
   end
+
+  create_table "congressmen", force: :cascade do |t|
+    t.string   "name",       limit: 255
+    t.string   "en_name",    limit: 255
+    t.integer  "sex",        limit: 4
+    t.text     "degree",     limit: 65535
+    t.string   "experience", limit: 255
+    t.string   "fax",        limit: 255
+    t.string   "tel",        limit: 255
+    t.string   "avatar_url", limit: 255
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  create_table "congressmen_evaluations", force: :cascade do |t|
+    t.integer  "evaluation_id",  limit: 4
+    t.integer  "congressman_id", limit: 4
+    t.integer  "party_id",       limit: 4
+    t.integer  "party_group_id", limit: 4
+    t.datetime "created_at",               null: false
+    t.datetime "updated_at",               null: false
+  end
+
+  add_index "congressmen_evaluations", ["congressman_id"], name: "index_congressmen_evaluations_on_congressman_id", using: :btree
+  add_index "congressmen_evaluations", ["evaluation_id"], name: "index_congressmen_evaluations_on_evaluation_id", using: :btree
+  add_index "congressmen_evaluations", ["party_group_id"], name: "index_congressmen_evaluations_on_party_group_id", using: :btree
+  add_index "congressmen_evaluations", ["party_id"], name: "index_congressmen_evaluations_on_party_id", using: :btree
 
   create_table "districts", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -147,6 +174,10 @@ ActiveRecord::Schema.define(version: 20150825033356) do
 
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "surveys"
+  add_foreign_key "congressmen_evaluations", "congressmen"
+  add_foreign_key "congressmen_evaluations", "evaluations"
+  add_foreign_key "congressmen_evaluations", "parties"
+  add_foreign_key "congressmen_evaluations", "party_groups"
   add_foreign_key "evaluations", "terms"
   add_foreign_key "questions", "question_types"
   add_foreign_key "surveys", "evaluations"

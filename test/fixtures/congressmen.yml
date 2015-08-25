@@ -1,0 +1,42 @@
+# == Schema Information
+#
+# Table name: congressmen
+#
+#  id         :integer          not null, primary key
+#  name       :string(255)
+#  en_name    :string(255)
+#  sex        :integer
+#  degree     :text(65535)
+#  experience :string(255)
+#  fax        :string(255)
+#  tel        :string(255)
+#  avatar_url :string(255)
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  name: MyString
+  en_name: MyString
+  sex: 1
+  party: 
+  party_group: 
+  degree: MyText
+  experience: MyString
+  fax: MyString
+  tel: MyString
+  avatar_url: MyString
+
+two:
+  name: MyString
+  en_name: MyString
+  sex: 1
+  party: 
+  party_group: 
+  degree: MyText
+  experience: MyString
+  fax: MyString
+  tel: MyString
+  avatar_url: MyString

@@ -1,0 +1,26 @@
+# == Schema Information
+#
+# Table name: congressmen_evaluations
+#
+#  id             :integer          not null, primary key
+#  evaluation_id  :integer
+#  congressman_id :integer
+#  party_id       :integer
+#  party_group_id :integer
+#  created_at     :datetime         not null
+#  updated_at     :datetime         not null
+#
+
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  evaluation_id: 
+  congressman_id: 
+  party_id: 
+  party_group_id: 
+
+two:
+  evaluation_id: 
+  congressman_id: 
+  party_id: 
+  party_group_id: 

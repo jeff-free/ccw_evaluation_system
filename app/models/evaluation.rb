@@ -12,6 +12,8 @@
 class Evaluation < ActiveRecord::Base
   has_many :questions, dependent: :destroy
   has_many :question_types, through: :questions
+  has_many :congressmen_evaluations
+  has_many :congressmen, through: :congressmen_evaluations
   belongs_to :term
   enum session_number: ["1", "2"]
 

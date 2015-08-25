@@ -9,4 +9,5 @@
 #
 
 class PartyGroup < ActiveRecord::Base
+  has_many :congressmen
 end
