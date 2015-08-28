@@ -7,7 +7,7 @@
 #  en_name    :string(255)
 #  sex        :integer
 #  degree     :text(65535)
-#  experience :string(255)
+#  experience :text(65535)
 #  fax        :string(255)
 #  tel        :string(255)
 #  avatar_url :string(255)

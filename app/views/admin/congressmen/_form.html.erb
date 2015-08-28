@@ -1,0 +1,9 @@
+<%= f.input :name %>
+<%= f.input :en_name %>
+<%= f.input :sex, collection: [["男", 0], ["女", 1], ["第三性", 2]], as: :radio_buttons %>
+<%= f.input :tel %>
+<%= f.input :fax %>
+<%= f.input :degree %>
+<%= f.input :avatar_url %>
+<%= f.input :experience %>
+<%= f.button :submit %>

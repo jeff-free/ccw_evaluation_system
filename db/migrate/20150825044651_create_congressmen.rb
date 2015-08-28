@@ -5,7 +5,7 @@ class CreateCongressmen < ActiveRecord::Migration
       t.string :en_name
       t.integer :sex
       t.text :degree
-      t.string :experience
+      t.text :experience
       t.string :fax
       t.string :tel
       t.string :avatar_url

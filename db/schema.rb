@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(version: 20150825065818) do
     t.string   "en_name",    limit: 255
     t.integer  "sex",        limit: 4
     t.text     "degree",     limit: 65535
-    t.string   "experience", limit: 255
+    t.text     "experience", limit: 65535
     t.string   "fax",        limit: 255
     t.string   "tel",        limit: 255
     t.string   "avatar_url", limit: 255
@@ -174,10 +174,6 @@ ActiveRecord::Schema.define(version: 20150825065818) do
 
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "surveys"
-  add_foreign_key "congressmen_evaluations", "congressmen"
-  add_foreign_key "congressmen_evaluations", "evaluations"
-  add_foreign_key "congressmen_evaluations", "parties"
-  add_foreign_key "congressmen_evaluations", "party_groups"
   add_foreign_key "evaluations", "terms"
   add_foreign_key "questions", "question_types"
   add_foreign_key "surveys", "evaluations"
