@@ -17,5 +17,5 @@
 
 </table>
 <%= link_to '編輯政黨資料', edit_admin_party_path(@party) %> |
-<%= link_to("新增#{@party.name}立委", new_admin_congressman_path(@party)) %>
+<%= link_to("新增#{@party.name}立委", new_admin_party_congressman_path(@party)) %>
 <%= link_to '返回', admin_parties_path %>

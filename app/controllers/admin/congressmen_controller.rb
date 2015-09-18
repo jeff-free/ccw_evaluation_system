@@ -23,6 +23,14 @@ class Admin::CongressmenController < Admin::BaseController
     end
   end
 
+  def update
+    if @congressman.update(congressman_params)
+      redirect_to [:admin, @congressman], notice: "成功更新"
+    else
+      render :show, notice: "更新失敗"
+    end
+  end
+
   private
     def set_party
       @party = Party.find(params[:party_id])

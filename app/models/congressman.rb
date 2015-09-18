@@ -26,6 +26,6 @@ class Congressman < ActiveRecord::Base
 
   enum sex: [:male, :female, :third_sex]
 
-  validates_presence_of :name, :sex, :en_name
+  validates_presence_of :name, :en_name, :sex
 
 end
