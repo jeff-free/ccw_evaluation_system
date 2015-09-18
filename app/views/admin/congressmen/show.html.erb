@@ -1,0 +1,19 @@
+<div class="page-header">
+  <h1><%= @congressman.name %></h1>
+</div>
+<table class="table">
+  <thead>
+    <th>會期</th>
+    <th>政黨</th>
+    <th>分數</th>
+  </thead>
+  <tbody>
+    <% @congressman.evaluations.each do |evaluation| %>
+      <tr>
+        <td><%= evaluation.full_name %></td>
+        <td><%= @congressman.congressmen_evaluations.find_by(evaluation: evaluation).party.name %></td>
+        <td><%= evaluation.id %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

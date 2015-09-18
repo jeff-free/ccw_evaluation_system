@@ -4,7 +4,18 @@
   <strong>政黨名稱</strong>
   <%= @party.name %>
 </p>
-<%= link_to('政黨所有立委', admin_party_congressmen_path(@party)) %>
+<h1>立委列表</h1>
+<table class="table">
+  <thead>
+    <tr>
+      <th>姓名</th>
+    </tr>
+  </thead>
+  <tbody>
+    <%= render partial: "congressman", collection: @party.congressmen, as: :congressman %>
+  </tbody>
+
+</table>
 <%= link_to '編輯政黨資料', edit_admin_party_path(@party) %> |
-<%= link_to("新增#{@party.name}立委", new_admin_party_congressman_path(@party)) %>
+<%= link_to("新增#{@party.name}立委", new_admin_congressman_path(@party)) %>
 <%= link_to '返回', admin_parties_path %>

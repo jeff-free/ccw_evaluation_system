@@ -8,14 +8,19 @@
         <span class="icon-bar"></span>
       </button>
       <div class="navbar-brand">
-        <%= link_to("公民監督國會聯盟網路評鑑系統", root_path) %>
+        <%= link_to("評鑑系統", admin_root_path) %>
       </div>
     </div>
     <div id="navbar" class="navbar-collapse collapse">
       <div class="container">
         <div class="row">
+          <ul class="nav navbar-nav">
+            <li><%= link_to("會期評鑑管理", admin_terms_path) %></li>
+            <li><%= link_to("立法委員管理", admin_parties_path) %></li>
+            <li><%= link_to("問卷題目指標", admin_question_types_path) %></li>
+          </ul>
           <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to("登出系統", destroy_admin_session_path, method: :DELETE) %></li>
+            <li><%= link_to("登出系統", destroy_admin_session_path, method: :DELETE) %></li>
           </ul>
         </div>
       </div>

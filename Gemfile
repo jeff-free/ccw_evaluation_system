@@ -31,6 +31,9 @@ gem 'devise'
 gem 'pundit'
 gem 'taiwanese_id_builder'
 
+# Search
+gem 'ransack'
+
 # State machine
 gem 'workflow'
 

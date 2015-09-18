@@ -48,7 +48,7 @@ class Admin::PartiesController < Admin::BaseController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_party
-      @party = Party.find(params[:id])
+      @party = Party.includes(:congressmen).find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.

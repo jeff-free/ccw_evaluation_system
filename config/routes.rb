@@ -15,11 +15,9 @@ Rails.application.routes.draw do
       resources :questions
     end
     resources :question_types
-    resources :parties do
-      resources :congressmen, shallow: true
-    end
-    resources :congressmen, only: [:show, :edit, :update, :destroy]
-    get "/dashboard", to: "base#dashboard"
+    resources :parties
+    resources :congressmen
+    root to: "base#dashboard"
   end
 
   devise_for :admin, controllers: {
