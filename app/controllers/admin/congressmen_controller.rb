@@ -6,16 +6,15 @@ class Admin::CongressmenController < Admin::BaseController
   end
 
   def show
-    
   end
 
   def new
     @congressman = @party.congressmen.build
+    @congressmen_evaluation = @congressman.congressmen_evaluations.build
   end
 
   def create
     @congressman = @party.congressmen.build(congressman_params)
-    @congressman.parties << @party
     if @congressman.save
       redirect_to admin_party_congressmen_path(@party)
     else
@@ -41,6 +40,7 @@ class Admin::CongressmenController < Admin::BaseController
     end
 
     def congressman_params
-      params[:congressman].permit(:name, :en_name, :sex, :degree, :experience, :fax, :tel, :avatar_url)
+      params[:congressman].permit(:name, :en_name, :sex, :degree, :experience, :fax, :tel, :avatar_url,
+        congressmen_evaluations_attributes:[:evaluation_id, :party_id, :election_type])
     end
 end

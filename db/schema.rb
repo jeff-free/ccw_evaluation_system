@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150825065818) do
+ActiveRecord::Schema.define(version: 20150918100650) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "name",                   limit: 255
@@ -73,10 +73,11 @@ ActiveRecord::Schema.define(version: 20150825065818) do
   create_table "congressmen_evaluations", force: :cascade do |t|
     t.integer  "evaluation_id",  limit: 4
     t.integer  "congressman_id", limit: 4
+    t.integer  "election_type",  limit: 4, default: 0
     t.integer  "party_id",       limit: 4
     t.integer  "party_group_id", limit: 4
-    t.datetime "created_at",               null: false
-    t.datetime "updated_at",               null: false
+    t.datetime "created_at",                           null: false
+    t.datetime "updated_at",                           null: false
   end
 
   add_index "congressmen_evaluations", ["congressman_id"], name: "index_congressmen_evaluations_on_congressman_id", using: :btree

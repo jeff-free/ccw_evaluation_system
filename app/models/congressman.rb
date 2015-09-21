@@ -26,6 +26,7 @@ class Congressman < ActiveRecord::Base
 
   enum sex: [:male, :female, :third_sex]
 
+  accepts_nested_attributes_for :congressmen_evaluations
   validates_presence_of :name, :en_name, :sex
 
 end
