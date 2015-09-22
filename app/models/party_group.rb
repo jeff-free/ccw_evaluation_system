@@ -11,4 +11,6 @@
 class PartyGroup < ActiveRecord::Base
   has_many :congressmen_evaluations
   has_many :congressmen, through: :congressmen_evaluations
+
+  validates_presence_of :name
 end
