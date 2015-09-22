@@ -18,7 +18,9 @@ Rails.application.routes.draw do
     resources :parties do
       resources :congressmen, shallow: true
     end
-    resources :congressmen
+    resources :congressmen do
+      resources :congressmen_evaluations, only: [:new, :create, :edit, :update, :destroy]
+    end
     root to: "base#dashboard"
   end
 

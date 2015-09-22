@@ -8,18 +8,21 @@
 
 </div>
 <div class="col-sm-6">
+  <%= link_to("新增會期", new_admin_congressman_congressmen_evaluation_path(@congressman), class: "btn btn-default") %>
   <table class="table">
     <thead>
       <th>會期</th>
       <th>政黨</th>
+      <th>類型</th>
       <th>分數</th>
     </thead>
     <tbody>
-      <% @congressman.evaluations.each do |evaluation| %>
+      <% @congressman.congressmen_evaluations.each do |congressmen_evaluation| %>
         <tr>
-          <td><%= evaluation.full_name %></td>
-          <td><%= @congressman.congressmen_evaluations.find_by(evaluation: evaluation).party.name %></td>
-          <td><%= evaluation.id %></td>
+          <td><%= link_to congressmen_evaluation.full_name, edit_admin_congressman_congressmen_evaluation_path(@congressman, congressmen_evaluation) %></td>
+          <td><%= congressmen_evaluation.party.name %></td>
+          <td><%= congressmen_evaluation.election_type %></td>
+          <td><%= congressmen_evaluation.id %></td>
         </tr>
       <% end %>
     </tbody>

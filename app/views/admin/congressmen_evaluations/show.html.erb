@@ -1,0 +1,24 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Evaluation,:</strong>
+  <%= @congressmen_evaluation.evaluation, %>
+</p>
+
+<p>
+  <strong>Party,:</strong>
+  <%= @congressmen_evaluation.party, %>
+</p>
+
+<p>
+  <strong>Party group,:</strong>
+  <%= @congressmen_evaluation.party_group, %>
+</p>
+
+<p>
+  <strong>Election type:</strong>
+  <%= @congressmen_evaluation.election_type %>
+</p>
+
+<%= link_to 'Edit', edit_congressmen_evaluation_path(@congressmen_evaluation) %> |
+<%= link_to 'Back', congressmen_evaluations_path %>

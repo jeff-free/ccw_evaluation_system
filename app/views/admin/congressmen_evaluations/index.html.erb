@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Listing Congressmen Evaluations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Evaluation,</th>
+      <th>Party,</th>
+      <th>Party group,</th>
+      <th>Election type</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @congressmen_evaluations.each do |congressmen_evaluation| %>
+      <tr>
+        <td><%= congressmen_evaluation.evaluation, %></td>
+        <td><%= congressmen_evaluation.party, %></td>
+        <td><%= congressmen_evaluation.party_group, %></td>
+        <td><%= congressmen_evaluation.election_type %></td>
+        <td><%= link_to 'Show', congressmen_evaluation %></td>
+        <td><%= link_to 'Edit', edit_congressmen_evaluation_path(congressmen_evaluation) %></td>
+        <td><%= link_to 'Destroy', congressmen_evaluation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Congressmen evaluation', new_congressmen_evaluation_path %>

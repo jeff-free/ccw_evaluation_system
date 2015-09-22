@@ -36,7 +36,7 @@ class Admin::CongressmenController < Admin::BaseController
     end
 
     def set_congressman
-      @congressman = Congressman.includes(:evaluations, :parties).find(params[:id])
+      @congressman = Congressman.includes(:congressmen_evaluations).find(params[:id])
     end
 
     def congressman_params

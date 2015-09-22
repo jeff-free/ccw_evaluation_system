@@ -19,4 +19,5 @@ class CongressmenEvaluation < ActiveRecord::Base
   belongs_to :party_group
 
   enum election_type: ["regional", "at_large"]
+  delegate :full_name, to: :evaluation
 end

@@ -1,8 +1,3 @@
-<%= f.simple_fields_for :congressmen_evaluations, @congressmen_evaluation do |c| %>
-  <%= c.select :evaluation_id, Evaluation.all.map{|evaluation| [evaluation.full_name, evaluation.id]} %>
-  <%= c.hidden_field :party_id, value: @party.id %>
-  <%= c.input :election_type, as: :radio_buttons, collection: [["區域", "regional"], ["不分區", "at_large"]], label: "當選方式", include_blank: false %>
-<% end %>
 <%= f.input :name, label: "姓名" %>
 <%= f.input :en_name, label: "英文名" %>
 <%= f.input :sex, collection: [["男", "male"], ["女", "female"], ["第三性", "third_sex"]], as: :radio_buttons, include_blank: false%>
