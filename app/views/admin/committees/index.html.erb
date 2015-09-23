@@ -1,0 +1,23 @@
+<h1>委員會列表</h1>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>委員會名稱</th>
+      <th colspan="2"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @committees.each do |committee| %>
+      <tr>
+        <td><%= link_to committee.name, [:admin, committee] %></td>
+        <td><%= link_to '編輯', edit_admin_committee_path(committee) %></td>
+        <td><%= link_to '刪除', [:admin, committee], method: :delete, data: { confirm: '確定刪除?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<h4>新增委員會</h4>
+<%= render "form" %>

@@ -20,6 +20,7 @@ class Congressman < ActiveRecord::Base
   has_many :evaluations, through: :congressmen_evaluations
   has_many :parties, through: :congressmen_evaluations
   has_many :party_groups, through: :congressmen_evaluations
+  has_many :committees, through: :congressmen_evaluations
   # has_one :party, through: :congressmen_evaluations
   # has_one :party_group, through: :congressmen_evaluations
   has_many :terms, through: :evaluations
