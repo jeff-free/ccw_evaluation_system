@@ -58,6 +58,6 @@ class Admin::CongressmenEvaluationsController < Admin::BaseController
 
     # Only allow a trusted parameter "white list" through.
     def congressmen_evaluation_params
-      params.require(:congressmen_evaluation).permit(:evaluation_id, :party_id, :party_group_id, :election_type)
+      params.require(:congressmen_evaluation).permit(:evaluation_id, :party_id, :party_group_id, :committee_id, :election_type)
     end
 end
