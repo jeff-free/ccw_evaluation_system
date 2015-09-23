@@ -1,9 +1,8 @@
 <%= simple_form_for([:admin, @committee]) do |f| %>
   <%= f.error_notification %>
 
-  <div class="form-inputs">
-    <%= f.input :name, label: "委員會名稱" %>
-  </div>
+  <%= f.input :name, label: "委員會名稱" %>
+  <%= f.input :description, label: "委員會介紹" %>
 
   <div class="form-actions">
     <%= f.button :submit, "送出" %>

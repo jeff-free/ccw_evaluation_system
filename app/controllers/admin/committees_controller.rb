@@ -49,6 +49,6 @@ class Admin::CommitteesController < Admin::BaseController
 
     # Only allow a trusted parameter "white list" through.
     def committee_params
-      params.require(:committee).permit(:name)
+      params.require(:committee).permit(:name, :description)
     end
 end
