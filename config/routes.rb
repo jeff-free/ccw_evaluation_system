@@ -22,6 +22,7 @@ Rails.application.routes.draw do
       resources :congressmen_evaluations, only: [:new, :create, :edit, :update, :destroy]
     end
     resources :party_groups
+    resources :committees
     root to: "base#dashboard"
   end
 

@@ -1,10 +1,10 @@
 <%= simple_form_for([:admin, @congressman, @congressmen_evaluation]) do |f| %>
-  <%= f.error_notification %>
 
   <div class="form-inputs">
-    <%= f.select :evaluation_id, Evaluation.all.map{|evaluation| [evaluation.full_name, evaluation.id]}, label: "會期" %>
-    <%= f.select :party_id, Party.all.map{|party| [party.name, party.id]}, label: "政黨" %>
-    <%= f.select :party_group_id, PartyGroup.all.map{|party_group| [party_group.name, party_group.id]}, label: "黨團" %>
+    <%= f.association :evaluation, label_method: :full_name, label: "會期" %>
+    <%= f.association :party, label: "政黨" %>
+    <%= f.association :party_group, label: "黨團" %>
+    <%= f.association :committee, label: "委員會" %>
     <%= f.input :election_type, as: :radio_buttons, collection: [["區域", "regional"], ["不分區", "at_large"]], label: "當選類型" %>
   </div>
 

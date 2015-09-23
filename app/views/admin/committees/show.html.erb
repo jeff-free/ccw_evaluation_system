@@ -1,0 +1,8 @@
+<p>
+  <strong>名稱:</strong>
+  <%= @committee.name %>
+</p>
+<p><%= @committee.description %></p>
+
+<%= link_to '編輯', edit_admin_committee_path(@committee) %> |
+<%= link_to '返回', admin_committees_path %>
