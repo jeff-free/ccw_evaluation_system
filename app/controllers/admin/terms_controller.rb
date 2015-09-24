@@ -1,6 +1,6 @@
 class Admin::TermsController < Admin::BaseController
-  before_action :set_term, only: [:show]
-  respond_to :html
+  before_action :set_term, only: :show
+
   def index
     @terms = Term.includes(:evaluations).all
   end
@@ -17,7 +17,7 @@ class Admin::TermsController < Admin::BaseController
   def create
     @term = Term.new(term_params)
     if @term.save
-      respond_with(:admin, @term)
+      redirect_to [:admin, @term]
     else
       render :new
     end
