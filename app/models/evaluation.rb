@@ -21,6 +21,7 @@ class Evaluation < ActiveRecord::Base
   delegate :term_number, to: :term
 
   validates_presence_of :session_number
+  validates_uniqueness_of :session_number, scope: :term_id
   accepts_nested_attributes_for :questions, reject_if: :all_blank, allow_destroy: true
 
   scope :inexistent_evaluation_on_congressman, ->(congressman){self.all - congressman.evaluations}
