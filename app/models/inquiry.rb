@@ -12,4 +12,10 @@
 #
 
 class Inquiry < ActiveRecord::Base
+  belongs_to :congressmen_interpellation
+  delegate :congressman, to: :congressmen_interpellation
+  delegate :interpellation, to: :congressmen_interpellation
+  delegate :evaluation, to: :interpellation
+  delegate :interpellation_date, to: :interpellation
+
 end

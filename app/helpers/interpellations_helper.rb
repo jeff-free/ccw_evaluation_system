@@ -1,0 +1,2 @@
+module InterpellationsHelper
+end

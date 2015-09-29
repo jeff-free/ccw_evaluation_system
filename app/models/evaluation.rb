@@ -15,6 +15,7 @@ class Evaluation < ActiveRecord::Base
   has_many :congressmen_evaluations
   has_many :congressmen, through: :congressmen_evaluations
   has_many :parties, through: :congressmen_evaluations
+  has_many :interpellations
   belongs_to :term
   enum session_number: ["1", "2"]
 

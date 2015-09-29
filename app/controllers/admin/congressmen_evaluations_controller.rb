@@ -1,6 +1,6 @@
 class Admin::CongressmenEvaluationsController < Admin::BaseController
   before_action :set_congressman
-  before_action :set_congressmen_evaluation, only: [:edit, :update, :destroy]
+  before_action :set_congressmen_evaluation, only: [:show, :edit, :update, :destroy]
 
   # GET /congressmen_evaluations
   # def index
@@ -8,8 +8,9 @@ class Admin::CongressmenEvaluationsController < Admin::BaseController
   # end
 
   # GET /congressmen_evaluations/1
-  # def show
-  # end
+  def show
+    @inquires = @congressman.inquiries
+  end
 
   # GET /congressmen_evaluations/new
   def new

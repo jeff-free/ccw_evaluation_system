@@ -1,0 +1,12 @@
+<%= simple_form_for([:admin_committee, @interpellation]) do |f| %>
+  <div class="form-inputs">
+    <%= f.input :name, label: "會議名稱" %>
+    <%= f.input :interpellation_date, label: "會議日期" %>
+    <%= f.input :content, label: "會議內容" %>
+    <%= f.association :evaluation, collection: Evaluation.all.map{|e| [e.full_name, e.id]}, label: "會期", include_blank: false %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit, "送出" %>
+  </div>
+<% end %>

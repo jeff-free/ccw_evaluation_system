@@ -1,0 +1,27 @@
+<p>
+  <strong>Name:</strong>
+  <%= @interpellation.name %>
+</p>
+
+<p>
+  <strong>Interpellation date:</strong>
+  <%= @interpellation.interpellation_date %>
+</p>
+
+<p>
+  <strong>Content:</strong>
+  <%= @interpellation.content %>
+</p>
+
+<p>
+  <strong>Committee:</strong>
+  <%= @interpellation.committee_id %>
+</p>
+
+<p>
+  <strong>Evaluation:</strong>
+  <%= @interpellation.evaluation_id %>
+</p>
+
+<%= link_to 'Edit', edit_interpellation_path(@interpellation) %> |
+<%= link_to 'Back', interpellations_path %>

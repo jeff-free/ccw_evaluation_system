@@ -4,5 +4,25 @@
 </p>
 <p><%= @committee.description %></p>
 
+<table class="table">
+  <thead>
+    <tr>
+      <th>會議</th>
+      <th>日期</th>
+      <th>內容</th>
+    </tr>
+  </thead>
+    <tbody>
+      <% @committee.interpellations.each do |interpellation| %>
+      <tr>
+        <td><%= interpellation.name %></td>
+        <td><%= interpellation.interpellation_date.to_date %></td>
+        <td><%= truncate(interpellation.content) %></td>
+      </tr>
+      <% end %>
+    </tbody>
+</table>
+<%= link_to '新增會議', new_admin_committee_interpellation_path(@committee), class: "btn btn-primary" %>
+
 <%= link_to '編輯', edit_admin_committee_path(@committee) %> |
 <%= link_to '返回', admin_committees_path %>
