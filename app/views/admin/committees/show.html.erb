@@ -10,14 +10,16 @@
       <th>會議</th>
       <th>日期</th>
       <th>內容</th>
+      <th col="2"></th>
     </tr>
   </thead>
     <tbody>
       <% @committee.interpellations.each do |interpellation| %>
       <tr>
-        <td><%= interpellation.name %></td>
+        <td><%= link_to(interpellation.name, [:admin, interpellation]) %></td>
         <td><%= interpellation.interpellation_date.to_date %></td>
         <td><%= truncate(interpellation.content) %></td>
+        <td><%= link_to(icon("trash"), [:admin, interpellation], method: :delete) %></td>
       </tr>
       <% end %>
     </tbody>

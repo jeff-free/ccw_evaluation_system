@@ -1,27 +1,17 @@
 <p>
-  <strong>Name:</strong>
+  <strong>名稱:</strong>
   <%= @interpellation.name %>
 </p>
 
 <p>
-  <strong>Interpellation date:</strong>
+  <strong>會議日期:</strong>
   <%= @interpellation.interpellation_date %>
 </p>
 
 <p>
-  <strong>Content:</strong>
+  <strong>會議內容:</strong>
   <%= @interpellation.content %>
 </p>
 
-<p>
-  <strong>Committee:</strong>
-  <%= @interpellation.committee_id %>
-</p>
-
-<p>
-  <strong>Evaluation:</strong>
-  <%= @interpellation.evaluation_id %>
-</p>
-
-<%= link_to 'Edit', edit_interpellation_path(@interpellation) %> |
-<%= link_to 'Back', interpellations_path %>
+<%= link_to '編輯', edit_admin_interpellation_path(@interpellation) %> |
+<%= link_to '返回', :back %>

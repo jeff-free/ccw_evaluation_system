@@ -34,7 +34,7 @@ class Admin::InterpellationsController < Admin::BaseController
   # PATCH/PUT /interpellations/1
   def update
     if @interpellation.update(interpellation_params)
-      redirect_to @interpellation, notice: 'Interpellation was successfully updated.'
+      redirect_to [:admin, @interpellation], notice: '成功更新會議'
     else
       render :edit
     end
@@ -43,7 +43,7 @@ class Admin::InterpellationsController < Admin::BaseController
   # DELETE /interpellations/1
   def destroy
     @interpellation.destroy
-    redirect_to interpellations_url, notice: 'Interpellation was successfully destroyed.'
+    redirect_to admin_committees_path, notice: '成功刪除會議'
   end
 
   private
