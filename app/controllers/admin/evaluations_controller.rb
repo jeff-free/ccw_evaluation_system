@@ -41,6 +41,7 @@ class Admin::EvaluationsController < Admin::BaseController
 
   private
     def set_evaluation
+      @evaluations = Evaluation.all
       @evaluation = Evaluation.find(params[:id])
     end
 

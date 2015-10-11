@@ -1,0 +1,11 @@
+<div class="dropdown pull-right">
+  <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+    <%= current_evaluation_full_name %>
+    <%= icon('caret-down') %>
+  </a>
+  <ul class="dropdown-menu">
+    <% @evaluations.each do |evaluation| %>
+      <li><%= link_to(evaluation.full_name, params.merge(evaluation: evaluation.id)) %></li>
+    <% end %>
+  </ul>
+</div>
