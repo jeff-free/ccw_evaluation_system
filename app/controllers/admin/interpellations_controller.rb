@@ -48,7 +48,7 @@ class Admin::InterpellationsController < Admin::BaseController
 
   private
     def set_interpellation
-      @interpellation = Interpellation.find(params[:id])
+      @interpellation = Interpellation.includes(:congressmen, :inquiries).find(params[:id])
     end
 
     def set_committee

@@ -24,9 +24,9 @@ class Congressman < ActiveRecord::Base
   # has_one :party, through: :congressmen_evaluations
   # has_one :party_group, through: :congressmen_evaluations
   has_many :terms, through: :evaluations
-  has_many :congressmen_interpellation
-  has_and_belongs_to_many :interpellations
-  has_many :inquiries, through: :congressmen_interpellation
+  has_many :congressmen_interpellations
+  has_many :interpellations, through: :congressmen_interpellations
+  has_many :inquiries, through: :congressmen_interpellations
 
   enum sex: [:male, :female, :third_sex]
 

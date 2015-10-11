@@ -9,7 +9,6 @@ class Admin::CongressmenEvaluationsController < Admin::BaseController
 
   # GET /congressmen_evaluations/1
   def show
-    @inquires = @congressman.inquiries
   end
 
   # GET /congressmen_evaluations/new
@@ -50,7 +49,7 @@ class Admin::CongressmenEvaluationsController < Admin::BaseController
   private
 
     def set_congressman
-      @congressman = Congressman.find(params[:congressman_id])
+      @congressman = Congressman.includes(:inquiries).find(params[:congressman_id])
     end
 
     def set_congressmen_evaluation

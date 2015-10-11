@@ -18,4 +18,6 @@ class Inquiry < ActiveRecord::Base
   delegate :evaluation, to: :interpellation
   delegate :interpellation_date, to: :interpellation
 
+  scope :in_current_evaluation, ->(evaluation){evaluation.interpellations.map(&:inquiries).flatten}
+
 end
