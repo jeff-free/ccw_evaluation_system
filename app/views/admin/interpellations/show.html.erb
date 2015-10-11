@@ -1,0 +1,34 @@
+<p>
+  <strong>名稱:</strong>
+  <%= @interpellation.name %>
+</p>
+
+<p>
+  <strong>會議日期:</strong>
+  <%= @interpellation.interpellation_date %>
+</p>
+
+<p>
+  <strong>會議內容:</strong>
+  <%= @interpellation.content %>
+</p>
+
+<table class="table">
+  <thead>
+    <th>立委姓名</th>
+    <th>質詢數</th>
+    <th>網址</th>
+  </thead>
+  <tbody>
+    <% @interpellation.inquiries.each do |i| %>
+      <tr>
+        <td><%= i.congressman.name %></td>
+        <td><%= i.number %></td>
+        <td><%= link_to(i.video, target: "_blank") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to '編輯', edit_admin_interpellation_path(@interpellation) %> |
+<%= link_to '返回', :back %>

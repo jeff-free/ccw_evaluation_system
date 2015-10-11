@@ -1,0 +1,8 @@
+<h1>新增 <%= @committee.name %> 會議</h1>
+
+<%= simple_form_for([:admin_committee, @interpellation]) do |f| %>
+  <%= render 'form', f: f %>
+<% end %>
+  
+
+<%= link_to '返回', :back %>

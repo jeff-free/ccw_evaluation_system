@@ -1,7 +1,7 @@
 class CreateTerms < ActiveRecord::Migration
   def change
     create_table :terms do |t|
-      t.integer :term_number
+      t.string :term_number, index: true
 
       t.timestamps null: false
     end

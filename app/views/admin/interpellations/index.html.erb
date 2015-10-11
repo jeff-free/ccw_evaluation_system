@@ -1,0 +1,33 @@
+<h1>Listing Interpellations</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Interpellation date</th>
+      <th>Content</th>
+      <th>Committee</th>
+      <th>Evaluation</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @interpellations.each do |interpellation| %>
+      <tr>
+        <td><%= interpellation.name %></td>
+        <td><%= interpellation.interpellation_date %></td>
+        <td><%= interpellation.content %></td>
+        <td><%= interpellation.committee_id %></td>
+        <td><%= interpellation.evaluation_id %></td>
+        <td><%= link_to 'Show', interpellation %></td>
+        <td><%= link_to 'Edit', edit_interpellation_path(interpellation) %></td>
+        <td><%= link_to 'Destroy', interpellation, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Interpellation', new_interpellation_path %>

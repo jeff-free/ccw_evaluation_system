@@ -1,18 +1,16 @@
-<p id="notice"><%= notice %></p>
-
 <p>
-  <strong>Evaluation,:</strong>
-  <%= @congressmen_evaluation.evaluation, %>
+  <strong>Evaluation:</strong>
+  <%= @congressmen_evaluation.evaluation.full_name %>
 </p>
 
 <p>
-  <strong>Party,:</strong>
-  <%= @congressmen_evaluation.party, %>
+  <strong>Party:</strong>
+  <%= @congressmen_evaluation.party.name %>
 </p>
 
 <p>
-  <strong>Party group,:</strong>
-  <%= @congressmen_evaluation.party_group, %>
+  <strong>Party group:</strong>
+  <%= @congressmen_evaluation.party_group.name %>
 </p>
 
 <p>
@@ -20,5 +18,26 @@
   <%= @congressmen_evaluation.election_type %>
 </p>
 
-<%= link_to 'Edit', edit_congressmen_evaluation_path(@congressmen_evaluation) %> |
-<%= link_to 'Back', congressmen_evaluations_path %>
+<h4>質詢影片</h4>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>日期</th>
+      <th>內容</th>
+      <th>網址</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @congressman.inquiries.in_current_evaluation(@congressmen_evaluation.evaluation).each do |inquiry| %>
+    <tr>
+      <td><%= inquiry.interpellation_date.to_date %></td>
+      <td><%= inquiry.content %></td>
+      <td><%= inquiry.video %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'Edit', edit_admin_congressman_congressmen_evaluation_path(@congressman, @congressmen_evaluation) %> |
+<%= link_to 'Back', admin_congressman_path(@congressman) %>

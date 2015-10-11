@@ -19,10 +19,17 @@ Rails.application.routes.draw do
       resources :congressmen, shallow: true
     end
     resources :congressmen do
-      resources :congressmen_evaluations, only: [:new, :create, :edit, :update, :destroy]
+      resources :congressmen_evaluations, only: [:show, :new, :create, :edit, :update, :destroy]
+      resources :inquires
     end
     resources :party_groups
-    resources :committees
+    
+    resources :committees do
+      resources :interpellations, shallow: true do
+        resources :inquires
+      end
+    end
+    
     root to: "base#dashboard"
   end
 

@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150923091239) do
+ActiveRecord::Schema.define(version: 20150925100700) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "name",                   limit: 255
@@ -87,6 +87,16 @@ ActiveRecord::Schema.define(version: 20150923091239) do
   add_index "congressmen_evaluations", ["party_group_id"], name: "index_congressmen_evaluations_on_party_group_id", using: :btree
   add_index "congressmen_evaluations", ["party_id"], name: "index_congressmen_evaluations_on_party_id", using: :btree
 
+  create_table "congressmen_interpellations", force: :cascade do |t|
+    t.integer  "congressman_id",    limit: 4
+    t.integer  "interpellation_id", limit: 4
+    t.datetime "created_at",                  null: false
+    t.datetime "updated_at",                  null: false
+  end
+
+  add_index "congressmen_interpellations", ["congressman_id"], name: "index_congressmen_interpellations_on_congressman_id", using: :btree
+  add_index "congressmen_interpellations", ["interpellation_id"], name: "index_congressmen_interpellations_on_interpellation_id", using: :btree
+
   create_table "districts", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.integer  "city_id",    limit: 4
@@ -104,6 +114,30 @@ ActiveRecord::Schema.define(version: 20150923091239) do
   end
 
   add_index "evaluations", ["term_id"], name: "index_evaluations_on_term_id", using: :btree
+
+  create_table "inquiries", force: :cascade do |t|
+    t.integer  "number",                        limit: 4
+    t.text     "content",                       limit: 65535
+    t.text     "video",                         limit: 65535
+    t.integer  "congressmen_interpellation_id", limit: 4
+    t.datetime "created_at",                                  null: false
+    t.datetime "updated_at",                                  null: false
+  end
+
+  add_index "inquiries", ["congressmen_interpellation_id"], name: "index_inquiries_on_congressmen_interpellation_id", using: :btree
+
+  create_table "interpellations", force: :cascade do |t|
+    t.string   "name",                limit: 255
+    t.datetime "interpellation_date"
+    t.text     "content",             limit: 65535
+    t.integer  "committee_id",        limit: 4
+    t.integer  "evaluation_id",       limit: 4
+    t.datetime "created_at",                        null: false
+    t.datetime "updated_at",                        null: false
+  end
+
+  add_index "interpellations", ["committee_id"], name: "index_interpellations_on_committee_id", using: :btree
+  add_index "interpellations", ["evaluation_id"], name: "index_interpellations_on_evaluation_id", using: :btree
 
   create_table "parties", force: :cascade do |t|
     t.string   "name",       limit: 255
@@ -145,10 +179,12 @@ ActiveRecord::Schema.define(version: 20150923091239) do
   add_index "surveys", ["user_id"], name: "index_surveys_on_user_id", using: :btree
 
   create_table "terms", force: :cascade do |t|
-    t.integer  "term_number", limit: 4
-    t.datetime "created_at",            null: false
-    t.datetime "updated_at",            null: false
+    t.string   "term_number", limit: 255
+    t.datetime "created_at",              null: false
+    t.datetime "updated_at",              null: false
   end
+
+  add_index "terms", ["term_number"], name: "index_terms_on_term_number", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  limit: 255, default: "", null: false
@@ -183,6 +219,9 @@ ActiveRecord::Schema.define(version: 20150923091239) do
   add_foreign_key "congressmen_evaluations", "parties"
   add_foreign_key "congressmen_evaluations", "party_groups"
   add_foreign_key "evaluations", "terms"
+  add_foreign_key "inquiries", "congressmen_interpellations"
+  add_foreign_key "interpellations", "committees"
+  add_foreign_key "interpellations", "evaluations"
   add_foreign_key "questions", "question_types"
   add_foreign_key "surveys", "evaluations"
   add_foreign_key "surveys", "users"

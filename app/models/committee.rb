@@ -12,4 +12,5 @@
 class Committee < ActiveRecord::Base
   has_many :congressmen_evaluations
   has_many :congressmen, through: :congressmen_evaluations
+  has_many :interpellations
 end

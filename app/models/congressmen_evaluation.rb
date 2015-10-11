@@ -24,6 +24,6 @@ class CongressmenEvaluation < ActiveRecord::Base
   delegate :full_name, to: :evaluation
 
   validates_uniqueness_of :evaluation_id, scope: :congressman_id
-  validates_presence_of :evaluation_id, :congressman_id, :election_type, :committee_id, :party_id, :party_group_id
+  validates_presence_of :evaluation_id, :election_type, :committee_id, :party_id, :party_group_id
 
 end

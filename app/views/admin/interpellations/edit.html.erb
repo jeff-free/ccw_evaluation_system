@@ -1,0 +1,6 @@
+<h1>編輯 <%= @interpellation.name %></h1>
+<%= simple_form_for([:admin, @interpellation]) do |f| %>
+  <%= render 'form', f: f %>
+<% end %>
+
+<%= link_to '返回', :back %>
