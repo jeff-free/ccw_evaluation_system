@@ -9,8 +9,7 @@
 #
 
 class PartyGroup < ActiveRecord::Base
-  has_many :congressmen_evaluations
-  has_many :congressmen, through: :congressmen_evaluations
+  include Classifiable
 
   validates_presence_of :name
 end

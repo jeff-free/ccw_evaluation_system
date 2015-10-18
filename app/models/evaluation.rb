@@ -10,6 +10,8 @@
 #
 
 class Evaluation < ActiveRecord::Base
+  class_attribute :current_evaluation
+
   has_many :questions, dependent: :destroy
   has_many :question_types, through: :questions
   has_many :congressmen_evaluations

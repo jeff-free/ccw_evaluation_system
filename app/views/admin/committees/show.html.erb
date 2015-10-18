@@ -14,7 +14,7 @@
     </tr>
   </thead>
     <tbody>
-      <% @committee.interpellations.each do |interpellation| %>
+      <% @interpellations.each do |interpellation| %>
       <tr>
         <td><%= link_to(interpellation.name, [:admin, interpellation]) %></td>
         <td><%= interpellation.interpellation_date.to_date %></td>

@@ -3,12 +3,13 @@ class Admin::CommitteesController < Admin::BaseController
 
   # GET /committees
   def index
-    @committees = Committee.all
+    @committees = Committee.in_current_evaluation
     @committee = Committee.new
   end
 
   # GET /committees/1
   def show
+    @interpellations = Interpellation.in_current_evaluation
   end
 
   # GET /committees/1/edit

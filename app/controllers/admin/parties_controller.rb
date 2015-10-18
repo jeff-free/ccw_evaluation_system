@@ -3,7 +3,7 @@ class Admin::PartiesController < Admin::BaseController
 
   # GET /admin/parties
   def index
-    @parties = Party.all
+    @parties = Party.in_current_evaluation
   end
 
   # GET /admin/parties/1

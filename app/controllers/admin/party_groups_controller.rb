@@ -3,7 +3,7 @@ class Admin::PartyGroupsController < Admin::BaseController
 
   # GET /party_groups
   def index
-    @party_groups = PartyGroup.all
+    @party_groups = PartyGroup.in_current_evaluation
     @party_group = PartyGroup.new
   end
 
