@@ -7,6 +7,7 @@
 #  session_number :integer
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  active         :boolean          default(FALSE)
 #
 
 class Evaluation < ActiveRecord::Base
@@ -25,6 +26,9 @@ class Evaluation < ActiveRecord::Base
 
   validates_presence_of :session_number
   validates_uniqueness_of :session_number, scope: :term_id
+
+  after_save :inactive_other_evaluations
+
   accepts_nested_attributes_for :questions, reject_if: :all_blank, allow_destroy: true
 
   scope :inexistent_evaluation_on_congressman, ->(congressman){self.all - congressman.evaluations}
@@ -32,5 +36,11 @@ class Evaluation < ActiveRecord::Base
   def full_name
     "#{term_number}-#{session_number}"
   end
+
+  private
+
+    def inactive_other_evaluations
+      Evaluation.where.not(id: id).update_all(active: false)
+    end
 
 end

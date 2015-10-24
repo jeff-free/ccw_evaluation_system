@@ -1,4 +1,5 @@
 class Users::SurveysController < Users::BaseController
+  before_action :set_evaluation
   before_action :set_survey, only: [:show, :edit, :update, :destroy]
 
   # GET /surveys
@@ -10,7 +11,7 @@ class Users::SurveysController < Users::BaseController
   # GET /surveys/new
   def new
     @survey = Survey.new
-    @questions = Question.all
+    @questions = @evaluation.questions.all
     @answer = Answer.new
   end
 
@@ -31,13 +32,17 @@ class Users::SurveysController < Users::BaseController
   end
 
   private
-  # Use callbacks to share common setup or constraints between actions.
-  def set_survey
-    @survey = Survey.find(params[:id])
-  end
 
-  # Never trust parameters from the scary internet, only allow the white list through.
-  def survey_params
-    params[:survey].permit(:user_id, :evaluation_id, answers_attributes: [:question_id, :point]) rescue nil
-  end
+    def set_evaluation
+      @evaluation = Evaluation.includes(questions: :question_types).latest_evaluation
+    end
+
+    def set_survey
+      @survey = Survey.find(params[:id])
+    end
+
+    # Never trust parameters from the scary internet, only allow the white list through.
+    def survey_params
+      params[:survey].permit(:user_id, :evaluation_id, answers_attributes: [:question_id, :point]) rescue nil
+    end
 end
