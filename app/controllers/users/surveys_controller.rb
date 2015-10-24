@@ -22,6 +22,7 @@ class Users::SurveysController < Users::BaseController
 
     respond_to do |format|
       if @survey.save
+        @survey.update(evaluation: @evaluation)
         format.html { redirect_to root_path, notice: 'Survey was successfully created.' }
         format.json { render :show, status: :created, location: @survey }
       else
@@ -34,7 +35,7 @@ class Users::SurveysController < Users::BaseController
   private
 
     def set_evaluation
-      @evaluation = Evaluation.includes(questions: :question_types).latest_evaluation
+      @evaluation = Evaluation.includes(questions: :question_type).active_evaluation
     end
 
     def set_survey

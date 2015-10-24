@@ -13,6 +13,8 @@
 
 class Inquiry < ActiveRecord::Base
   belongs_to :congressmen_interpellation
+  has_many :surveys
+  has_many :answers, through: :surveys
   delegate :congressman, to: :congressmen_interpellation
   delegate :interpellation, to: :congressmen_interpellation
   delegate :evaluation, to: :interpellation
