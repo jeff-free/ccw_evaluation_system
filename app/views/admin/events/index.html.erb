@@ -6,6 +6,7 @@
     <tr>
       <th>活動名稱</th>
       <th>會議名稱</th>
+      <th>狀態</th>
       <th colspan="2"></th>
     </tr>
   </thead>
@@ -15,6 +16,7 @@
       <tr>
         <td><%= link_to event.name, admin_event_path(event) %></td>
         <td><%= event.interpellation.name rescue nil %></td>
+        <td><%= event_status(event.active) %></td>
         <td><%= link_to '編輯', edit_admin_event_path(event) %></td>
         <td><%= link_to '刪除', admin_event_path(event), method: :delete, data: { confirm: '確認刪除?' } %></td>
       </tr>
