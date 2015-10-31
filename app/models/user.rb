@@ -29,6 +29,7 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :surveys
+  has_and_belongs_to_many :events
   belongs_to :district
   enum role: [:student, :citizen, :volunteer, :regular]
   attr_reader :city

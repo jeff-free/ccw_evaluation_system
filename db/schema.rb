@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151024070240) do
+ActiveRecord::Schema.define(version: 20151031071138) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "name",                   limit: 255
@@ -116,6 +116,17 @@ ActiveRecord::Schema.define(version: 20151024070240) do
 
   add_index "evaluations", ["term_id"], name: "index_evaluations_on_term_id", using: :btree
 
+  create_table "events", force: :cascade do |t|
+    t.string   "name",              limit: 255
+    t.integer  "evaluation_id",     limit: 4
+    t.integer  "interpellation_id", limit: 4
+    t.datetime "created_at",                    null: false
+    t.datetime "updated_at",                    null: false
+  end
+
+  add_index "events", ["evaluation_id"], name: "index_events_on_evaluation_id", using: :btree
+  add_index "events", ["interpellation_id"], name: "index_events_on_interpellation_id", using: :btree
+
   create_table "inquiries", force: :cascade do |t|
     t.integer  "number",                        limit: 4
     t.text     "content",                       limit: 65535
@@ -213,6 +224,14 @@ ActiveRecord::Schema.define(version: 20151024070240) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
   add_index "users", ["role"], name: "index_users_on_role", using: :btree
+
+  create_table "users_events", force: :cascade do |t|
+    t.integer "user_id",  limit: 4
+    t.integer "event_id", limit: 4
+  end
+
+  add_index "users_events", ["event_id"], name: "index_users_events_on_event_id", using: :btree
+  add_index "users_events", ["user_id"], name: "index_users_events_on_user_id", using: :btree
 
   add_foreign_key "answers", "questions"
   add_foreign_key "answers", "surveys"

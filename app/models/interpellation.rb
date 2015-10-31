@@ -18,6 +18,7 @@ class Interpellation < ActiveRecord::Base
   has_many :congressmen_interpellations
   has_many :congressmen, through: :congressmen_interpellations
   has_many :inquiries, through: :congressmen_interpellations
+  has_many :events
 
   include Classifiable
 end

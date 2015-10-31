@@ -11,6 +11,9 @@
 
 class Committee < ActiveRecord::Base
   include Classifiable
+  has_many :congressmen_evaluations
+  has_many :congressmen, through: :congressmen_evaluations
+  has_many :evaluations, through: :congressmen_evaluations
   has_many :interpellations
 
 end

@@ -1,0 +1,17 @@
+<p>
+  <strong>Name:</strong>
+  <%= @event.name %>
+</p>
+
+<p>
+  <strong>Evaluation:</strong>
+  <%= @event.evaluation.full_name %>
+</p>
+
+<p>
+  <strong>Interpellation:</strong>
+  <%= @event.interpellation.name %>
+</p>
+
+<%= link_to '編輯活動', edit_admin_event_path(@event) %> |
+<%= link_to '返回活動列表', admin_events_path %>
