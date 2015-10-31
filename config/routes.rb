@@ -29,6 +29,7 @@ Rails.application.routes.draw do
         resources :inquires
       end
     end
+    resources :events
     
     root to: "base#dashboard"
   end

@@ -2,12 +2,6 @@ module Classifiable
   extend ActiveSupport::Concern
 
   included do
-    # 讓透過 congressmen_evaluations 的 model 建立 association
-    unless attribute_method?(:evaluation=)
-      has_many :congressmen_evaluations
-      has_many :congressmen, through: :congressmen_evaluations
-      has_many :evaluations, through: :congressmen_evaluations
-    end
 
     scope :in_current_evaluation, ->{
       if Evaluation.current_evaluation.present?
