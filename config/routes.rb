@@ -7,6 +7,10 @@ Rails.application.routes.draw do
         registrations: 'users/registrations'
       }
 
+  namespace :citizen do
+    resources :events, only: [:index]
+  end
+
   namespace :admin do
     resources :terms do
       resources :evaluations
