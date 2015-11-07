@@ -1,0 +1,15 @@
+development:
+  adapter: mysql2
+  encoding: utf8
+  database: ccw_evaluation_system_development
+  host: localhost
+  username: root
+  password: "password"
+
+test:
+  adapter: mysql2
+  encoding: utf8
+  database: ccw_evaluation_system_test
+  host: localhost
+  username: root
+  password: "password"
