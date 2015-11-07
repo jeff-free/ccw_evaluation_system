@@ -35,7 +35,7 @@ class Users::SurveysController < Users::BaseController
   private
 
     def set_evaluation
-      @evaluation = Evaluation.includes(questions: :question_type).active_evaluation
+      @evaluation = Evaluation.includes(questions: :question_type).active_evaluation.first
     end
 
     def set_survey

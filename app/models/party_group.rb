@@ -10,6 +10,9 @@
 
 class PartyGroup < ActiveRecord::Base
   include Classifiable
-
+  has_many :congressmen_evaluations
+  has_many :congressmen, through: :congressmen_evaluations
+  has_many :evaluations, through: :congressmen_evaluations
+  
   validates_presence_of :name
 end
