@@ -2,7 +2,6 @@ module Classifiable
   extend ActiveSupport::Concern
 
   included do
-
     scope :in_current_evaluation, ->{
       if Evaluation.current_evaluation.present?
         # 讓 interpellation 等與 congressmen_evaluation 無關的 model 使用 
