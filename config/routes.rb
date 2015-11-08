@@ -1,11 +1,19 @@
 Rails.application.routes.draw do
-  namespace :users do
-    resources :surveys, only: [:new, :create]
-  end
   devise_for :users, controllers: {
         sessions: 'users/sessions',
         registrations: 'users/registrations'
       }
+
+  namespace :citizen do
+    root to: "events#index"
+
+    resources :events, only: [:index] do
+      member do
+        get :thanks
+      end
+      resources :surveys, only: [:new, :create]
+    end
+  end
 
   namespace :admin do
     resources :terms do
@@ -45,5 +53,5 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'pages#landing'
+  root 'pages#dispatcher'
 end

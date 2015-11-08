@@ -1,0 +1,9 @@
+<div class="page-header">
+  <h1>請選擇活動</h1>
+</div>
+
+<div class="list-group">
+  <% @events.each do |event| %>
+    <%= link_to(event.name, new_citizen_event_survey_path(event), class: "list-group-item") %>
+  <% end %>
+</div>

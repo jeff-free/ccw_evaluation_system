@@ -1,13 +1,11 @@
 class Admin::EvaluationsController < Admin::BaseController
   before_action :set_evaluation, only: [:show, :edit, :update, :destroy]
-  respond_to :html
 
   def index
     @evaluations = Evaluation.all
   end
 
   def show
-    
   end
 
   def new
@@ -17,7 +15,7 @@ class Admin::EvaluationsController < Admin::BaseController
   def create
     @evaluation = Evaluation.new(evaluation_params)
     if @evaluation.save
-      respond_with @evaluation, location: admin_evaluations_path, notice: "成功新增會期評鑑"
+      redirect_to admin_evaluations_path, notice: "成功新增會期評鑑"
     else
       render :new, alert: "資料錯誤"
     end
@@ -29,14 +27,13 @@ class Admin::EvaluationsController < Admin::BaseController
 
   def update
     if @evaluation.update(evaluation_params)
-      respond_with :admin, @evaluation
+      redirect_to admin_evaluation_path(@evaluation)
     else
       render :new
     end
   end
 
   def destroy
-    
   end
 
   private

@@ -1,0 +1,10 @@
+<h1>Thanks</h1>
+
+<% if @continuable %>
+<h2>感謝您填寫問券，您可以選擇繼續填寫問卷或是離開系統。</h2>
+<%= link_to("繼續填寫", new_citizen_event_survey_path(@event), class: "btn btn-primary") %>
+<%= link_to("登出系統", destroy_user_session_path, class: "btn btn-default", method: :delete) %>
+<% else %>
+<h2>感謝您填寫問券，您已經完成了此活動的所有問卷。</h2>
+<%= link_to("登出系統", destroy_user_session_path, class: "btn btn-primary", method: :delete) %>
+<% end %>

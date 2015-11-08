@@ -31,6 +31,8 @@ class Evaluation < ActiveRecord::Base
               greater_than: 0,
               less_than_or_equal_to: 8
             }
+  validates_presence_of :term
+
 
   after_save :inactive_other_evaluations
 
@@ -38,7 +40,7 @@ class Evaluation < ActiveRecord::Base
 
   scope :inexistent_evaluation_on_congressman, ->(congressman){self.all - congressman.evaluations}
 
-  scope :active_evaluation, ->{find_by(active: true)}
+  scope :active, ->{where(active: true)}
 
   def full_name
     "#{term_number}-#{session_number}"
