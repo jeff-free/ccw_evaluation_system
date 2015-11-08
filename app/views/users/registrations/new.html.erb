@@ -21,11 +21,7 @@
 <% end %>
 
 <%= render "devise/shared/links" %>
-<%= render "initializers/district_initializer" %>
-<script>
-  $(function () {
-    $('#user_birthdate').datetimepicker({
-      format: 'YYYY/MM/DD'
-    });
-  });
-</script>
+<%= content_for "javascripts" do %>
+  <%= render "initializers/district_initializer" %>
+  <%= render "initializers/date_picker_initializer" %>
+<% end %>
