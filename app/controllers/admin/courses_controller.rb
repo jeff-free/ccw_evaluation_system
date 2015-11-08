@@ -6,7 +6,7 @@ class Admin::CoursesController < Admin::BaseController
   end
 
   def show
-    @students = @course.students
+    @students = @course.students.includes(:inquiries)
   end
 
   def new
