@@ -15,6 +15,8 @@ class Event < ActiveRecord::Base
   include Classifiable
   belongs_to :evaluation
   belongs_to :interpellation
+  has_many :inquiries, through: :interpellation
+
   has_many :users_events, dependent: :destroy 
   has_many :users, through: :users_event
 
