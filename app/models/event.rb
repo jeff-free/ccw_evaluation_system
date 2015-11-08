@@ -22,4 +22,6 @@ class Event < ActiveRecord::Base
 
   validates_presence_of :interpellation_id
 
+  scope :active, -> { where(active: true) }
+
 end

@@ -42,6 +42,6 @@ class Citizen::SurveysController < Citizen::BaseController
   end
 
   def survey_params
-    params[:survey].permit(answers_attributes: [:question_id, :point]) rescue nil
+    params[:survey].permit(answers_attributes: [:question_id, :point])
   end
 end

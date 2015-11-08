@@ -3,8 +3,7 @@ class Citizen::EventsController < Citizen::BaseController
   before_action :set_event!, only: [:thanks]
 
   def index
-    # TODO: change condition
-    @events = Event.all
+    @events = Event.active
   end
 
   def thanks
