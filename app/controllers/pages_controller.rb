@@ -1,5 +1,5 @@
 class PagesController < ApplicationController
-  before_action :authenticate_user!, only: [:dispatch]
+  before_action :authenticate_user!, only: [:dispatcher]
 
   def dispatcher
     case
