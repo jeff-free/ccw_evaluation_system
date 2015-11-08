@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151031085851) do
+ActiveRecord::Schema.define(version: 20151108101703) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "name",                   limit: 255
@@ -96,6 +96,15 @@ ActiveRecord::Schema.define(version: 20151031085851) do
 
   add_index "congressmen_interpellations", ["congressman_id"], name: "index_congressmen_interpellations_on_congressman_id", using: :btree
   add_index "congressmen_interpellations", ["interpellation_id"], name: "index_congressmen_interpellations_on_interpellation_id", using: :btree
+
+  create_table "courses", force: :cascade do |t|
+    t.integer  "evaluation_id", limit: 4
+    t.string   "name",          limit: 255
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "courses", ["evaluation_id"], name: "index_courses_on_evaluation_id", using: :btree
 
   create_table "districts", force: :cascade do |t|
     t.string   "name",       limit: 255
