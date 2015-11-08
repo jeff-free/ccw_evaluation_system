@@ -21,12 +21,16 @@ class Evaluation < ActiveRecord::Base
   has_many :interpellations
   has_many :events
   belongs_to :term
-  enum session_number: ["1", "2"]
 
   delegate :term_number, to: :term
 
-  validates_presence_of :session_number
-  validates_uniqueness_of :session_number, scope: :term_id
+  validates :session_number, 
+            presence: true, 
+            uniqueness: {scope: :term_id}, 
+            numericality: {
+              greater_than: 0,
+              less_than_or_equal_to: 8
+            }
 
   after_save :inactive_other_evaluations
 
