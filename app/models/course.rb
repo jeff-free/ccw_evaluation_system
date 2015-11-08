@@ -14,4 +14,6 @@ class Course < ActiveRecord::Base
 
   validates :name, presence: true
   validates :evaluation, presence: true
+
+  scope :recent, -> { order(id: :desc) }
 end
