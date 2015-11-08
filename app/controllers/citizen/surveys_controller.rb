@@ -28,11 +28,7 @@ class Citizen::SurveysController < Citizen::BaseController
   end
 
   def set_evaluation!
-    @evaluation = Evaluation.active.includes(questions: :question_type).first
-
-    if @evaluation.blank?
-      redirect_to root_path, notice: "目前沒有進行中的會期，請通知系統管理員處理。"
-    end
+    @evaluation = @event.evaluation
   end
 
   def find_inquery!

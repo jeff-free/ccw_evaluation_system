@@ -1,7 +1,4 @@
 Rails.application.routes.draw do
-  namespace :users do
-    resources :surveys, only: [:new, :create]
-  end
   devise_for :users, controllers: {
         sessions: 'users/sessions',
         registrations: 'users/registrations'
