@@ -10,6 +10,7 @@ class Admin::CoursesController < Admin::BaseController
 
   def new
     @course = Course.new
+    @students = User.wandering_students
   end
 
   def create
@@ -23,10 +24,11 @@ class Admin::CoursesController < Admin::BaseController
   end
 
   def edit
+    @students = (User.wandering_students + @course.students)
   end
 
   def update
-    if @course.save
+    if @course.update(course_params)
       redirect_to admin_courses_path, notice: "課程更新成功"
     else
       render :edit
@@ -40,6 +42,6 @@ class Admin::CoursesController < Admin::BaseController
   end
 
   def course_params
-    params[:course].permit(:name, :evaluation_id)
+    params[:course].permit(:name, :evaluation_id, student_ids: [])
   end
 end

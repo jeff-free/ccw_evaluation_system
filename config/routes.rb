@@ -1,4 +1,8 @@
 Rails.application.routes.draw do
+  get "pages/landing"
+  root 'pages#dispatcher'
+
+
   devise_for :users, controllers: {
         sessions: 'users/sessions',
         registrations: 'users/registrations'
@@ -54,6 +58,4 @@ Rails.application.routes.draw do
       get 'locations/districts_index'
     end
   end
-
-  root 'pages#dispatcher'
 end

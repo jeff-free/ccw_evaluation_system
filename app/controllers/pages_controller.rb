@@ -6,7 +6,7 @@ class PagesController < ApplicationController
     when current_user.citizen?
       redirect_to citizen_root_path
     else
-      redirect_to root_path
+      redirect_to pages_landing_path
     end
   end
 

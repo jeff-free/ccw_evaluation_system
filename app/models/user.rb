@@ -37,4 +37,7 @@ class User < ActiveRecord::Base
   enum role: [:student, :citizen, :volunteer, :regular]
   attr_reader :city
   validates_presence_of :name, :identity, :birthdate, :district_id, :role
+
+
+  scope :wandering_students, -> { student.where(course_id: nil) }
 end
