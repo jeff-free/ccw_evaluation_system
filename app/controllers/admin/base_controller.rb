@@ -13,11 +13,11 @@ class Admin::BaseController < ApplicationController
 
     def set_evaluation
       @evaluations = Evaluation.all
-      Evaluation.current_evaluation = params[:evaluation].present? ? Evaluation.find(params[:evaluation]) : nil
+      Evaluation.current_evaluation = params[:current_evaluation_id].present? ? Evaluation.find(params[:current_evaluation_id]) : nil
       @evaluation = Evaluation.current_evaluation
     end
 
     def default_url_options(options={})
-      { evaluation: params[:evaluation].present? ? params[:evaluation] : nil}
+      { current_evaluation_id: params[:current_evaluation_id].present? ? params[:current_evaluation_id] : nil}
     end
 end

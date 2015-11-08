@@ -5,7 +5,7 @@
   </a>
   <ul class="dropdown-menu">
     <% @evaluations.each do |evaluation| %>
-      <li><%= link_to(evaluation.full_name, params.merge(evaluation: evaluation.id)) %></li>
+      <li><%= link_to(evaluation.full_name, params.merge(current_evaluation_id: evaluation.id)) %></li>
     <% end %>
   </ul>
 </div>
