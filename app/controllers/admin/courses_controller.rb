@@ -1,11 +1,12 @@
 class Admin::CoursesController < Admin::BaseController
-  before_action :set_course!, only: [:edit, :update]
+  before_action :set_course!, only: [:show, :edit, :update]
 
   def index
     @courses = Course.recent
   end
 
   def show
+    @students = @course.students
   end
 
   def new
@@ -17,7 +18,7 @@ class Admin::CoursesController < Admin::BaseController
     @course = Course.new(course_params)
 
     if @course.save
-      redirect_to admin_courses_path, notice: "課程新增成功"
+      redirect_to admin_course_path(@course), notice: "課程新增成功"
     else
       render :new
     end
@@ -29,7 +30,7 @@ class Admin::CoursesController < Admin::BaseController
 
   def update
     if @course.update(course_params)
-      redirect_to admin_courses_path, notice: "課程更新成功"
+      redirect_to admin_course_path(@course), notice: "課程更新成功"
     else
       render :edit
     end
