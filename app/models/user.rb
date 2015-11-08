@@ -28,6 +28,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  belongs_to :course
+
   has_many :surveys
   has_many :inquiries, through: :surveys
   has_and_belongs_to_many :events
