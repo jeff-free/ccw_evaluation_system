@@ -4,6 +4,6 @@
 
 <div class="list-group">
   <% @events.each do |event| %>
-    <%= link_to(event.name, "video_citizen_events_path(event)", class: "list-group-item") %>
+    <%= link_to(event.name, new_citizen_event_survey_path(event), class: "list-group-item") %>
   <% end %>
 </div>

@@ -8,7 +8,11 @@ Rails.application.routes.draw do
       }
 
   namespace :citizen do
-    resources :events, only: [:index]
+    root to: "events#index"
+
+    resources :events, only: [:index] do
+      resources :surveys, only: [:new, :create]
+    end
   end
 
   namespace :admin do
@@ -49,5 +53,5 @@ Rails.application.routes.draw do
     end
   end
 
-  root 'pages#landing'
+  root 'pages#dispatcher'
 end

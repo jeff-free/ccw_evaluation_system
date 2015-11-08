@@ -40,7 +40,7 @@ class Evaluation < ActiveRecord::Base
 
   scope :inexistent_evaluation_on_congressman, ->(congressman){self.all - congressman.evaluations}
 
-  scope :active_evaluation, ->{find_by(active: true)}
+  scope :active, ->{where(active: true)}
 
   def full_name
     "#{term_number}-#{session_number}"
