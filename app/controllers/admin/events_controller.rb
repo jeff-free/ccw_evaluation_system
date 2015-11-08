@@ -3,7 +3,7 @@ class Admin::EventsController < Admin::BaseController
 
   # GET /admin/events
   def index
-    @events = @evaluation.events.includes(:interpellation).all
+    @events = Event.includes(:interpellation).in_current_evaluation
   end
 
   # GET /admin/events/1
