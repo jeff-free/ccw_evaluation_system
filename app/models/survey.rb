@@ -9,6 +9,12 @@
 #  updated_at    :datetime         not null
 #  inquiry_id    :integer
 #
+# Indexes
+#
+#  index_surveys_on_evaluation_id  (evaluation_id)
+#  index_surveys_on_inquiry_id     (inquiry_id)
+#  index_surveys_on_user_id        (user_id)
+#
 
 class Survey < ActiveRecord::Base
   belongs_to :user

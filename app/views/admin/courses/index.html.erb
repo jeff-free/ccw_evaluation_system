@@ -1,0 +1,23 @@
+<h1>課程列表 <%= link_to("新增課程", new_admin_course_path, class: "btn btn-default") %></h1>
+<table class="table">
+  <thead>
+    <th>課程名稱</th>
+    <th>課程會議</th>
+    <th></th>
+  </thead>
+  <tbody>
+    <% @courses.each do |course| %>
+    <tr>
+      <td><%= link_to(course.name, admin_course_path(course)) %></td>
+      <td>
+        <ul>
+          <% course.interpellations.each do |interpellation| %>
+          <li><%= interpellation.name %></li>
+          <% end %>
+        </ul>
+      </td>
+      <td><%= link_to("編輯", edit_admin_course_path(course), class: "btn btn-default btn-xs") %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

@@ -11,6 +11,11 @@
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #
+# Indexes
+#
+#  index_interpellations_on_committee_id   (committee_id)
+#  index_interpellations_on_evaluation_id  (evaluation_id)
+#
 
 class Interpellation < ActiveRecord::Base
   belongs_to :committee
@@ -19,6 +24,9 @@ class Interpellation < ActiveRecord::Base
   has_many :congressmen, through: :congressmen_interpellations
   has_many :inquiries, through: :congressmen_interpellations
   has_many :events
+
+  has_many :course_interpellations
+  has_many :courses, through: :course_interpellations
 
   include Classifiable
 end
