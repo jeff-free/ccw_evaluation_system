@@ -10,6 +10,10 @@
 #  created_at                    :datetime         not null
 #  updated_at                    :datetime         not null
 #
+# Indexes
+#
+#  index_inquiries_on_congressmen_interpellation_id  (congressmen_interpellation_id)
+#
 
 require 'test_helper'
 

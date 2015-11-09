@@ -22,6 +22,14 @@
 #  updated_at             :datetime         not null
 #  course_id              :integer
 #
+# Indexes
+#
+#  index_users_on_course_id             (course_id)
+#  index_users_on_district_id           (district_id)
+#  index_users_on_email                 (email) UNIQUE
+#  index_users_on_reset_password_token  (reset_password_token) UNIQUE
+#  index_users_on_role                  (role)
+#
 
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:

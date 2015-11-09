@@ -17,6 +17,11 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #
+# Indexes
+#
+#  index_admins_on_email                 (email) UNIQUE
+#  index_admins_on_reset_password_token  (reset_password_token) UNIQUE
+#
 
 class Admin < ActiveRecord::Base
   # Include default devise modules. Others available are:
