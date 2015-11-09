@@ -4,6 +4,6 @@
 
 <div class="list-group">
   <% @courses.each do |course| %>
-    <%= link_to(course.name, join_citizen_course_path(course), class: "list-group-item", method: :post) %>
+    <%= link_to(course.name, join_student_course_path(course), class: "list-group-item", method: :post) %>
   <% end %>
 </div>
