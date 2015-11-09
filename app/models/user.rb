@@ -20,6 +20,7 @@
 #  last_sign_in_ip        :string(255)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  course_id              :integer
 #
 
 class User < ActiveRecord::Base
