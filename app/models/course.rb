@@ -9,12 +9,11 @@
 #
 
 class Course < ActiveRecord::Base
-  belongs_to :evaluation
-
+  has_many :course_interpellations
+  has_many :interpellations, through: :course_interpellations
   has_many :students, class_name: "User"
 
   validates :name, presence: true
-  validates :evaluation, presence: true
 
   scope :recent, -> { order(id: :desc) }
 end
