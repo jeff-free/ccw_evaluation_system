@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   devise_for :users, controllers: {
         sessions: 'users/sessions',
         registrations: 'users/registrations'
@@ -13,6 +14,12 @@ Rails.application.routes.draw do
       end
       resources :surveys, only: [:new, :create]
     end
+  end
+
+  namespace :volunteer do
+    root to: 'congressmen#index'
+    resources :congressmen, only: [:index, :show]
+    resources :inquiries
   end
 
   namespace :admin do
