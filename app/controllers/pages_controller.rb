@@ -8,7 +8,7 @@ class PagesController < ApplicationController
     when current_user.volunteer?
       redirect_to volunteer_root_path
     else
-      redirect_to root_path
+      redirect_to pages_landing_path
     end
   end
 

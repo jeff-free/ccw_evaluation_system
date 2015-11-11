@@ -8,6 +8,10 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #
+# Indexes
+#
+#  index_districts_on_city_id  (city_id)
+#
 
 class District < ActiveRecord::Base
   belongs_to :city

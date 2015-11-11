@@ -9,6 +9,10 @@
 #  updated_at     :datetime         not null
 #  active         :boolean          default(FALSE)
 #
+# Indexes
+#
+#  index_evaluations_on_term_id  (term_id)
+#
 
 class Evaluation < ActiveRecord::Base
   class_attribute :current_evaluation

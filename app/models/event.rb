@@ -10,6 +10,11 @@
 #  updated_at        :datetime         not null
 #  active            :boolean          default(FALSE)
 #
+# Indexes
+#
+#  index_events_on_evaluation_id      (evaluation_id)
+#  index_events_on_interpellation_id  (interpellation_id)
+#
 
 class Event < ActiveRecord::Base
   include Classifiable

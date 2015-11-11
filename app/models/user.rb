@@ -20,6 +20,15 @@
 #  last_sign_in_ip        :string(255)
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  course_id              :integer
+#
+# Indexes
+#
+#  index_users_on_course_id             (course_id)
+#  index_users_on_district_id           (district_id)
+#  index_users_on_email                 (email) UNIQUE
+#  index_users_on_reset_password_token  (reset_password_token) UNIQUE
+#  index_users_on_role                  (role)
 #
 
 class User < ActiveRecord::Base
@@ -28,6 +37,8 @@ class User < ActiveRecord::Base
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
+  belongs_to :course
+
   has_many :surveys
   has_many :inquiries, through: :surveys
   has_and_belongs_to_many :events
@@ -35,4 +46,7 @@ class User < ActiveRecord::Base
   enum role: [:student, :citizen, :volunteer, :regular]
   attr_reader :city
   validates_presence_of :name, :identity, :birthdate, :district_id, :role
+
+
+  scope :wandering_students, -> { student.where(course_id: nil) }
 end

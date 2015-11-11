@@ -7,6 +7,10 @@
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
+# Indexes
+#
+#  index_terms_on_term_number  (term_number)
+#
 
 require 'test_helper'
 

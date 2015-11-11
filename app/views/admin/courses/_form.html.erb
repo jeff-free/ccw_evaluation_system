@@ -1,0 +1,6 @@
+<%= simple_form_for([:admin, course]) do |f| %>
+  <%= f.input :name, label: "課程名稱" %>
+  <%= f.association :interpellations, as: :check_boxes, label_method: :name, label: "包含的會議" %>
+  <%= f.association :students, collection: students.to_a, as: :check_boxes %>
+  <%= f.button :submit %>
+<% end %>
