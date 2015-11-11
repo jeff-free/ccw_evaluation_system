@@ -12,7 +12,7 @@ class Course < ActiveRecord::Base
   has_many :course_interpellations
   has_many :interpellations, through: :course_interpellations
 
-  has_many :congressmen, through: :interpellations
+  has_many :inquiries, through: :interpellations
 
 
   has_many :students, class_name: "User"

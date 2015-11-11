@@ -26,7 +26,7 @@ Rails.application.routes.draw do
       member do
         post :join
       end
-      resources :congressmen, only: [:index]
+      resources :inquiries, only: [:index]
     end
   end
 

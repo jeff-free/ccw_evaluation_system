@@ -1,2 +1,0 @@
-module Student::CongressmenHelper
-end

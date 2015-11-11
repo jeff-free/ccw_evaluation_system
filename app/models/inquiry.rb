@@ -24,6 +24,10 @@ class Inquiry < ActiveRecord::Base
   delegate :evaluation, to: :interpellation
   delegate :interpellation_date, to: :interpellation
 
+  # TODO: don't use scope if this is not chainable.
   scope :in_current_evaluation, ->(evaluation){evaluation.interpellations.map(&:inquiries).flatten}
 
+  def name
+    "#{number} - #{content}"
+  end
 end

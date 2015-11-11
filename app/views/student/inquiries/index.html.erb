@@ -1,0 +1,24 @@
+<div class="page-header">
+  <h1>請選擇要評鑑的會議</h1>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th></th>
+      <th>質詢(inquiry)</th>
+      <th>立委(congressman)</th>
+      <th>會議(interpellation)</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @inquiries.each do |inquiry| %>
+    <tr>
+      <td><%= link_to("評鑑", "new_student_course_inquery_survey_path(@course, inquiry)", class: "list-group-item") %></td>
+      <td><%= inquiry.name %></td>
+      <td><%= inquiry.congressman.name %></td>
+      <td><%= inquiry.interpellation.name %></td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
