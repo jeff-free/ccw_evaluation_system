@@ -6,5 +6,6 @@
 </h1>
 
 <%= render "common/surveys/video_section", inquiry: @inquiry %>
+影片沒有參考價值？<%= link_to("跳過", student_course_inquiries_path(@course)) %>
 
 <%= render "common/surveys/hidden_form", resource: [:student, @course, @inquiry, @survey], questions: @questions, answer: @answer %>
