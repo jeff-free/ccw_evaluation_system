@@ -25,7 +25,7 @@ class Student::SurveysController < Student::BaseController
   private
 
   def set_course!
-    @course = Course.find(params[:course_id])
+    @course = current_user.course
   end
 
   def set_inquiry!
