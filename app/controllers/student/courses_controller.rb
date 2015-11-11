@@ -14,6 +14,9 @@ class Student::CoursesController < Student::BaseController
     redirect_to student_course_inquiries_path(current_user.course)
   end
 
+  def thanks
+  end
+
   private
 
   def course_should_not_set!

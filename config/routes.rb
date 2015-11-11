@@ -26,7 +26,12 @@ Rails.application.routes.draw do
       member do
         post :join
       end
-      resources :inquiries, only: [:index]
+      collection do
+        get :thanks
+      end
+      resources :inquiries, only: [:index] do
+        resources :surveys, only: [:new, :create]
+      end
     end
   end
 

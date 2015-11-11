@@ -2,7 +2,7 @@ class Student::InquiriesController < Student::BaseController
   before_action :should_has_course!, only: [:index]
 
   def index
-    @course = Course.find(params[:course_id])
+    @course = current_user.course
 
     rated_congressman_ids = current_user.rated_congressman_ids
 
