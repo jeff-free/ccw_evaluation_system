@@ -1,0 +1,31 @@
+<div id="survey-wrapper" class="hidden">
+  <div class="page-header">
+    <h3>請填寫評鑑</h3>
+  </div>
+  <%= simple_form_for(resource) do |f| %>
+    <%= f.error_notification %>
+
+    <div class="form-inputs">
+      <% @questions.each_with_index do |question, index| %>
+        <%= f.simple_fields_for(:answers, @answer) do |answer| %>
+          <div class="page-header">
+          問題 <%= index +1 %>：<%= question.name %>
+          </div>
+          <%= answer.hidden_field :question_id, value: question.id %>
+          <%= answer.input :point, as: :radio_buttons, collection: 1..5 %>
+        <% end %>
+      <% end %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.button :submit, "送出評鑑" %>
+    </div>
+  <% end %>
+</div>
+
+<%# content_for would be affected by turbolink %>
+<script>
+  $("#video-finish-button").click(function(e) {
+    $("#survey-wrapper").removeClass("hidden");
+  })
+</script>
