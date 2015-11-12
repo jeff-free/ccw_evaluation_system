@@ -41,6 +41,9 @@ class User < ActiveRecord::Base
 
   has_many :surveys
   has_many :inquiries, through: :surveys
+  has_many :rated_congressmen_interpellation, through: :inquiries, source: :congressmen_interpellation
+  has_many :rated_congressmen, through: :rated_congressmen_interpellation, source: :congressman
+
   has_and_belongs_to_many :events
   belongs_to :district
   enum role: [:student, :citizen, :volunteer, :regular]

@@ -28,6 +28,22 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :student do
+    root to: "courses#index"
+
+    resources :courses, only: [:index] do
+      member do
+        post :join
+      end
+      collection do
+        get :thanks
+      end
+      resources :inquiries, only: [:index] do
+        resources :surveys, only: [:new, :create]
+      end
+    end
+  end
+
   namespace :admin do
     resources :terms do
       resources :evaluations

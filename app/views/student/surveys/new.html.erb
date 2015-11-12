@@ -1,0 +1,11 @@
+<h1>
+  課程： <%= @course.name %> <br>
+  立委： <%= @inquiry.congressman.name %> <br>  
+  會議： <%= @inquiry.interpellation.name %><br>
+  質詢： <%= @inquiry.name %>
+</h1>
+
+<%= render "common/surveys/video_section", inquiry: @inquiry %>
+影片沒有參考價值？<%= link_to("跳過", student_course_inquiries_path(@course)) %>
+
+<%= render "common/surveys/hidden_form", resource: [:student, @course, @inquiry, @survey], questions: @questions, answer: @answer %>
