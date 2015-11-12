@@ -1,0 +1,22 @@
+<h1>
+  <%= @congressman.name %>
+</h1>
+本會期質詢影片:
+<table class="table">
+  <tr>
+    <th>會議日期</th>
+    <th>會議名稱</th>
+    <th>會議內容</th>
+    <th>本會議中第 # 次質詢</th>
+    <th></th>
+  </tr>
+  <% @inquiries.each do |inquiry| %>
+  <tr>
+    <td><%= inquiry.interpellation.interpellation_date.to_date %></td>
+    <td><%= inquiry.interpellation.name %></td>
+    <td><%= inquiry.interpellation.content %></td>
+    <td><%= inquiry.number %></td>
+    <td><%= link_to "開始評鑑", volunteer_inquiry_path(inquiry) %></td>
+  </tr>
+  <% end %>
+</table>

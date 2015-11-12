@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
+
   get "pages/landing"
   root 'pages#dispatcher'
-
 
   devise_for :users, controllers: {
         sessions: 'users/sessions',
@@ -15,6 +15,15 @@ Rails.application.routes.draw do
       member do
         get :thanks
       end
+      resources :surveys, only: [:new, :create]
+    end
+  end
+
+  namespace :volunteer do
+    root to: 'congressmen#index'
+    resources :congressmen, only: [:index, :show] do
+    end
+    resources :inquiries, only: [:show] do
       resources :surveys, only: [:new, :create]
     end
   end
