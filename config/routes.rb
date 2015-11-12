@@ -21,8 +21,11 @@ Rails.application.routes.draw do
 
   namespace :volunteer do
     root to: 'congressmen#index'
-    resources :congressmen, only: [:index, :show]
-    resources :inquiries
+    resources :congressmen, only: [:index, :show] do
+    end
+    resources :inquiries, only: [:show] do
+      resources :surveys, only: [:new, :create]
+    end
   end
 
   namespace :admin do

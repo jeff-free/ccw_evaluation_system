@@ -1,4 +1,5 @@
 class Volunteer::BaseController < ApplicationController
+  before_action :set_evaluation
   
   private
     def set_evaluation
