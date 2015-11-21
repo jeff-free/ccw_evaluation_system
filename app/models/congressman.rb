@@ -37,4 +37,8 @@ class Congressman < ActiveRecord::Base
   def committee_of_evaluation(evaluation)
     committees.includes(:congressmen_evaluations).where(congressmen_evaluations: {evaluation: evaluation}).references(:congressmen_evaluations).first
   end
+
+  def has_interpellation_in_evaluation?(evaluation)
+    interpellations.where(evaluation: evaluation).any?
+  end
 end

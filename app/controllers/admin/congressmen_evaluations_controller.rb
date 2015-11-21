@@ -80,6 +80,6 @@ class Admin::CongressmenEvaluationsController < Admin::BaseController
     end
 
     def inquiry_params
-      params[:inquiry].permit(:number, :video, :content)
+      params[:inquiry].permit(:number, :video, :content, :congressmen_interpellation_id)
     end
 end
