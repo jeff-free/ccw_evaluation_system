@@ -1,6 +1,6 @@
 class Admin::CongressmenEvaluationsController < Admin::BaseController
   before_action :set_congressman, only: [:new, :create]
-  before_action :set_congressmen_evaluation, only: [:show, :edit, :update, :destroy]
+  before_action :set_congressmen_evaluation, only: [:show, :edit, :update, :destroy, :add_inquiry]
   before_action :set_committee, only: [:show, :edit, :update, :destroy]
 
   # GET /congressmen_evaluations
@@ -11,6 +11,7 @@ class Admin::CongressmenEvaluationsController < Admin::BaseController
   # GET /congressmen_evaluations/1
   def show
     @committee = @congressman.committee_of_evaluation(@evaluation)
+    @inquiry = @congressman.inquiries.build
   end
 
   # GET /congressmen_evaluations/new
@@ -48,6 +49,15 @@ class Admin::CongressmenEvaluationsController < Admin::BaseController
     redirect_to [:admin, @congressman], notice: '成功刪除'
   end
 
+  def add_inquiry
+    @inquiry = @congressman.inquiries.build(inquiry_params)
+    if @inquiry.save
+      redirect_to [:admin, @congressmen_evaluation], notice: "成功新增質詢影片"
+    else
+      render :show
+    end
+  end
+
   private
 
     def set_congressman
@@ -67,5 +77,9 @@ class Admin::CongressmenEvaluationsController < Admin::BaseController
     # Only allow a trusted parameter "white list" through.
     def congressmen_evaluation_params
       params.require(:congressmen_evaluation).permit(:evaluation_id, :party_id, :party_group_id, :committee_id, :election_type)
+    end
+
+    def inquiry_params
+      params[:inquiry].permit(:number, :video, :content)
     end
 end
