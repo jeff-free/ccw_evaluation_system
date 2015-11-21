@@ -56,8 +56,9 @@ Rails.application.routes.draw do
       resources :congressmen, shallow: true
     end
     resources :congressmen do
-      resources :congressmen_evaluations, only: [:show, :new, :create, :edit, :update, :destroy]
-      resources :inquires
+      resources :congressmen_evaluations, shallow: true, except: [:index] do
+        post 'add_inquiry', on: :member
+      end
     end
     resources :party_groups
     

@@ -1,5 +1,6 @@
 <h1>立委會期資料: <%= @congressman.name %></h1>
-
-<%= render 'form' %>
+<%= simple_form_for([:admin, @congressmen_evaluation]) do |f| %>
+  <%= render 'form', f: f %>
+<% end %>
 
 <%= link_to '返回', admin_congressman_path(@congressman) %>

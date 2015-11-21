@@ -4,6 +4,10 @@
 </p>
 
 <p>
+  <%= @committee.name %>
+</p>
+
+<p>
   <strong>Party:</strong>
   <%= @congressmen_evaluation.party.name %>
 </p>
@@ -39,5 +43,5 @@
   </tbody>
 </table>
 
-<%= link_to 'Edit', edit_admin_congressman_congressmen_evaluation_path(@congressman, @congressmen_evaluation) %> |
+<%= link_to 'Edit', edit_admin_congressmen_evaluation_path(@congressmen_evaluation) %> |
 <%= link_to 'Back', admin_congressman_path(@congressman) %>

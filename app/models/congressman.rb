@@ -33,4 +33,8 @@ class Congressman < ActiveRecord::Base
   accepts_nested_attributes_for :congressmen_evaluations
   validates_presence_of :name, :en_name, :sex
 
+  # Should be refactored to association
+  def committee_of_evaluation(evaluation)
+    committees.includes(:congressmen_evaluations).where(congressmen_evaluations: {evaluation: evaluation}).references(:congressmen_evaluations).first
+  end
 end
