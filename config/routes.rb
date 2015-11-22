@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   get "pages/landing"
   root 'pages#dispatcher'
 
@@ -48,9 +47,11 @@ Rails.application.routes.draw do
     resources :terms do
       resources :evaluations
     end
-    resources :evaluations do
-      resources :questions
-    end
+    # resources :evaluations
+
+
+
+
     resources :question_types
     resources :parties do
       resources :congressmen, shallow: true
