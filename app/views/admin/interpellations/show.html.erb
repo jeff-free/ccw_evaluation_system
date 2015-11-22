@@ -13,6 +13,18 @@
   <%= @interpellation.content %>
 </p>
 
+<div class="panel panel-default">
+  <h4>新增立委質詢</h4>
+  <%= simple_form_for(@inquiry, url: add_inquiry_admin_interpellation_path(@interpellation)) do |f| %>
+    <%= f.input :number, label: "第 X 次質詢" %>
+    <%= f.input :content, label: "內容" %>
+    <%= f.input :video, label: "影片網址" %>
+    <%= f.association :congressman, collection: @committee.congressman_in_evaluation(@evaluation) %>
+    <%= f.button :submit, "送出" %>
+  <% end %>
+    
+</div>
+
 <table class="table">
   <thead>
     <th>立委姓名</th>

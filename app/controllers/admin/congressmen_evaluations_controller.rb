@@ -3,11 +3,6 @@ class Admin::CongressmenEvaluationsController < Admin::BaseController
   before_action :set_congressmen_evaluation, only: [:show, :edit, :update, :destroy, :add_inquiry]
   before_action :set_committee, only: [:show, :edit, :update, :destroy]
 
-  # GET /congressmen_evaluations
-  # def index
-  #   @congressmen_evaluations = CongressmenEvaluation.all
-  # end
-
   # GET /congressmen_evaluations/1
   def show
     @committee = @congressman.committee_of_evaluation(@evaluation)

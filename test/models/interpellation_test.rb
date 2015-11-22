@@ -11,11 +11,6 @@
 #  created_at          :datetime         not null
 #  updated_at          :datetime         not null
 #
-# Indexes
-#
-#  index_interpellations_on_committee_id   (committee_id)
-#  index_interpellations_on_evaluation_id  (evaluation_id)
-#
 
 require 'test_helper'
 

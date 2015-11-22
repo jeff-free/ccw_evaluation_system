@@ -26,7 +26,7 @@ class Congressman < ActiveRecord::Base
   has_many :terms, through: :evaluations
   has_many :congressmen_interpellations
   has_many :interpellations, through: :congressmen_interpellations
-  has_many :inquiries, through: :congressmen_interpellations
+  has_many :inquiries
 
   enum sex: [:male, :female, :third_sex]
 

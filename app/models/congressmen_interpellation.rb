@@ -12,7 +12,6 @@
 class CongressmenInterpellation < ActiveRecord::Base
   belongs_to :congressman
   belongs_to :interpellation
-  has_many :inquiries
 
   def interpellation_name
     interpellation.name

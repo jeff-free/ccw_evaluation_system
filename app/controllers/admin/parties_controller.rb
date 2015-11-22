@@ -8,6 +8,7 @@ class Admin::PartiesController < Admin::BaseController
 
   # GET /admin/parties/1
   def show
+    @congressmen = @party.congressmen_evaluations.where(evaluation: @evaluation).map(&:congressman)
   end
 
   # GET /admin/parties/new
