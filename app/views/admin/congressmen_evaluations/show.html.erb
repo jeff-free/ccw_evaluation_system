@@ -4,6 +4,10 @@
 </p>
 
 <p>
+  <%= @committee.name %>
+</p>
+
+<p>
   <strong>Party:</strong>
   <%= @congressmen_evaluation.party.name %>
 </p>
@@ -19,13 +23,25 @@
 </p>
 
 <h4>質詢影片</h4>
-
+<% if @congressman.has_interpellation_in_evaluation?(@evaluation) %>
+<div class="panel panel-default">
+  <h6>新增質詢影片</h6>
+    <%= simple_form_for(@inquiry, url: add_inquiry_admin_congressmen_evaluation_path(@congressmen_evaluation), method: :post) do |f| %>
+      <%= f.input :number, label: "第 X 次質詢" %>
+      <%= f.input :video, label: "影片網址" %>
+      <%= f.association :interpellation, collection: @congressman.interpellations.where(evaluation: @evaluation), label_method: :name, label: "會議" %>
+      <%= f.input :content, label: "質詢內容"  %>
+      <%= f.button :submit, "送出" %>
+    <% end %>
+</div>
+<% end %>
 <table class="table">
   <thead>
     <tr>
       <th>日期</th>
       <th>內容</th>
       <th>網址</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
@@ -34,10 +50,11 @@
       <td><%= inquiry.interpellation_date.to_date %></td>
       <td><%= inquiry.content %></td>
       <td><%= inquiry.video %></td>
+      <td><%= link_to("刪除質詢", admin_congressmen_evaluation_remove_inquiry_path(@congressmen_evaluation, inquiry), method: :delete, data: {confirm: "確定要刪除？"}) %></td>
     </tr>
     <% end %>
   </tbody>
 </table>
 
-<%= link_to 'Edit', edit_admin_congressman_congressmen_evaluation_path(@congressman, @congressmen_evaluation) %> |
+<%= link_to 'Edit', edit_admin_congressmen_evaluation_path(@congressmen_evaluation) %> |
 <%= link_to 'Back', admin_congressman_path(@congressman) %>

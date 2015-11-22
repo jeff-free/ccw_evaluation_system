@@ -8,11 +8,6 @@
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #
-# Indexes
-#
-#  index_congressmen_interpellations_on_congressman_id     (congressman_id)
-#  index_congressmen_interpellations_on_interpellation_id  (interpellation_id)
-#
 
 require 'test_helper'
 

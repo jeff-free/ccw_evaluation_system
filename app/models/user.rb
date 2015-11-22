@@ -22,14 +22,6 @@
 #  updated_at             :datetime         not null
 #  course_id              :integer
 #
-# Indexes
-#
-#  index_users_on_course_id             (course_id)
-#  index_users_on_district_id           (district_id)
-#  index_users_on_email                 (email) UNIQUE
-#  index_users_on_reset_password_token  (reset_password_token) UNIQUE
-#  index_users_on_role                  (role)
-#
 
 class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
@@ -41,8 +33,7 @@ class User < ActiveRecord::Base
 
   has_many :surveys
   has_many :inquiries, through: :surveys
-  has_many :rated_congressmen_interpellation, through: :inquiries, source: :congressmen_interpellation
-  has_many :rated_congressmen, through: :rated_congressmen_interpellation, source: :congressman
+  has_many :rated_congressmen, through: :inquiries, source: :congressman
 
   has_and_belongs_to_many :events
   belongs_to :district

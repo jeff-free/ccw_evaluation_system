@@ -13,11 +13,24 @@
   <%= @interpellation.content %>
 </p>
 
+<div class="panel panel-default">
+  <h4>新增立委質詢</h4>
+  <%= simple_form_for(@inquiry, url: add_inquiry_admin_interpellation_path(@interpellation)) do |f| %>
+    <%= f.input :number, label: "第 X 次質詢" %>
+    <%= f.input :content, label: "內容" %>
+    <%= f.input :video, label: "影片網址" %>
+    <%= f.association :congressman, collection: @committee.congressman_in_evaluation(@evaluation) %>
+    <%= f.button :submit, "送出" %>
+  <% end %>
+    
+</div>
+
 <table class="table">
   <thead>
     <th>立委姓名</th>
     <th>質詢數</th>
     <th>網址</th>
+    <th></th>
   </thead>
   <tbody>
     <% @interpellation.inquiries.each do |i| %>
@@ -25,6 +38,7 @@
         <td><%= i.congressman.name %></td>
         <td><%= i.number %></td>
         <td><%= link_to(i.video, target: "_blank") %></td>
+        <td><%= link_to("刪除", admin_interpellation_remove_inquiry_path(@interpellation, i), method: :delete, data: {confirm: "確定刪除？"}) %></td>
       </tr>
     <% end %>
   </tbody>

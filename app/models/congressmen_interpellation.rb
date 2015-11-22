@@ -8,14 +8,12 @@
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #
-# Indexes
-#
-#  index_congressmen_interpellations_on_congressman_id     (congressman_id)
-#  index_congressmen_interpellations_on_interpellation_id  (interpellation_id)
-#
 
 class CongressmenInterpellation < ActiveRecord::Base
   belongs_to :congressman
   belongs_to :interpellation
-  has_many :inquiries
+
+  def interpellation_name
+    interpellation.name
+  end
 end

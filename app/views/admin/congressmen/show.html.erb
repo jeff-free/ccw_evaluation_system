@@ -19,7 +19,7 @@
     <tbody>
       <% @congressman.congressmen_evaluations.each do |congressmen_evaluation| %>
         <tr>
-          <td><%= link_to congressmen_evaluation.full_name, admin_congressman_congressmen_evaluation_path(@congressman, congressmen_evaluation) %></td>
+          <td><%= link_to congressmen_evaluation.full_name, admin_congressmen_evaluation_path(congressmen_evaluation) %></td>
           <td><%= congressmen_evaluation.party.name %></td>
           <td><%= congressmen_evaluation.election_type %></td>
           <td><%= congressmen_evaluation.id %></td>

@@ -1,14 +1,12 @@
 class Admin::CongressmenEvaluationsController < Admin::BaseController
-  before_action :set_congressman
-  before_action :set_congressmen_evaluation, only: [:show, :edit, :update, :destroy]
-
-  # GET /congressmen_evaluations
-  # def index
-  #   @congressmen_evaluations = CongressmenEvaluation.all
-  # end
+  before_action :set_congressman, only: [:new, :create]
+  before_action :set_congressmen_evaluation, only: [:show, :edit, :update, :destroy, :add_inquiry]
+  before_action :set_committee, only: [:show, :edit, :update, :destroy]
 
   # GET /congressmen_evaluations/1
   def show
+    @committee = @congressman.committee_of_evaluation(@evaluation)
+    @inquiry = @congressman.inquiries.build
   end
 
   # GET /congressmen_evaluations/new
@@ -46,6 +44,22 @@ class Admin::CongressmenEvaluationsController < Admin::BaseController
     redirect_to [:admin, @congressman], notice: '成功刪除'
   end
 
+  def add_inquiry
+    @inquiry = @congressman.inquiries.build(inquiry_params)
+    if @inquiry.save
+      redirect_to [:admin, @congressmen_evaluation], notice: "成功新增質詢影片"
+    else
+      render :show
+    end
+  end
+
+  def remove_inquiry
+    @congressmen_evaluation = CongressmenEvaluation.find(params[:congressmen_evaluation_id])
+    @inquiry = Inquiry.find(params[:id])
+    @inquiry.destroy
+    redirect_to admin_congressmen_evaluation_path(@congressmen_evaluation), notice: "成功刪除"
+  end
+
   private
 
     def set_congressman
@@ -53,11 +67,21 @@ class Admin::CongressmenEvaluationsController < Admin::BaseController
     end
 
     def set_congressmen_evaluation
-      @congressmen_evaluation = CongressmenEvaluation.find(params[:id])
+      @congressmen_evaluation = CongressmenEvaluation.includes(:congressman, :evaluation).find(params[:id])
+      @evaluation = @congressmen_evaluation.evaluation
+      @congressman = @congressmen_evaluation.congressman
+    end
+
+    def set_committee
+      @committee = @congressman.committee_of_evaluation(@evaluation)
     end
 
     # Only allow a trusted parameter "white list" through.
     def congressmen_evaluation_params
       params.require(:congressmen_evaluation).permit(:evaluation_id, :party_id, :party_group_id, :committee_id, :election_type)
+    end
+
+    def inquiry_params
+      params[:inquiry].permit(:number, :video, :content, :congressman_id, :interpellation_id)
     end
 end

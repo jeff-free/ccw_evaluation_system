@@ -26,11 +26,19 @@ class Congressman < ActiveRecord::Base
   has_many :terms, through: :evaluations
   has_many :congressmen_interpellations
   has_many :interpellations, through: :congressmen_interpellations
-  has_many :inquiries, through: :congressmen_interpellations
+  has_many :inquiries
 
   enum sex: [:male, :female, :third_sex]
 
   accepts_nested_attributes_for :congressmen_evaluations
   validates_presence_of :name, :en_name, :sex
 
+  # Should be refactored to association
+  def committee_of_evaluation(evaluation)
+    committees.includes(:congressmen_evaluations).where(congressmen_evaluations: {evaluation: evaluation}).references(:congressmen_evaluations).first
+  end
+
+  def has_interpellation_in_evaluation?(evaluation)
+    interpellations.where(evaluation: evaluation).any?
+  end
 end

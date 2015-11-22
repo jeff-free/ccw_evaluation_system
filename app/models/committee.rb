@@ -16,4 +16,7 @@ class Committee < ActiveRecord::Base
   has_many :evaluations, through: :congressmen_evaluations
   has_many :interpellations
 
+  def congressman_in_evaluation(evaluation)
+    congressmen_evaluations.where(evaluation: evaluation).map(&:congressman)
+  end
 end
