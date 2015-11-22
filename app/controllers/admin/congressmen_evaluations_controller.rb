@@ -53,6 +53,13 @@ class Admin::CongressmenEvaluationsController < Admin::BaseController
     end
   end
 
+  def remove_inquiry
+    @congressmen_evaluation = CongressmenEvaluation.find(params[:congressmen_evaluation_id])
+    @inquiry = Inquiry.find(params[:id])
+    @inquiry.destroy
+    redirect_to admin_congressmen_evaluation_path(@congressmen_evaluation), notice: "成功刪除"
+  end
+
   private
 
     def set_congressman
@@ -75,6 +82,6 @@ class Admin::CongressmenEvaluationsController < Admin::BaseController
     end
 
     def inquiry_params
-      params[:inquiry].permit(:number, :video, :content, :congressmen_interpellation_id)
+      params[:inquiry].permit(:number, :video, :content, :congressman_id, :interpellation_id)
     end
 end

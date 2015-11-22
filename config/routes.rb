@@ -57,20 +57,16 @@ Rails.application.routes.draw do
     end
     resources :congressmen do
       resources :congressmen_evaluations, shallow: true, except: [:index] do
-        member do
-          post 'add_inquiry'
-          delete 'remove_inquiry'
-        end
+        post 'add_inquiry', on: :member
+        delete '/remove_inquiry/:id', to: "congressmen_evaluations#remove_inquiry", as: "remove_inquiry"
       end
     end
     resources :party_groups
     
     resources :committees do
       resources :interpellations, shallow: true, except: [:index] do
-        member do
-          post 'add_inquiry'
-          delete 'remove_inquiry'
-        end
+        post 'add_inquiry', on: :member
+        delete '/remove_inquiry/:id', to: "interpellations#remove_inquiry", as: "remove_inquiry"
       end
     end
     resources :events

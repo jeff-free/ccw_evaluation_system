@@ -53,6 +53,13 @@ class Admin::InterpellationsController < Admin::BaseController
     end
   end
 
+  def remove_inquiry
+    @interpellation = Interpellation.find(params[:interpellation_id])
+    @inquiry = Inquiry.find(params[:id])
+    @inquiry.destroy
+    redirect_to admin_interpellation_path(@interpellation), notice: "成功刪除"
+  end
+
   private
     def set_interpellation
       @interpellation = Interpellation.includes(:congressmen, :inquiries).find(params[:id])

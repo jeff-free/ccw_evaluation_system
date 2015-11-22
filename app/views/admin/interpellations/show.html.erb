@@ -30,6 +30,7 @@
     <th>立委姓名</th>
     <th>質詢數</th>
     <th>網址</th>
+    <th></th>
   </thead>
   <tbody>
     <% @interpellation.inquiries.each do |i| %>
@@ -37,6 +38,7 @@
         <td><%= i.congressman.name %></td>
         <td><%= i.number %></td>
         <td><%= link_to(i.video, target: "_blank") %></td>
+        <td><%= link_to("刪除", admin_interpellation_remove_inquiry_path(@interpellation, i), method: :delete, data: {confirm: "確定刪除？"}) %></td>
       </tr>
     <% end %>
   </tbody>
