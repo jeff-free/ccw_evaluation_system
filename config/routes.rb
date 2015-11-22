@@ -45,9 +45,8 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :terms do
-      resources :evaluations
+      resources :evaluations, only: [:show, :edit, :new, :update, :create]
     end
-    # resources :evaluations
 
 
 

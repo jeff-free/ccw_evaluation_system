@@ -2,10 +2,6 @@ class Admin::EvaluationsController < Admin::BaseController
   before_action :set_term
   before_action :set_evaluation, only: [:show, :edit, :update, :destroy]
 
-  def index
-    @evaluations = Evaluation.all
-  end
-
   def show
     @question_types = @evaluation.question_types.includes(:questions).uniq
   end
@@ -17,7 +13,7 @@ class Admin::EvaluationsController < Admin::BaseController
   def create
     @evaluation = Evaluation.new(evaluation_params)
     if @evaluation.save
-      redirect_to admin_term_evaluations_path(@term), notice: "成功新增會期評鑑"
+      redirect_to admin_term_path(@term), notice: "成功新增會期評鑑"
     else
       render :new, alert: "資料錯誤"
     end
