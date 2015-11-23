@@ -1,2 +1,31 @@
-<h1><%= @evaluation.full_name %></h1>
-<%= link_to("查看本會期問卷題目", admin_evaluation_questions_path(@evaluation)) %>
+<h1>會期 <%= @evaluation.full_name %></h1>
+
+
+<div class="page-header">
+  <h2>問卷題目 <%= link_to("編輯", edit_admin_term_evaluation_path(@term, @evaluation), class: "btn btn-default") %></h2>
+</div>  
+
+<table class="table">
+  <thead> 
+    <tr>
+      <th>主指標</th>
+      <th>問題</th>
+    </tr>
+  </thead>
+  <tbody>
+  <% if @question_types.present? %>
+    <% @question_types.each do |question_type| %>
+    <tr>
+      <td><%= question_type.name %></td>
+      <td>
+        <ol>
+        <% question_type.questions.each do |question| %>
+          <li><%= question.name %></li>
+        <% end %>
+        </ol>
+      </td>
+    </tr>
+    <% end %>
+  <% end %>
+  </tbody>
+</table>

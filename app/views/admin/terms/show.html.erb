@@ -1,14 +1,18 @@
 <!-- Tab -->
-<h1>第 <%= @term.term_number %> 屆立委</h1>
-<%= link_to("開始新會期", new_admin_evaluation_path, class: "btn btn-primary pull-right") %>
+<h1>第 <%= @term.term_number %> 屆會期</h1>
 <table class="table">
-  <tr>
-    <th>會期</th>
-  </tr>
+  <thead>
+    <tr>
+      <th>會期</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @evaluations.each do |evaluation| %>
+      <tr>
+        <td><%= link_to(evaluation.full_name, admin_term_evaluation_path(@term, evaluation)) %></td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
-<% @evaluations.each do |evaluation| %>
-  <tr>
-    <td><%= evaluation.full_name %></td>
-    <td><%= link_to("查看本會期問卷題目", admin_evaluation_questions_path(evaluation)) %></td>
-  </tr>
-<% end %>
+
+<%= link_to("新增會期", new_admin_term_evaluation_path(@term), class: "btn btn-primary pull-right") %>

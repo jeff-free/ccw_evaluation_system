@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   get "pages/landing"
   root 'pages#dispatcher'
 
@@ -46,11 +45,12 @@ Rails.application.routes.draw do
 
   namespace :admin do
     resources :terms do
-      resources :evaluations
+      resources :evaluations, only: [:show, :edit, :new, :update, :create]
     end
-    resources :evaluations do
-      resources :questions
-    end
+
+
+
+
     resources :question_types
     resources :parties do
       resources :congressmen, shallow: true

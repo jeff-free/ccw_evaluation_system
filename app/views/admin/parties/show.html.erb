@@ -3,17 +3,9 @@
   <%= @party.name %>
 </p>
 <h1>立委列表</h1>
-<table class="table">
-  <thead>
-    <tr>
-      <th>姓名</th>
-    </tr>
-  </thead>
-  <tbody>
-    <%= render partial: "congressman", collection: @congressmen, as: :congressman %>
-  </tbody>
 
-</table>
+<%= render "admin/parties/congressman_table", congressmen: @congressmen  %>
+
 <%= link_to '編輯政黨資料', edit_admin_party_path(@party) %> |
 <%= link_to("新增#{@party.name}立委", new_admin_party_congressman_path(@party)) %>
 <%= link_to '返回', admin_parties_path %>

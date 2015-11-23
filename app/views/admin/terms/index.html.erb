@@ -5,26 +5,28 @@
     <tr>
       <th>屆數</th>
       <th>會期</th>
-      <!-- <th>立委評鑑資料</th> -->
     </tr>
   </thead>
   <tbody>
     <% @terms.each do |term| %>
     <tr>
-      <td><%= link_to("第 #{term.term_number} 屆", admin_term_path(term.term_number)) %></td>
-      <td><% term.evaluations.each do |evaluation| %>
+      <td>
+        <%= link_to("第 #{term.term_number} 屆", admin_term_path(term.term_number)) %>
+      </td>
+      <td>
         <table class="table">
+        <% term.evaluations.each do |evaluation| %>
           <tr>
             <td><%= link_to("第 #{evaluation.session_number} 會期", admin_term_evaluation_path(term.term_number, evaluation)) %></td>
-            <td>立委評鑑結果</td>
+          </tr>
+        <% end %>
+          <tr>
+            <td>
+              <%= link_to("+ 新增會期", new_admin_term_evaluation_path(term), class: "pull-right") %>
+            </td>
           </tr>
         </table>
-        <ul>
-          
-        </ul>
-        <% end %>
       </td>
-      <!-- <td>查看</td> -->
     </tr>
     <% end %>
   </tbody>  

@@ -1,9 +1,7 @@
-<div class="row">
-<% @congressmen.each do |congressman| %>
-  <div class="col-xs-6 col-sm-3 col-lg-2">
-    <%= link_to(admin_congressman_path(congressman), class: "thumbnail") do %>
-      <h3><%= congressman.name %></h3>
-    <% end %>
-  </div>
-<% end %>
-</div>
+<p>
+  <strong>政黨名稱</strong>
+  <%= @party.name %>
+</p>
+<h1>所有立委列表</h1>
+
+<%= render "admin/parties/congressman_table", congressmen: @congressmen  %>

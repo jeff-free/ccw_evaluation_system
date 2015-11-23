@@ -1,4 +1,8 @@
 <tr>
-  <td><%= link_to(congressman.name, [:admin, congressman]) %></td>
+  <td><%= congressman.name %></td>
+  <td>
+    <%= link_to("編輯", [:admin, congressman]) %>
+    <a href="#">查看統計資料</a>
+  </td> 
 </tr>
 

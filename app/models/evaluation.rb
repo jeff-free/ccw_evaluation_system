@@ -25,12 +25,13 @@ class Evaluation < ActiveRecord::Base
   delegate :term_number, to: :term
 
   validates :session_number, 
-            presence: true, 
-            uniqueness: {scope: :term_id}, 
+            presence: true,
+            uniqueness: {scope: :term_id},
             numericality: {
               greater_than: 0,
               less_than_or_equal_to: 8
             }
+
   validates_presence_of :term
 
 
