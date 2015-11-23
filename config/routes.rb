@@ -48,7 +48,9 @@ Rails.application.routes.draw do
       resources :evaluations, only: [:show, :edit, :new, :update, :create]
     end
 
-
+    resources :evaluations, only: [] do
+      resources :analytics, only: [:index, :show]
+    end
 
 
     resources :question_types

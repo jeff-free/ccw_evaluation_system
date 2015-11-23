@@ -13,4 +13,7 @@
 class Answer < ActiveRecord::Base
   belongs_to :question
   belongs_to :survey
+
+  validates :question, presence: true
+  validates :point, presence: true
 end

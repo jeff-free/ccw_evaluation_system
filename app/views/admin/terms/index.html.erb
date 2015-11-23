@@ -11,13 +11,13 @@
     <% @terms.each do |term| %>
     <tr>
       <td>
-        <%= link_to("第 #{term.term_number} 屆", admin_term_path(term.term_number)) %>
+        <%= link_to("第 #{term.term_number} 屆", admin_term_path(term)) %>
       </td>
       <td>
         <table class="table">
         <% term.evaluations.each do |evaluation| %>
           <tr>
-            <td><%= link_to("第 #{evaluation.session_number} 會期", admin_term_evaluation_path(term.term_number, evaluation)) %></td>
+            <td><%= link_to("第 #{evaluation.session_number} 會期", admin_term_evaluation_path(term, evaluation)) %></td>
           </tr>
         <% end %>
           <tr>

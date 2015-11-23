@@ -15,7 +15,7 @@ class Term < ActiveRecord::Base
 
   default_scope {order(term_number: :desc)}
 
-  def to_param
-    term_number
-  end
+  # def to_param
+  #   term_number
+  # end
 end
