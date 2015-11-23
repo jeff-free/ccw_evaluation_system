@@ -26,7 +26,7 @@ class Admin::TermsController < Admin::BaseController
   private
 
     def set_term
-      @term = Term.find_by(term_number: params[:id])
+      @term = Term.find(params[:id])
     end
 
     def term_params

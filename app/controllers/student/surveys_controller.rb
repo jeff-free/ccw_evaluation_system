@@ -3,11 +3,10 @@ class Student::SurveysController < Student::BaseController
   before_action :set_course!
   before_action :set_inquiry!
   before_action :set_evaluation!
+  before_action :set_questions
 
   def new
     @survey = current_user.surveys.build
-    @questions = @evaluation.questions.all
-    @answer = Answer.new
   end
 
   def create
@@ -34,6 +33,10 @@ class Student::SurveysController < Student::BaseController
 
   def set_evaluation!
     @evaluation = @inquiry.evaluation
+  end
+
+  def set_questions
+    @questions = @evaluation.questions
   end
 
   def survey_params

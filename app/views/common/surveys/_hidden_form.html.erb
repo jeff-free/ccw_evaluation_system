@@ -5,9 +5,17 @@
   <%= simple_form_for(resource) do |f| %>
     <%= f.error_notification %>
 
+    <% if f.object.errors.present? %>
+      <ul>
+        <% f.object.errors.messages.each do |key, messages| %>
+        <li><%= key %>: <%= messages.join(", ") %></li>
+        <% end %>
+      </ul>
+    <% end %>
+
     <div class="form-inputs">
       <% @questions.each_with_index do |question, index| %>
-        <%= f.simple_fields_for(:answers, @answer) do |answer| %>
+        <%= f.simple_fields_for(:answers, Answer.new) do |answer| %>
           <div class="page-header">
           問題 <%= index +1 %>：<%= question.name %>
           </div>
