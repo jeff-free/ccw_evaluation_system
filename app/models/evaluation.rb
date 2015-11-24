@@ -41,10 +41,12 @@ class Evaluation < ActiveRecord::Base
 
   scope :inexistent_evaluation_on_congressman, ->(congressman){self.all - congressman.evaluations}
 
-  scope :current_active, ->{where(active: true).first}
-
   def full_name
     "#{term_number}-#{session_number}"
+  end
+
+  def self.current_active
+    find_by(active: true)
   end
 
   private

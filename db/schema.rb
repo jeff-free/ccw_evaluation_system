@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151121151433) do
+ActiveRecord::Schema.define(version: 20151124024650) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "name",                   limit: 255
@@ -76,7 +76,6 @@ ActiveRecord::Schema.define(version: 20151121151433) do
     t.integer  "election_type",  limit: 4, default: 0
     t.integer  "party_id",       limit: 4
     t.integer  "committee_id",   limit: 4
-    t.integer  "party_group_id", limit: 4
     t.datetime "created_at",                           null: false
     t.datetime "updated_at",                           null: false
   end
@@ -84,7 +83,6 @@ ActiveRecord::Schema.define(version: 20151121151433) do
   add_index "congressmen_evaluations", ["committee_id"], name: "index_congressmen_evaluations_on_committee_id", using: :btree
   add_index "congressmen_evaluations", ["congressman_id"], name: "index_congressmen_evaluations_on_congressman_id", using: :btree
   add_index "congressmen_evaluations", ["evaluation_id"], name: "index_congressmen_evaluations_on_evaluation_id", using: :btree
-  add_index "congressmen_evaluations", ["party_group_id"], name: "index_congressmen_evaluations_on_party_group_id", using: :btree
   add_index "congressmen_evaluations", ["party_id"], name: "index_congressmen_evaluations_on_party_id", using: :btree
 
   create_table "congressmen_interpellations", force: :cascade do |t|
@@ -173,12 +171,6 @@ ActiveRecord::Schema.define(version: 20151121151433) do
     t.datetime "updated_at",             null: false
   end
 
-  create_table "party_groups", force: :cascade do |t|
-    t.string   "name",       limit: 255
-    t.datetime "created_at",             null: false
-    t.datetime "updated_at",             null: false
-  end
-
   create_table "question_types", force: :cascade do |t|
     t.string   "name",       limit: 255
     t.datetime "created_at",             null: false
@@ -257,7 +249,6 @@ ActiveRecord::Schema.define(version: 20151121151433) do
   add_foreign_key "congressmen_evaluations", "congressmen"
   add_foreign_key "congressmen_evaluations", "evaluations"
   add_foreign_key "congressmen_evaluations", "parties"
-  add_foreign_key "congressmen_evaluations", "party_groups"
   add_foreign_key "evaluations", "terms"
   add_foreign_key "interpellations", "committees"
   add_foreign_key "interpellations", "evaluations"

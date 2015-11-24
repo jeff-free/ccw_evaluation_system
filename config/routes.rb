@@ -63,7 +63,6 @@ Rails.application.routes.draw do
         delete '/remove_inquiry/:id', to: "congressmen_evaluations#remove_inquiry", as: "remove_inquiry"
       end
     end
-    resources :party_groups
     
     resources :committees do
       resources :interpellations, shallow: true, except: [:index] do

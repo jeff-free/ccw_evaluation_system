@@ -3,7 +3,6 @@
     <%= c.association :evaluation, collection: Evaluation.all.map{|evaluation| [evaluation.full_name, evaluation.id]}, label: "會期", include_blank: false %>
     <%= c.hidden_field :party_id, value: @party.id %>
     <%= c.input :election_type, as: :radio_buttons, collection: [["區域", "regional"], ["不分區", "at_large"]], label: "當選方式", include_blank: false %>
-    <%= c.association :party_group, label: "政團", include_blank: false %>  
     <%= c.association :committee, label: "委員會", include_blank: false %>
   <% end %>
   <%= render 'form', f: f %>
