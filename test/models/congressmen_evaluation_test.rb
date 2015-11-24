@@ -8,7 +8,6 @@
 #  election_type  :integer          default(0)
 #  party_id       :integer
 #  committee_id   :integer
-#  party_group_id :integer
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
 #

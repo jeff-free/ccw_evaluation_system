@@ -18,7 +18,7 @@ class CongressmenEvaluationsControllerTest < ActionController::TestCase
 
   test "should create congressmen_evaluation" do
     assert_difference('CongressmenEvaluation.count') do
-      post :create, congressmen_evaluation: { election_type: @congressmen_evaluation.election_type, evaluation,: @congressmen_evaluation.evaluation,, party,: @congressmen_evaluation.party,, party_group,: @congressmen_evaluation.party_group, }
+      post :create, congressmen_evaluation: { election_type: @congressmen_evaluation.election_type, evaluation,: @congressmen_evaluation.evaluation,, party,: @congressmen_evaluation.party, }
     end
 
     assert_redirected_to congressmen_evaluation_path(assigns(:congressmen_evaluation))
@@ -35,7 +35,7 @@ class CongressmenEvaluationsControllerTest < ActionController::TestCase
   end
 
   test "should update congressmen_evaluation" do
-    patch :update, id: @congressmen_evaluation, congressmen_evaluation: { election_type: @congressmen_evaluation.election_type, evaluation,: @congressmen_evaluation.evaluation,, party,: @congressmen_evaluation.party,, party_group,: @congressmen_evaluation.party_group, }
+    patch :update, id: @congressmen_evaluation, congressmen_evaluation: { election_type: @congressmen_evaluation.election_type, evaluation,: @congressmen_evaluation.evaluation,, party,: @congressmen_evaluation.party, }
     assert_redirected_to congressmen_evaluation_path(assigns(:congressmen_evaluation))
   end
 
