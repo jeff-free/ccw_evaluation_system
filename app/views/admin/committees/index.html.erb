@@ -22,3 +22,9 @@
 
 <h4>新增委員會</h4>
 <%= render "form" %>
+
+<h4>匯入資料</h4> 
+<%= simple_form_for(@committee, url: import_data_admin_committees_path) do |f| %>
+  <%= f.input :api_url %>
+  <%= f.button :submit, "送出", class: "btn btn-primary" %>
+<% end %>

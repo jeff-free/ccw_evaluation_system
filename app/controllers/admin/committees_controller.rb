@@ -42,6 +42,12 @@ class Admin::CommitteesController < Admin::BaseController
     redirect_to [:admin, index], notice: '成功刪除委員會'
   end
 
+  # POST  /admin/committees/import_data
+  def import_data
+    Committee.import_data(committee_params[:api_url])
+    redirect_to [:admin, index]
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_committee
@@ -50,6 +56,6 @@ class Admin::CommitteesController < Admin::BaseController
 
     # Only allow a trusted parameter "white list" through.
     def committee_params
-      params.require(:committee).permit(:name, :description)
+      params.require(:committee).permit(:name, :description, :api_url)
     end
 end

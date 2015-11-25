@@ -16,6 +16,19 @@ class Committee < ActiveRecord::Base
   has_many :evaluations, through: :congressmen_evaluations
   has_many :interpellations
 
+  attr_accessor :api_url
+
+  def self.import_data(api_url)
+    data_array = ApiService.new(api_url).get_committee_data
+    data_array.each do |committee|
+      name = committee[0]
+      description = committee[1]
+      Committee.transaction do 
+        where(name: name, description: description).first_or_create
+      end
+    end
+  end
+
   def congressman_in_evaluation(evaluation)
     congressmen_evaluations.where(evaluation: evaluation).map(&:congressman)
   end
