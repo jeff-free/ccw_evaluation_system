@@ -44,7 +44,7 @@ gem 'pry-remote'
 gem 'annotate'
 
 # API middleware
-gem 'restclient'
+gem 'rest-client'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 

@@ -9,7 +9,6 @@ Rails.application.routes.draw do
 
   namespace :citizen do
     root to: "events#index"
-
     resources :events, only: [:index] do
       member do
         get :thanks
@@ -65,6 +64,9 @@ Rails.application.routes.draw do
     end
     
     resources :committees do
+      collection do
+        post :import_data 
+      end
       resources :interpellations, shallow: true, except: [:index] do
         post 'add_inquiry', on: :member
         delete '/remove_inquiry/:id', to: "interpellations#remove_inquiry", as: "remove_inquiry"
