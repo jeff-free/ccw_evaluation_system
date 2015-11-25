@@ -40,7 +40,15 @@ class User < ActiveRecord::Base
   enum role: [:student, :citizen, :volunteer, :regular]
   attr_reader :city
   validates_presence_of :name, :identity, :birthdate, :district_id, :role
+  validate :identity_should_be_valid
 
 
   scope :wandering_students, -> { student.where(course_id: nil) }
+
+
+  private
+
+  def identity_should_be_valid
+    errors.add(:identity, "不符合格式") unless TaiwaneseIdBuilder.valid?(identity)
+  end
 end
