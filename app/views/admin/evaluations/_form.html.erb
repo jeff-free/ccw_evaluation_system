@@ -2,6 +2,7 @@
   <div class="col-xs-12">
     <%= f.association :term, collection: Term.all.map{|term|[term.term_number, term.id]}, label: "屆次" %>
     <%= f.input :session_number, label: "第幾會期" %>
+    <%= f.input :active, label: "是否為目前會期", as: :radio_buttons %>
   </div>
   <h3>評鑑題目</h3>
   <%= f.simple_fields_for :questions do |question| %>
