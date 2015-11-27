@@ -12,8 +12,12 @@ class Admin::EventsController < Admin::BaseController
 
   # GET /admin/events/new
   def new
-    @event = @evaluation.events.build
-    @interpellations = @evaluation.interpellations
+    if @evaluation.nil?
+      redirect_to :back, alert: "請先選擇會期"
+    else
+      @event = @evaluation.events.build
+      @interpellations = @evaluation.interpellations
+    end
   end
 
   # GET /admin/events/1/edit
