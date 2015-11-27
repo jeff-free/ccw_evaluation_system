@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151124024650) do
+ActiveRecord::Schema.define(version: 20151127090441) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "name",                   limit: 255
@@ -51,10 +51,11 @@ ActiveRecord::Schema.define(version: 20151124024650) do
   end
 
   create_table "committees", force: :cascade do |t|
-    t.string   "name",        limit: 255
-    t.text     "description", limit: 65535
-    t.datetime "created_at",                null: false
-    t.datetime "updated_at",                null: false
+    t.string   "name",           limit: 255
+    t.integer  "committee_type", limit: 4,     default: 1
+    t.text     "description",    limit: 65535
+    t.datetime "created_at",                               null: false
+    t.datetime "updated_at",                               null: false
   end
 
   create_table "congressmen", force: :cascade do |t|

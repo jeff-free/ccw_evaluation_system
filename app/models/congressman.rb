@@ -38,6 +38,15 @@ class Congressman < ActiveRecord::Base
     committees.includes(:congressmen_evaluations).where(congressmen_evaluations: {evaluation: evaluation}).references(:congressmen_evaluations).first
   end
 
+  def self.import_data(url)
+    congressmen_list = ApiService.new(url).get_congressman_data
+    congressmen_list.each do |congressman|
+      congressman["committee"].gsub("：", ":").split(";").each do |committee|
+        committee_hash = Hash[*(committee.split(":"))]
+      end
+    end
+  end
+
   def has_interpellation_in_evaluation?(evaluation)
     interpellations.where(evaluation: evaluation).any?
   end
