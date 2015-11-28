@@ -39,6 +39,7 @@ class User < ActiveRecord::Base
   belongs_to :district
   enum role: [:student, :citizen, :volunteer, :regular]
   attr_reader :city
+  attr_accessor :token
   validates_presence_of :name, :identity, :birthdate, :district_id, :role
   validate :identity_should_be_valid
 

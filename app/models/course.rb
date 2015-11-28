@@ -24,4 +24,8 @@ class Course < ActiveRecord::Base
   validates :name, presence: true
 
   scope :recent, -> { order(id: :desc) }
+
+  def user_role
+    "student"
+  end
 end

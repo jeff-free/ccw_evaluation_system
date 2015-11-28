@@ -8,7 +8,8 @@
     <%= f.input :password, label: "密碼", required: true, hint: ("最少 #{@minimum_password_length} 個英數字母組合" if @minimum_password_length) %>
     <%= f.input :password_confirmation, label: "再次輸入密碼", required: true %>
     <%= f.input :name, label: "姓名" %>
-    <%= f.input :role, as: :select, collection: [["校園評委", "student"], ["公民評委", "citizen"], ["公督盟志工", "volunteer"], ["線上評委", "regular"]], label: "身份", include_blank: false %>
+    <%= f.input :token, label: "註冊代碼", required: true %>
+    <%#= f.input :role, as: :select, collection: [["校園評委", "student"], ["公民評委", "citizen"], ["公督盟志工", "volunteer"], ["線上評委", "regular"]], label: "身份", include_blank: false %>
     <%= f.input :identity, label: "身份證號碼" %>
     <%= f.input :birthdate, as: :date_picker, label: "出生日期" %>
     <%= f.input :city, as: :select, collection: City.all, input_html: {class: "city_select"} %>
