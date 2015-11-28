@@ -10,6 +10,9 @@
 #
 
 class Course < ActiveRecord::Base
+  include Tokenable
+
+
   has_many :course_interpellations
   has_many :interpellations, through: :course_interpellations
 

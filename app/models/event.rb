@@ -14,6 +14,8 @@
 
 class Event < ActiveRecord::Base
   include Classifiable
+  include Tokenable
+
   belongs_to :evaluation
   belongs_to :interpellation
   has_many :inquiries, through: :interpellation
@@ -24,5 +26,4 @@ class Event < ActiveRecord::Base
   validates_presence_of :interpellation_id
 
   scope :active, -> { where(active: true) }
-
 end
