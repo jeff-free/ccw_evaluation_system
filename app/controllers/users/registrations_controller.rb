@@ -8,9 +8,13 @@ before_filter :configure_sign_up_params, only: [:create]
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+
+    ## TODO: Refactor. This is a very bad practice, hahaha!
+    translate_token_to_role!
+
+    super
+  end
 
   # GET /resource/edit
   # def edit
@@ -37,6 +41,22 @@ before_filter :configure_sign_up_params, only: [:create]
   # end
 
   protected
+
+  def translate_token_to_role!
+    if params[:user][:token].present?
+      token = params[:user].delete(:token)
+      
+      event = Event.find_by(token: token)
+      course = Course.find_by(token: token)
+      resource = event || course
+
+      if resource.present?
+        params[:user][:role] = resource.user_role
+      end
+    else
+      flash[:error] = "Token 錯誤。"
+    end
+  end
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params

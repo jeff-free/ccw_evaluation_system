@@ -9,10 +9,13 @@
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  active            :boolean          default(FALSE)
+#  token             :string(255)
 #
 
 class Event < ActiveRecord::Base
   include Classifiable
+  include Tokenable
+
   belongs_to :evaluation
   belongs_to :interpellation
   has_many :inquiries, through: :interpellation
@@ -24,4 +27,7 @@ class Event < ActiveRecord::Base
 
   scope :active, -> { where(active: true) }
 
+  def user_role
+    "citizen"
+  end
 end
