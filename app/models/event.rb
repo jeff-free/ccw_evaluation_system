@@ -9,6 +9,7 @@
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
 #  active            :boolean          default(FALSE)
+#  token             :string(255)
 #
 
 class Event < ActiveRecord::Base
