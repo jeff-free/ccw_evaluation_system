@@ -28,7 +28,7 @@ class Congressman < ActiveRecord::Base
   has_many :surveys, through: :inquiries
   has_many :answers, through: :surveys
 
-  enum sex: [:male, :female, :third_sex]
+  enum sex: ["男", "女", "第三性"]
 
   accepts_nested_attributes_for :congressmen_evaluations
   validates_presence_of :name, :en_name, :sex
@@ -40,6 +40,21 @@ class Congressman < ActiveRecord::Base
 
   def self.import_data(url)
     congressmen_list = ApiService.new(url).get_congressman_data
+    congressmen_list.each do |congressman_data|
+      congressman = Congressman.where(name: congressman_data["name"]).first_or_create
+      congressman.update(en_name: congressman_data["ename"], sex: congressman_data["sex"], 
+        tel: congressman_data["tel"], 
+        fax: congressman_data["fax"], 
+        experience: congressman_data["experience"],
+        avatar_url: congressman_data["picUrl"],
+        degree: congressman_data["degree"])
+      party = Party.where(name: congressman_data["party"]).first_or_create
+      congressman_current_file = congressman.congressmen_evaluations.where(evaluation: Evaluation.current_active).first_or_create
+      congressman_current_file.update(party: party)
+    end
+  end
+
+  def self.import_committee_data
     congressmen_list.each do |congressman|
       congressman["committee"].gsub("：", ":").split(";").each do |committee|
         committee_hash = Hash[*(committee.split(":"))]
