@@ -17,7 +17,7 @@ class Committee < ActiveRecord::Base
   has_many :evaluations, through: :congressmen_evaluations
   has_many :interpellations
 
-  enum committee: {regular: 1, not_regular: 2}
+  enum committee_type: ["skip_number", "regular", "not_regular"]
 
   attr_accessor :api_url
 

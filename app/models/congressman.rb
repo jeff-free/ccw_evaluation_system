@@ -54,11 +54,21 @@ class Congressman < ActiveRecord::Base
     end
   end
 
-  def self.import_committee_data
-    congressmen_list.each do |congressman|
-      congressman["committee"].gsub("：", ":").split(";").each do |committee|
-        committee_hash = Hash[*(committee.split(":"))]
-      end
+  def self.import_congressmen_committee_data(url)
+    congressmen_list = ApiService.new(url).get_congressman_data
+    congressmen_list.each do |congressman_data|
+      congressman = Congressman.find_by(name: congressman_data["name"])
+      congressman_committees = congressman_data["committee"].gsub("：", ":").split(";")
+      congressman_committees_array = []
+      congressman_committees.each{|c| congressman_committees_array << c.split(":")}
+      congressman_committees_array.delete_if{|committee| Committee.find_by(name: committee[1]).not_regular?}
+      # .each {|c| Hash[*(c.split(":"))].delete_if{|key, value| Committee.find_by(name: value).not_regular?}}
+      # congressman_committees.each do |congressman_committee|
+
+      # committee_hash = Hash[*(committee.split(":"))].delete_if{|key, value| Committee.find_by(name: value).not_regular?}
+      current_congressman_committee_data = congressman_committees_array.last
+      # committee_hash[Evaluation.current_active.full_name]
+      congressman.congressmen_evaluations.find_by(evaluation: Evaluation.current_active).update(committee: Committee.find_by(name: current_congressman_committee_data[1]))
     end
   end
 
