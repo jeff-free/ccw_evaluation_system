@@ -30,6 +30,8 @@ class Congressman < ActiveRecord::Base
 
   enum sex: ["男", "女", "第三性"]
 
+  attr_accessor :api_url
+
   accepts_nested_attributes_for :congressmen_evaluations
   validates_presence_of :name, :en_name, :sex
 
@@ -52,6 +54,7 @@ class Congressman < ActiveRecord::Base
       congressman_current_file = congressman.congressmen_evaluations.where(evaluation: Evaluation.current_active).first_or_create
       congressman_current_file.update(party: party)
     end
+    import_congressmen_committee_data(url)
   end
 
   def self.import_congressmen_committee_data(url)
@@ -62,12 +65,8 @@ class Congressman < ActiveRecord::Base
       congressman_committees_array = []
       congressman_committees.each{|c| congressman_committees_array << c.split(":")}
       congressman_committees_array.delete_if{|committee| Committee.find_by(name: committee[1]).not_regular?}
-      # .each {|c| Hash[*(c.split(":"))].delete_if{|key, value| Committee.find_by(name: value).not_regular?}}
-      # congressman_committees.each do |congressman_committee|
-
       # committee_hash = Hash[*(committee.split(":"))].delete_if{|key, value| Committee.find_by(name: value).not_regular?}
       current_congressman_committee_data = congressman_committees_array.last
-      # committee_hash[Evaluation.current_active.full_name]
       congressman.congressmen_evaluations.find_by(evaluation: Evaluation.current_active).update(committee: Committee.find_by(name: current_congressman_committee_data[1]))
     end
   end
