@@ -1,6 +1,11 @@
 <%= render "admin/evaluation_dropdown" %>
 <h1>政黨列表</h1>
-
+<h2>匯入當期立委資料</h2>
+<%= simple_form_for(@congressman, url: import_data_admin_congressmen_path) do |f| %>
+  <%= f.input :api_url, label: "網址" %>
+  <%= f.button :submit, "送出" %>
+<% end %>
+  
 <table class="table">
   <thead>
     <tr>

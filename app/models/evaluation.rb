@@ -42,7 +42,7 @@ class Evaluation < ActiveRecord::Base
   scope :inexistent_evaluation_on_congressman, ->(congressman){self.all - congressman.evaluations}
 
   def full_name
-    "#{term_number}-#{session_number}"
+    "第#{term_number}屆第#{session_number}會期"
   end
 
   def self.current_active

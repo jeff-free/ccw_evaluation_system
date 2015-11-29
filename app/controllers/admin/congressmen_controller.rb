@@ -30,6 +30,11 @@ class Admin::CongressmenController < Admin::BaseController
     end
   end
 
+  def import_data
+    Congressman.import_data(congressman_params[:api_url])
+    redirect_to admin_parties_path, notice: "Success"
+  end
+
   private
     def set_party
       @party = Party.find(params[:party_id])
@@ -40,7 +45,7 @@ class Admin::CongressmenController < Admin::BaseController
     end
 
     def congressman_params
-      params[:congressman].permit(:name, :en_name, :sex, :degree, :experience, :fax, :tel, :avatar_url,
+      params[:congressman].permit(:api_url, :name, :en_name, :sex, :degree, :experience, :fax, :tel, :avatar_url,
         congressmen_evaluations_attributes: [:evaluation_id, :party_id, :committee_id, :election_type])
     end
 end

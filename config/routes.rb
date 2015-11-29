@@ -57,6 +57,7 @@ Rails.application.routes.draw do
       resources :congressmen, shallow: true
     end
     resources :congressmen do
+      post "import_data", on: :collection
       resources :congressmen_evaluations, shallow: true, except: [:index] do
         post 'add_inquiry', on: :member
         delete '/remove_inquiry/:id', to: "congressmen_evaluations#remove_inquiry", as: "remove_inquiry"

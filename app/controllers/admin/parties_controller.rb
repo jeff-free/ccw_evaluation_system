@@ -4,6 +4,7 @@ class Admin::PartiesController < Admin::BaseController
   # GET /admin/parties
   def index
     @parties = Party.in_current_evaluation
+    @congressman = Congressman.new
   end
 
   # GET /admin/parties/1
