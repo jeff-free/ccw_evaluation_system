@@ -7,11 +7,13 @@
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #  token      :string(255)
+#  teacher_id :integer
 #
 
 class Course < ActiveRecord::Base
   include Tokenable
 
+  belongs_to :teacher, -> { teacher }, class_name: "User"
 
   has_many :course_interpellations
   has_many :interpellations, through: :course_interpellations
