@@ -30,4 +30,8 @@ class Course < ActiveRecord::Base
   def user_role
     "student"
   end
+
+  def teacher_name
+    teacher.try(:name) || "No Teacher"
+  end
 end
