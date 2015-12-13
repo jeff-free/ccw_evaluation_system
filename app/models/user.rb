@@ -47,6 +47,10 @@ class User < ActiveRecord::Base
   scope :wandering_students, -> { student.where(course_id: nil) }
 
 
+  def city_district
+    "#{district.city.name} - #{district.name}"
+  end
+
   private
 
   def identity_should_be_valid

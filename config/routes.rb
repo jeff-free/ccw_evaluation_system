@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   get "pages/landing"
   root 'pages#dispatcher'
 
@@ -76,6 +77,8 @@ Rails.application.routes.draw do
     resources :events
 
     resources :courses
+
+    resources :users
     
     root to: "base#dashboard"
   end
