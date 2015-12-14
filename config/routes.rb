@@ -43,6 +43,10 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :teachers do
+    # root to: "courses#index"
+  end
+
   namespace :admin do
     resources :terms do
       resources :evaluations, only: [:show, :edit, :new, :update, :create]
