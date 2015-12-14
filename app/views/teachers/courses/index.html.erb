@@ -1,0 +1,25 @@
+<h1>課程列表</h1>
+<table class="table">
+  <thead>
+    <th>課程名稱</th>
+    <th>課程會議</th>
+    <th>課程人數</th>
+  </thead>
+  <tbody>
+    <% @courses.each do |course| %>
+    <tr>
+      <td><%= link_to(course.name, teachers_course_path(course)) %></td>
+      <td>
+        <ul>
+          <% course.interpellations.each do |interpellation| %>
+          <li><%= interpellation.name %></li>
+          <% end %>
+        </ul>
+      </td>
+      <td>
+        <%= course.students.size %>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>

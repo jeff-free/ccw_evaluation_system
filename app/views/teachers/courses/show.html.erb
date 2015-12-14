@@ -1,0 +1,23 @@
+<div class="page-header">
+  <h1>課程：<%= @course.name %></h1>
+  <h2>Teacher: <%= @course.teacher_name %></h2>
+</div>
+
+<h2>學生列表</h2> 
+
+<table class="table">
+  <thead>
+    <th>姓名</th>
+    <th>Email</th>
+    <th>做過的問卷數量</th>
+  </thead>
+  <tbody>
+  <% @students.each do |student| %>
+    <tr>
+      <td><%= student.name %></td>
+      <td><%= student.email %></td>
+      <td><%= student.inquiries.size %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>

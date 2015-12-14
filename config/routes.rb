@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   get "pages/landing"
   root 'pages#dispatcher'
 
@@ -44,7 +43,9 @@ Rails.application.routes.draw do
   end
 
   namespace :teachers do
-    # root to: "courses#index"
+    root to: "courses#index"
+
+    resources :courses, only: [:index, :show]
   end
 
   namespace :admin do
