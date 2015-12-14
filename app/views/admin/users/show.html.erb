@@ -1,0 +1,25 @@
+<div class="page-header">
+  <h1>
+    <%= @user.name %> 
+    <%= link_to("編輯", edit_admin_user_path(@user), class: "btn btn-default") %>
+  </h1>
+</div>
+
+<table class="table">
+  <thead>
+    <th>Id</th>
+    <th>Name</th>
+    <th>Email</th>
+    <th>Role</th>
+    <th>地區</th>
+  </thead>
+  <tbody>
+    <tr>
+      <td><%= @user.id %></td>
+      <td><%= link_to(@user.name, admin_user_path(@user)) %></td>
+      <td><%= @user.email %></td>
+      <td><%= @user.role %></td>
+      <td><%= @user.city_district %></td>
+    </tr>
+  </tbody>
+</table>
