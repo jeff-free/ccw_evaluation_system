@@ -8,6 +8,7 @@
 #  created_at    :datetime         not null
 #  updated_at    :datetime         not null
 #  inquiry_id    :integer
+#  user_role     :string(255)
 #
 
 class Survey < ActiveRecord::Base

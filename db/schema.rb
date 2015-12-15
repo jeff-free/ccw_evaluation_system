@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151213121221) do
+ActiveRecord::Schema.define(version: 20151215135951) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "name",                   limit: 255
@@ -199,14 +199,16 @@ ActiveRecord::Schema.define(version: 20151213121221) do
   create_table "surveys", force: :cascade do |t|
     t.integer  "user_id",       limit: 4
     t.integer  "evaluation_id", limit: 4
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.integer  "inquiry_id",    limit: 4
+    t.string   "user_role",     limit: 255
   end
 
   add_index "surveys", ["evaluation_id"], name: "index_surveys_on_evaluation_id", using: :btree
   add_index "surveys", ["inquiry_id"], name: "index_surveys_on_inquiry_id", using: :btree
   add_index "surveys", ["user_id"], name: "index_surveys_on_user_id", using: :btree
+  add_index "surveys", ["user_role"], name: "index_surveys_on_user_role", using: :btree
 
   create_table "terms", force: :cascade do |t|
     t.string   "term_number", limit: 255
