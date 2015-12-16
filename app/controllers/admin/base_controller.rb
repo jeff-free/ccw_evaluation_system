@@ -2,7 +2,12 @@ class Admin::BaseController < ApplicationController
   before_action :is_admin, :set_evaluation
   layout "admin"
   def dashboard
-    
+    @inquiry = Inquiry.new
+  end
+
+  def upload_inquiries
+    Inquiry.import_data(inquiry_params[:file].path)
+    redirect_to admin_root_path
   end
 
   private
@@ -19,5 +24,9 @@ class Admin::BaseController < ApplicationController
 
     def default_url_options(options={})
       { current_evaluation_id: params[:current_evaluation_id].present? ? params[:current_evaluation_id] : nil}
+    end
+
+    def inquiry_params
+      params[:inquiry].permit(:file)
     end
 end

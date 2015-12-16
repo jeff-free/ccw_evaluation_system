@@ -44,9 +44,9 @@ class Congressman < ActiveRecord::Base
     congressmen_list = ApiService.new(url).get_congressman_data
     congressmen_list.each do |congressman_data|
       congressman = Congressman.where(name: congressman_data["name"]).first_or_create
-      congressman.update(en_name: congressman_data["ename"], sex: congressman_data["sex"], 
-        tel: congressman_data["tel"], 
-        fax: congressman_data["fax"], 
+      congressman.update(en_name: congressman_data["ename"], sex: congressman_data["sex"],
+        tel: congressman_data["tel"],
+        fax: congressman_data["fax"],
         experience: congressman_data["experience"],
         avatar_url: congressman_data["picUrl"],
         degree: congressman_data["degree"])
