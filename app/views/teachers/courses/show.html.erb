@@ -1,5 +1,5 @@
 <div class="page-header">
-  <h1>課程：<%= @course.name %> <%= link_to("編輯", edit_admin_course_path(@course), class: "btn btn-default") %></h1>
+  <h1>課程：<%= @course.name %></h1>
   <h2>Teacher: <%= @course.teacher_name %></h2>
 </div>
 
@@ -7,7 +7,6 @@
 
 <table class="table">
   <thead>
-    <th>#</th>
     <th>姓名</th>
     <th>Email</th>
     <th>做過的問卷數量</th>
@@ -15,10 +14,9 @@
   <tbody>
   <% @students.each do |student| %>
     <tr>
-      <td><%= student.id %></td>
       <td><%= student.name %></td>
       <td><%= student.email %></td>
-      <td><%= student.inquiries.count %></td>
+      <td><%= student.inquiries.size %></td>
     </tr>
   <% end %>
   </tbody>

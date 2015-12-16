@@ -13,6 +13,7 @@ class Student::SurveysController < Student::BaseController
     @survey = current_user.surveys.build(survey_params)
     @survey.evaluation = @evaluation
     @survey.inquiry = @inquiry
+    @survey.user_role = current_user.role
 
     if @survey.save
       redirect_to thanks_student_courses_path, notice: '問卷已經順利提交。'

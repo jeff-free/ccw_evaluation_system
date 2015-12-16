@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151128120055) do
+ActiveRecord::Schema.define(version: 20151215135951) do
 
   create_table "admins", force: :cascade do |t|
     t.string   "name",                   limit: 255
@@ -111,8 +111,10 @@ ActiveRecord::Schema.define(version: 20151128120055) do
     t.datetime "created_at",             null: false
     t.datetime "updated_at",             null: false
     t.string   "token",      limit: 255
+    t.integer  "teacher_id", limit: 4
   end
 
+  add_index "courses", ["teacher_id"], name: "index_courses_on_teacher_id", using: :btree
   add_index "courses", ["token"], name: "index_courses_on_token", using: :btree
 
   create_table "districts", force: :cascade do |t|
@@ -197,14 +199,16 @@ ActiveRecord::Schema.define(version: 20151128120055) do
   create_table "surveys", force: :cascade do |t|
     t.integer  "user_id",       limit: 4
     t.integer  "evaluation_id", limit: 4
-    t.datetime "created_at",              null: false
-    t.datetime "updated_at",              null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
     t.integer  "inquiry_id",    limit: 4
+    t.string   "user_role",     limit: 255
   end
 
   add_index "surveys", ["evaluation_id"], name: "index_surveys_on_evaluation_id", using: :btree
   add_index "surveys", ["inquiry_id"], name: "index_surveys_on_inquiry_id", using: :btree
   add_index "surveys", ["user_id"], name: "index_surveys_on_user_id", using: :btree
+  add_index "surveys", ["user_role"], name: "index_surveys_on_user_role", using: :btree
 
   create_table "terms", force: :cascade do |t|
     t.string   "term_number", limit: 255

@@ -42,6 +42,12 @@ Rails.application.routes.draw do
     end
   end
 
+  namespace :teachers do
+    root to: "courses#index"
+
+    resources :courses, only: [:index, :show]
+  end
+
   namespace :admin do
     resources :terms do
       resources :evaluations, only: [:show, :edit, :new, :update, :create]
@@ -75,6 +81,8 @@ Rails.application.routes.draw do
     end
     resources :events
     resources :courses
+
+    resources :users
     
     post "upload_inquiries", to: "base#upload_inquiries"
     root to: "base#dashboard"

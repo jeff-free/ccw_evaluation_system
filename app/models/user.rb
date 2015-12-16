@@ -31,13 +31,15 @@ class User < ActiveRecord::Base
 
   belongs_to :course
 
+  has_many :teached_courses, class_name: "Course", foreign_key: :teacher_id
+
   has_many :surveys
   has_many :inquiries, through: :surveys
   has_many :rated_congressmen, through: :inquiries, source: :congressman
 
   has_and_belongs_to_many :events
   belongs_to :district
-  enum role: [:student, :citizen, :volunteer, :regular]
+  enum role: [:student, :citizen, :volunteer, :regular, :teacher]
   attr_reader :city
   attr_accessor :token
   validates_presence_of :name, :identity, :birthdate, :district_id, :role
@@ -46,6 +48,9 @@ class User < ActiveRecord::Base
 
   scope :wandering_students, -> { student.where(course_id: nil) }
 
+  def city_district
+    "#{district.city.name} - #{district.name}"
+  end
 
   private
 

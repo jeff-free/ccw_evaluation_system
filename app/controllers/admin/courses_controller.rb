@@ -43,6 +43,6 @@ class Admin::CoursesController < Admin::BaseController
   end
 
   def course_params
-    params[:course].permit(:name, interpellation_ids: [], student_ids: [])
+    params[:course].permit(:name, :teacher_id, interpellation_ids: [], student_ids: [])
   end
 end
