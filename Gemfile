@@ -28,14 +28,10 @@ gem 'cocoon'
 
 # User authentication
 gem 'devise'
-gem 'pundit' # NOT IN USED
 gem 'taiwanese_id_builder'
 
 # Search
 gem 'ransack'
-
-# State machine
-gem 'workflow' # NOT IN USED
 
 gem 'pry'
 gem 'pry-remote'

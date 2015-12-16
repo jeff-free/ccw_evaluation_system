@@ -1,6 +1,7 @@
 *.rbc
 capybara-*.html
 .rspec
+stored_token.json
 /log
 /tmp
 /db/*.sqlite3

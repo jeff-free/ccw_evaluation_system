@@ -80,12 +80,13 @@ Rails.application.routes.draw do
       end
     end
     resources :events
-
     resources :courses
 
     resources :users
     
+    post "upload_inquiries", to: "base#upload_inquiries"
     root to: "base#dashboard"
+
   end
 
   devise_for :admin, controllers: {

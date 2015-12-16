@@ -1,1 +1,6 @@
+<%= simple_form_for(@inquiry, url: admin_upload_inquiries_path) do |f| %>
+  <%= f.input :file, as: :file, label: "上傳立委質詢片段 CSV 檔"%>
+  <%= f.button :submit, "送出" %>
+<% end %>
+  
 <%= link_to("新增國會屆次", new_admin_term_path, class: "btn btn-primary") %>
