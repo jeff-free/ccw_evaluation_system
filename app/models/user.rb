@@ -43,18 +43,12 @@ class User < ActiveRecord::Base
   attr_reader :city
   attr_accessor :token
   validates_presence_of :name, :identity, :birthdate, :district_id, :role
-  validate :identity_should_be_valid
+  validates :identity, taiwanese_id: true
 
 
   scope :wandering_students, -> { student.where(course_id: nil) }
 
   def city_district
     "#{district.city.name} - #{district.name}"
-  end
-
-  private
-
-  def identity_should_be_valid
-    errors.add(:identity, "不符合格式") unless TaiwaneseIdBuilder.valid?(identity)
   end
 end

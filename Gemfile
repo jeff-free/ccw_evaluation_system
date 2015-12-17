@@ -28,7 +28,7 @@ gem 'cocoon'
 
 # User authentication
 gem 'devise'
-gem 'taiwanese_id_builder'
+gem 'taiwanese_id_validator'
 
 # Search
 gem 'ransack'
