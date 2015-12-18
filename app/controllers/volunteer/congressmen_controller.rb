@@ -1,8 +1,7 @@
 class Volunteer::CongressmenController < Volunteer::BaseController
-  before_action :set_evaluation
-  
+
   def index
-    @parties = @evaluation.parties.includes(:congressmen)
+    @parties = @evaluation.parties.includes(:congressmen).uniq
   end
 
   def show
