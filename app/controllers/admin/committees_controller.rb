@@ -9,7 +9,7 @@ class Admin::CommitteesController < Admin::BaseController
 
   # GET /committees/1
   def show
-    @interpellations = Interpellation.in_current_evaluation
+    @interpellations = @committee.interpellations.in_current_evaluation
   end
 
   # GET /committees/1/edit
