@@ -15,7 +15,4 @@ class PagesController < ApplicationController
       redirect_to pages_landing_path
     end
   end
-
-  def landing
-  end
 end

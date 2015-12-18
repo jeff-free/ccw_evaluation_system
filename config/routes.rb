@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  get "pages/landing"
   root 'pages#dispatcher'
 
   devise_for :users, controllers: {
@@ -69,10 +68,10 @@ Rails.application.routes.draw do
         delete '/remove_inquiry/:id', to: "congressmen_evaluations#remove_inquiry", as: "remove_inquiry"
       end
     end
-    
+
     resources :committees do
       collection do
-        post :import_data 
+        post :import_data
       end
       resources :interpellations, shallow: true, except: [:index] do
         post 'add_inquiry', on: :member
@@ -83,7 +82,7 @@ Rails.application.routes.draw do
     resources :courses
 
     resources :users
-    
+
     post "upload_inquiries", to: "base#upload_inquiries"
     root to: "base#dashboard"
 

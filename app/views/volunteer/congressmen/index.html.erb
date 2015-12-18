@@ -1,13 +1,15 @@
-<table class="table">
-  <% @parties.each do |party| %>
-    <tr>
-      <th colspan="5"><%= party.name %></th>
-    </tr>
-    <tr>
-      <% party.congressmen.each do |congressman| %>
-        <td><%= link_to(congressman.name, volunteer_congressman_path(congressman)) %></td>
-      <% end %>
-    </tr>
+<% @parties.each do |party| %>
+<div class="row panel panel-default">
+  <div class="col-xs-12 panel-heading">
+    <%= party.name %>
+  </div>
+  <div class="panel-body">
+  <% party.congressmen.each do |congressman| %>
+    <div class="col-sm-2 col-xs-6">
+      <%= link_to(congressman.name, volunteer_congressman_path(congressman), class: "thumbnail") %>
+    </div>
   <% end %>
-  
-</table>
+</div>
+
+</div>
+<% end %>
