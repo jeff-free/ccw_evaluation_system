@@ -47,6 +47,13 @@ class Citizen::SurveysController < Citizen::BaseController
   end
 
   def survey_params
-    params[:survey].permit(answers_attributes: [:question_id, :point])
+    params[:survey].permit(
+      :impression_before_and_after_watching_inquiry,
+      :comment_to_the_congressman,
+      :whether_to_recommend_the_inquiry,
+      :whether_inclusion_of_unappropriate_conversion,
+      :suggestion_of_survey,
+      answers_attributes: [:question_id, :point]
+    )
   end
 end
