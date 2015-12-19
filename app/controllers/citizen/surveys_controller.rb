@@ -1,7 +1,7 @@
 class Citizen::SurveysController < Citizen::BaseController
   before_action :set_event!
   before_action :set_evaluation!
-  before_action :find_inquery!, only: [:new, :create]
+  before_action :find_inquiry!, only: [:new, :create]
   before_action :set_questions, only: [:new, :create]
 
   def new
@@ -10,9 +10,7 @@ class Citizen::SurveysController < Citizen::BaseController
 
   def create
     @survey = current_user.surveys.build(survey_params)
-    @survey.evaluation = @evaluation
-    @survey.inquiry = @inquiry
-    @survey.user_role = current_user.role
+    @survey.assign_attributes(evaluation: @evaluation, inquiry: @inquiry, user_role: current_user.role)
 
     if @survey.save
       redirect_to thanks_citizen_event_path(@event), notice: '問卷已經順利提交。'
@@ -36,7 +34,7 @@ class Citizen::SurveysController < Citizen::BaseController
     @questions = @evaluation.questions
   end
 
-  def find_inquery!
+  def find_inquiry!
     not_valid_inquiry_ids = current_user.inquiry_ids
     @inquiry = @event.inquiries.where.not(id: not_valid_inquiry_ids).first
 
