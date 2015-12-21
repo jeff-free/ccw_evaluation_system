@@ -3,7 +3,7 @@ class Admin::EvaluationsController < Admin::BaseController
   before_action :set_evaluation, only: [:show, :edit, :update, :destroy]
 
   def show
-    @question_types = @evaluation.question_types.includes(:questions).uniq
+    @question_types = @evaluation.question_types.uniq
   end
 
   def new
