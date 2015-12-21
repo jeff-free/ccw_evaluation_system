@@ -3,11 +3,11 @@
 # Table name: committees
 #
 #  id             :integer          not null, primary key
-#  name           :string(255)
-#  committee_type :integer          default(1)
-#  description    :text(65535)
+#  name           :string
+#  description    :text
 #  created_at     :datetime         not null
 #  updated_at     :datetime         not null
+#  committee_type :integer          default(1)
 #
 
 class Committee < ActiveRecord::Base

@@ -3,14 +3,14 @@
 # Table name: congressmen
 #
 #  id         :integer          not null, primary key
-#  name       :string(255)
-#  en_name    :string(255)
+#  name       :string
+#  en_name    :string
 #  sex        :integer
-#  degree     :text(65535)
-#  experience :text(65535)
-#  fax        :string(255)
-#  tel        :string(255)
-#  avatar_url :string(255)
+#  degree     :text
+#  experience :text
+#  fax        :string
+#  tel        :string
+#  avatar_url :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
 #

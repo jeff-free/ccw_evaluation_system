@@ -4,12 +4,12 @@
 #
 #  id                :integer          not null, primary key
 #  number            :integer
-#  content           :text(65535)
-#  video             :text(65535)
-#  congressman_id    :integer
-#  interpellation_id :integer
+#  content           :text
+#  video             :text
 #  created_at        :datetime         not null
 #  updated_at        :datetime         not null
+#  congressman_id    :integer
+#  interpellation_id :integer
 #
 
 class Inquiry < ActiveRecord::Base

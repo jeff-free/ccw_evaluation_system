@@ -3,7 +3,7 @@
 # Table name: terms
 #
 #  id          :integer          not null, primary key
-#  term_number :string(255)
+#  term_number :string
 #  created_at  :datetime         not null
 #  updated_at  :datetime         not null
 #
