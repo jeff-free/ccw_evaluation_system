@@ -24,8 +24,8 @@ class Committee < ActiveRecord::Base
   def self.import_data(api_url)
     data_array = ApiService.new(api_url).get_committee_data
     data_array.each do |committee|
-      Committee.transaction do 
-        where(name: committee["comtName"], description: committee["comtDesp"], committee_type: committee["comtType"]).first_or_create
+      Committee.transaction do
+        where(name: committee["comtName"], description: committee["comtDesp"], committee_type: committee["comtType"].to_i).first_or_create
       end
     end
   end
