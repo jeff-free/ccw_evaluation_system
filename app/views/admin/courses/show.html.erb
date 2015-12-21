@@ -1,6 +1,7 @@
 <div class="page-header">
   <h1>課程：<%= @course.name %> <%= link_to("編輯", edit_admin_course_path(@course), class: "btn btn-default") %></h1>
   <h2>Teacher: <%= @course.teacher_name %></h2>
+  <p>Token: <%= @course.token %></p>
 </div>
 
 <h2>學生列表</h2> 
