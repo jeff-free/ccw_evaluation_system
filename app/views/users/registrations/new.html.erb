@@ -9,8 +9,9 @@
     <%= f.input :password_confirmation, label: "再次輸入密碼", required: true %>
     <%= f.input :name, label: "姓名" %>
     <%= f.input :token, label: "註冊代碼", required: true %>
-    <%#= f.input :role, as: :select, collection: [["校園評委", "student"], ["公民評委", "citizen"], ["公督盟志工", "volunteer"], ["線上評委", "regular"]], label: "身份", include_blank: false %>
     <%= f.input :identity, label: "身份證號碼" %>
+    <%= f.input :gender, label: "性別", collection: User.genders.map{|gender| [t("user.gender.#{gender[0]}"), gender[0]]} %>
+    <%= f.input :education, label: "學歷(畢業，最高學歷)", collection: User.educations.map{|education| [t("user.education.#{education[0]}"), education[0]]} %>
     <%= f.input :birthdate, as: :date_picker, label: "出生日期" %>
     <%= f.input :city, as: :select, collection: City.all, input_html: {class: "city_select"} %>
     <%= f.association :district, collection: [], input_html: {class: "district_select"} %>

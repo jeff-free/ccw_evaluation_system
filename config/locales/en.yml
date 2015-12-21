@@ -19,5 +19,23 @@
 # To learn more, please read the Rails Internationalization guide
 # available at http://guides.rubyonrails.org/i18n.html.
 
-tw:
+en:
   hello: "Hello world"
+  user:
+    role:
+      student:
+      citizen:
+      volunteer:
+      regular:
+      teacher:
+    gender:
+      male: "男性"
+      female: "女性"
+      third_gender: "其他"
+    education:
+      elementary_school: "國小畢業及以下"
+      junior_high_school: "國中畢業"
+      senior_high_school: "高中畢業"
+      college: "大專院校畢業"
+      graduate_school: "研究所畢業"
+      others: "其他"
