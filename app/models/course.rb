@@ -3,10 +3,10 @@
 # Table name: courses
 #
 #  id         :integer          not null, primary key
-#  name       :string(255)
+#  name       :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
-#  token      :string(255)
+#  token      :string
 #  teacher_id :integer
 #
 
