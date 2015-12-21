@@ -21,6 +21,8 @@
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
 #  course_id              :integer
+#  gender                 :integer
+#  education              :integer
 #
 
 class User < ActiveRecord::Base
@@ -40,6 +42,8 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :events
   belongs_to :district
   enum role: [:student, :citizen, :volunteer, :regular, :teacher]
+  enum gender: ["male", "female", "third_gender"]
+  enum education: ["elementary_school", "junior_high_school", "senior_high_school", "college", "graduate_school", "others"]
   attr_reader :city
   attr_accessor :token
   validates_presence_of :name, :identity, :birthdate, :district_id, :role

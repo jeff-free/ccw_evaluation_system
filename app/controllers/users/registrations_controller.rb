@@ -45,7 +45,7 @@ before_filter :configure_sign_up_params, only: [:create]
   def translate_token_to_role!
     if params[:user][:token].present?
       token = params[:user].delete(:token)
-      
+
       event = Event.find_by(token: token)
       course = Course.find_by(token: token)
       resource = event || course
@@ -60,7 +60,7 @@ before_filter :configure_sign_up_params, only: [:create]
 
   # If you have extra params to permit, append them to the sanitizer.
   def configure_sign_up_params
-    devise_parameter_sanitizer.for(:sign_up) << [:name, :identity, :role, :district_id, :birthdate]
+    devise_parameter_sanitizer.for(:sign_up) << [:name, :identity, :role, :district_id, :birthdate, :gender, :education]
   end
 
   # If you have extra params to permit, append them to the sanitizer.
