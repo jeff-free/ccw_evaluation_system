@@ -1,0 +1,10 @@
+
+<div class="page-header">
+  <h1>請填寫學號</h1>
+</div>
+
+<%= simple_form_for([:student, current_user]) do |f| %>
+  <%= f.input :student_number, label: "學號", required: true %>
+
+  <%= f.submit "儲存", class: "btn btn-default" %>
+<% end %>

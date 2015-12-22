@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   namespace :student do
     root to: "courses#index"
 
+    resources :users, only: [:edit, :update]
+
     resources :courses, only: [:index] do
       member do
         post :join
