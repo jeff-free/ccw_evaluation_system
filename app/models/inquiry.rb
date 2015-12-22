@@ -47,4 +47,8 @@ class Inquiry < ActiveRecord::Base
       Inquiry.where(interpellation: interpellation, congressman: congressman, content: record[3], video: record[5]).first_or_create
     end
   end
+
+  def mark_as_no_value!
+    increment(:no_value_count)
+  end
 end

@@ -39,6 +39,10 @@ Rails.application.routes.draw do
       end
       resources :inquiries, only: [:index] do
         resources :surveys, only: [:new, :create]
+
+        member do
+          post :mark_as_no_value
+        end
       end
     end
   end
