@@ -23,6 +23,7 @@
 #  course_id              :integer
 #  gender                 :integer
 #  education              :integer
+#  student_number         :string
 #
 
 class User < ActiveRecord::Base

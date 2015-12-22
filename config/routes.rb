@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root 'pages#dispatcher'
 
   devise_for :users, controllers: {
@@ -28,6 +29,8 @@ Rails.application.routes.draw do
   namespace :student do
     root to: "courses#index"
 
+    resources :users, only: [:edit, :update]
+
     resources :courses, only: [:index] do
       member do
         post :join
@@ -37,6 +40,10 @@ Rails.application.routes.draw do
       end
       resources :inquiries, only: [:index] do
         resources :surveys, only: [:new, :create]
+
+        member do
+          post :mark_as_no_value
+        end
       end
     end
   end
@@ -48,6 +55,14 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+
+    resources :reported_inquiries, only: [:index] do
+      member do
+        post :deactivate
+      end
+    end
+
+
     resources :terms do
       resources :evaluations, only: [:show, :edit, :new, :update, :create]
     end

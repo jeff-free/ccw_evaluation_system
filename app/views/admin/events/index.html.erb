@@ -14,7 +14,7 @@
   <tbody>
     <% @events.each do |event| %>
       <tr>
-        <td><%= link_to event.name, admin_event_path(event) %></td>
+        <td><%= link_to event.name, admin_event_path(event) %> (<%= event.token %>)</td>
         <td><%= event.interpellation.name rescue nil %></td>
         <td><%= event_status(event.active) %></td>
         <td><%= link_to '編輯', edit_admin_event_path(event) %></td>

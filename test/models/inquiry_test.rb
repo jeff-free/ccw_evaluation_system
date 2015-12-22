@@ -10,6 +10,8 @@
 #  updated_at        :datetime         not null
 #  congressman_id    :integer
 #  interpellation_id :integer
+#  no_value_count    :integer          default(0)
+#  active            :boolean          default(TRUE)
 #
 
 require 'test_helper'

@@ -28,7 +28,7 @@ class Congressman < ActiveRecord::Base
   has_many :surveys, through: :inquiries
   has_many :answers, through: :surveys
 
-  enum sex: ["男", "女", "第三性"]
+  enum sex: ["male", "female", "third_sex"]
 
   attr_accessor :api_url
 

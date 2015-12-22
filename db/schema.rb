@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151221050147) do
+ActiveRecord::Schema.define(version: 20151222062846) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -157,10 +157,12 @@ ActiveRecord::Schema.define(version: 20151221050147) do
     t.integer  "number"
     t.text     "content"
     t.text     "video"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.integer  "congressman_id"
     t.integer  "interpellation_id"
+    t.integer  "no_value_count",    default: 0
+    t.boolean  "active",            default: true
   end
 
   create_table "interpellations", force: :cascade do |t|
@@ -242,6 +244,7 @@ ActiveRecord::Schema.define(version: 20151221050147) do
     t.integer  "course_id"
     t.integer  "gender"
     t.integer  "education"
+    t.string   "student_number"
   end
 
   add_index "users", ["course_id"], name: "index_users_on_course_id", using: :btree
