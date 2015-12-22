@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+
   root 'pages#dispatcher'
 
   devise_for :users, controllers: {
@@ -54,6 +55,14 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
+
+    resources :reported_inquiries, only: [:index] do
+      member do
+        post :deactivate
+      end
+    end
+
+
     resources :terms do
       resources :evaluations, only: [:show, :edit, :new, :update, :create]
     end

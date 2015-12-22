@@ -11,6 +11,7 @@
 #  congressman_id    :integer
 #  interpellation_id :integer
 #  no_value_count    :integer          default(0)
+#  active            :boolean          default(TRUE)
 #
 
 class Inquiry < ActiveRecord::Base
@@ -23,6 +24,10 @@ class Inquiry < ActiveRecord::Base
 
   attr_accessor :file
 
+  default_scope { active }
+
+  scope :active, -> { where(active: true) }
+  scope :suspicious, -> { where("no_value_count > ?", 0).order(no_value_count: :desc) }
   # TODO: don't use scope if this is not chainable.
   scope :in_current_evaluation, ->(evaluation){evaluation.interpellations.map(&:inquiries).flatten}
 
@@ -50,5 +55,9 @@ class Inquiry < ActiveRecord::Base
 
   def mark_as_no_value!
     increment(:no_value_count).save
+  end
+
+  def deactivate!
+    update(active: false)
   end
 end
