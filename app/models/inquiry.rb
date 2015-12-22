@@ -49,6 +49,6 @@ class Inquiry < ActiveRecord::Base
   end
 
   def mark_as_no_value!
-    increment(:no_value_count)
+    increment(:no_value_count).save
   end
 end
