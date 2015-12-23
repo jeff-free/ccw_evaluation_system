@@ -29,15 +29,18 @@ class Student::SurveysController < Student::BaseController
     @inquiry = @course.inquiries.find(params[:inquiry_id])
   end
 
-  def set_evaluation!
-    @evaluation = @inquiry.evaluation
-  end
-
   def set_questions
     @questions = @evaluation.questions
   end
 
   def survey_params
-    params[:survey].permit(answers_attributes: [:question_id, :point])
+    params[:survey].permit(
+      :impression_before_and_after_watching_inquiry,
+      :comment_to_the_congressman,
+      :whether_to_recommend_the_inquiry,
+      :whether_inclusion_of_unappropriate_conversion,
+      :suggestion_of_survey,
+      answers_attributes: [:question_id, :point]
+    )
   end
 end
