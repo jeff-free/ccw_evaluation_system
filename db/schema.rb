@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151215135951) do
+ActiveRecord::Schema.define(version: 20151219064635) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -200,12 +200,17 @@ ActiveRecord::Schema.define(version: 20151215135951) do
   add_index "questions", ["question_type_id"], name: "index_questions_on_question_type_id", using: :btree
 
   create_table "surveys", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "evaluation_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
-    t.integer  "inquiry_id"
-    t.string   "user_role"
+    t.integer  "user_id",                                       limit: 4
+    t.integer  "evaluation_id",                                 limit: 4
+    t.datetime "created_at",                                                  null: false
+    t.datetime "updated_at",                                                  null: false
+    t.integer  "inquiry_id",                                    limit: 4
+    t.string   "user_role",                                     limit: 255
+    t.text     "impression_before_and_after_watching_inquiry",  limit: 65535
+    t.text     "comment_to_the_congressman",                    limit: 65535
+    t.text     "whether_to_recommend_the_inquiry",              limit: 65535
+    t.text     "whether_inclusion_of_unappropriate_conversion", limit: 65535
+    t.text     "suggestion_of_survey",                          limit: 65535
   end
 
   add_index "surveys", ["evaluation_id"], name: "index_surveys_on_evaluation_id", using: :btree
