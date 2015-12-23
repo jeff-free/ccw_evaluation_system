@@ -5,11 +5,6 @@ class Admin::TermsController < Admin::BaseController
     @terms = Term.includes(:evaluations).all
   end
 
-  # def show
-  #   @evaluations = @term.evaluations
-  #   # @congressman = @term.congrassman
-  # end
-
   def new
     @term = Term.new
   end

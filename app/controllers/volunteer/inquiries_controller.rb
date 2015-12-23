@@ -3,6 +3,6 @@ class Volunteer::InquiriesController < Volunteer::BaseController
     @inquiry = Inquiry.find(params[:id])
     @survey = current_user.surveys.build
     @questions = @evaluation.questions.all
-    @answer = Answer.new
+    @survey.answers.build
   end
 end

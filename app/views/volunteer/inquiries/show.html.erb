@@ -23,7 +23,7 @@
 
     <div class="form-inputs">
       <% @questions.each_with_index do |question, index| %>
-        <%= f.simple_fields_for(:answers, @answer) do |answer| %>
+        <%= f.simple_fields_for(:answers) do |answer| %>
           <div class="page-header">
           問題 <%= index +1 %>：<%= question.name %>
           </div>
