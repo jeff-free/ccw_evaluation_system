@@ -2,11 +2,10 @@ class Volunteer::SurveysController < Volunteer::BaseController
 
   before_action :set_inquiry!
   before_action :set_evaluation!
+  before_action :set_questions
 
   def new
     @survey = current_user.surveys.build
-    @questions = @evaluation.questions.all
-    @answer = Answer.new
   end
 
   def create
@@ -16,7 +15,7 @@ class Volunteer::SurveysController < Volunteer::BaseController
     if @survey.save
       redirect_to root_path, notice: '問卷已經順利提交。'
     else
-      render :new
+      :new
     end
   end
 
@@ -28,6 +27,10 @@ class Volunteer::SurveysController < Volunteer::BaseController
 
     def set_inquiry!
       @inquiry = Inquiry.find(params[:inquiry_id])
+    end
+
+    def set_questions
+      @questions = @evaluation.questions
     end
 
     def survey_params
