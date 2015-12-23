@@ -204,10 +204,15 @@ ActiveRecord::Schema.define(version: 20151222062846) do
   create_table "surveys", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "evaluation_id"
-    t.datetime "created_at",    null: false
-    t.datetime "updated_at",    null: false
+    t.datetime "created_at",                                    null: false
+    t.datetime "updated_at",                                    null: false
     t.integer  "inquiry_id"
     t.string   "user_role"
+    t.text     "impression_before_and_after_watching_inquiry"
+    t.text     "comment_to_the_congressman"
+    t.text     "whether_to_recommend_the_inquiry"
+    t.text     "whether_inclusion_of_unappropriate_conversion"
+    t.text     "suggestion_of_survey"
   end
 
   add_index "surveys", ["evaluation_id"], name: "index_surveys_on_evaluation_id", using: :btree
