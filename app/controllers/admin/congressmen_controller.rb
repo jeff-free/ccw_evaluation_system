@@ -45,7 +45,7 @@ class Admin::CongressmenController < Admin::BaseController
     end
 
     def congressman_params
-      params[:congressman].permit(:api_url, :name, :en_name, :sex, :degree, :experience, :fax, :tel, :avatar_url,
+      params[:congressman].permit(:api_url, :name, :en_name, :degree, :experience, :avatar_url,
         congressmen_evaluations_attributes: [:evaluation_id, :party_id, :committee_id, :election_type])
     end
 end

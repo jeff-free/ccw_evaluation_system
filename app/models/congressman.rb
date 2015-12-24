@@ -5,11 +5,8 @@
 #  id         :integer          not null, primary key
 #  name       :string
 #  en_name    :string
-#  sex        :integer
 #  degree     :text
 #  experience :text
-#  fax        :string
-#  tel        :string
 #  avatar_url :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -27,12 +24,10 @@ class Congressman < ActiveRecord::Base
   has_many :surveys, through: :inquiries
   has_many :answers, through: :surveys
 
-  enum sex: ["male", "female", "third_sex"]
-
   attr_accessor :api_url
 
   accepts_nested_attributes_for :congressmen_evaluations
-  validates_presence_of :name, :en_name, :sex
+  validates_presence_of :name, :en_name
 
   # Should be refactored to association
   def committee_of_evaluation(evaluation)
@@ -43,9 +38,7 @@ class Congressman < ActiveRecord::Base
     congressmen_list = ApiService.new(url).get_congressman_data
     congressmen_list.each do |congressman_data|
       congressman = Congressman.where(name: congressman_data["name"]).first_or_create
-      congressman.update(en_name: congressman_data["ename"], sex: congressman_data["sex"],
-        tel: congressman_data["tel"],
-        fax: congressman_data["fax"],
+      congressman.update(en_name: congressman_data["ename"],
         experience: congressman_data["experience"],
         avatar_url: congressman_data["picUrl"],
         degree: congressman_data["degree"])
