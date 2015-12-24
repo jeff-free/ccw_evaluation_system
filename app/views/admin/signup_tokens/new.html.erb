@@ -1,0 +1,6 @@
+<%= simple_form_for([:admin, @signup_token]) do |f| %>
+  <%= f.input :token_type, collection: SignupToken.token_types.keys, include_blank: false %>
+
+  <%= f.submit "新增", class: "btn btn-primary" %>
+<% end %>
+  

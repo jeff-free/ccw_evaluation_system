@@ -11,12 +11,18 @@
 #
 
 class SignupToken < ActiveRecord::Base
+  include Tokenable
+
   validates :token_type, presence: true
 
   enum token_type: { volunteer: 0 }
 
+  scope :active, -> { where(active: true) }
+  scope :inactive, -> { where(active: false) }
+  scope :recent, -> { order(id: :desc) }
 
-  def deactivate!
-    update(active: false)
+
+  def toggle_active!
+    active? ? update(active: false) : update(active: true)
   end
 end

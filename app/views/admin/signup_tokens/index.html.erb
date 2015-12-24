@@ -1,0 +1,35 @@
+<h1>Token 管理</h1>
+
+<%= link_to("新增", new_admin_signup_token_path, class: "btn btn-primary") %>
+
+<div class="page-header">
+  <h2>有效的 Tokens</h2>
+
+  <table class="table">
+    <thead>
+      <th>類型</th>
+      <th>Token</th>
+    </thead>
+    <tbody>
+      <%= render @acitve_signup_tokens %>
+    </tbody>
+  </table>
+</div>
+
+
+<div class="page-header">
+  <h2>無效的 Tokens</h2>
+
+  <table class="table">
+    <thead>
+      <th>類型</th>
+      <th>Token</th>
+    </thead>
+    <tbody>
+      <%= render @inacitve_signup_tokens %>
+    </tbody>
+  </table>
+</div>
+
+
+

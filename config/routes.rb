@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-
   root 'pages#dispatcher'
 
   devise_for :users, controllers: {
@@ -67,6 +66,11 @@ Rails.application.routes.draw do
       end
     end
 
+    resources :signup_tokens, only: [:index, :new, :create] do
+      member do
+        post :toggle_active
+      end
+    end
 
     resources :terms do
       resources :evaluations, only: [:show, :edit, :new, :update, :create]
