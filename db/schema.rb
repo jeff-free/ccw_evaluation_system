@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151223235818) do
+ActiveRecord::Schema.define(version: 20151224050012) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -197,6 +197,18 @@ ActiveRecord::Schema.define(version: 20151223235818) do
 
   add_index "questions", ["evaluation_id"], name: "index_questions_on_evaluation_id", using: :btree
   add_index "questions", ["question_type_id"], name: "index_questions_on_question_type_id", using: :btree
+
+  create_table "signup_tokens", force: :cascade do |t|
+    t.string   "token"
+    t.integer  "token_type"
+    t.boolean  "active",     default: true
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+  end
+
+  add_index "signup_tokens", ["active"], name: "index_signup_tokens_on_active", using: :btree
+  add_index "signup_tokens", ["token"], name: "index_signup_tokens_on_token", using: :btree
+  add_index "signup_tokens", ["token_type"], name: "index_signup_tokens_on_token_type", using: :btree
 
   create_table "surveys", force: :cascade do |t|
     t.integer  "user_id"

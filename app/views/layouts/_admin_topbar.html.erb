@@ -21,7 +21,14 @@
             <li><%= link_to("問卷題目指標", admin_question_types_path) %></li>
             <li><%= link_to("公民評委活動設定", admin_events_path) %></li>
             <li><%= link_to("課程設定", admin_courses_path) %></li>
-            <li><%= link_to("使用者管理", admin_users_path) %></li>
+            <li class="dropdown">
+              <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">使用者管理 <span class="caret"></span></a>
+              <ul class="dropdown-menu">
+                <li><%= link_to("使用者增減", admin_users_path) %></li>
+                <li><%= link_to("註冊 Token 管理", admin_signup_tokens_path) %></li>
+              </ul>
+            </li>
+            
             <li><%= link_to("回報影片", admin_reported_inquiries_path) %></li>
           </ul>
           <ul class="nav navbar-nav navbar-right">

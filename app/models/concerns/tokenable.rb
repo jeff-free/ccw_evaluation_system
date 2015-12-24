@@ -15,7 +15,7 @@ module Tokenable
   end
 
   def token_exists?(random_token)
-    model_names = ["Event", "Course"]
+    model_names = ["Event", "Course", "SignupToken"]
 
     model_names.any? do |model_name|
       model_name.constantize.exists?(token: random_token)
