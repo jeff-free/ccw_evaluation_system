@@ -36,7 +36,7 @@ class Citizen::SurveysController < Citizen::BaseController
 
   def find_inquiry!
     not_valid_inquiry_ids = current_user.inquiry_ids
-    @inquiry = @event.inquiries.where.not(id: not_valid_inquiry_ids).first
+    @inquiry = @event.inquiries.where.not(id: not_valid_inquiry_ids).order("RANDOM()").first
 
     if @inquiry.blank?
       flash[:notice] = "你已經完成所有的問卷了，感謝！"

@@ -1,6 +1,7 @@
 <h1>
   活動： <%= @event.name %> <br>
-  會議： <%= @event.interpellation.name %>
+  會議： <%= @event.interpellation.name %> <br>
+  質詢： <%= @inquiry.name %>
 </h1>
 
 <%= render "common/surveys/video_section", inquiry: @inquiry %>
