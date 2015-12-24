@@ -6,5 +6,7 @@
 
 <%= render "common/surveys/video_section", inquiry: @inquiry %>
 
+影片沒有參考價值？(影片是程序影片)<%= link_to("跳過", mark_as_no_value_citizen_inquiry_path(@inquiry), method: :post) %>
+
 <%= render "common/surveys/hidden_form", resource: [:citizen, @event, @survey], questions: @questions %>
 
