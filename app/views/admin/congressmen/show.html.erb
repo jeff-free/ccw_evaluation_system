@@ -2,6 +2,7 @@
   <h1><%= @congressman.name %></h1>
 </div>
 <div class="col-sm-6">
+  <%= image_tag @congressman.avatar_url, class: "img-responsive" %>
   <%= simple_form_for([:admin, @congressman]) do |f| %>
     <%= render "form", f: f %>
   <% end %>
