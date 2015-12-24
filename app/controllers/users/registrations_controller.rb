@@ -48,7 +48,8 @@ before_filter :configure_sign_up_params, only: [:create]
 
       event = Event.find_by(token: token)
       course = Course.find_by(token: token)
-      resource = event || course
+      signup_token = SignupToken.find_by(token: token)
+      resource = event || course || signup_token
 
       if resource.present?
         params[:user][:role] = resource.user_role

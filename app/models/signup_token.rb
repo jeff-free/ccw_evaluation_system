@@ -25,4 +25,8 @@ class SignupToken < ActiveRecord::Base
   def toggle_active!
     active? ? update(active: false) : update(active: true)
   end
+
+  def user_role
+    token_type
+  end
 end
