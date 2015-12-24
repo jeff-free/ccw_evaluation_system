@@ -15,6 +15,12 @@ Rails.application.routes.draw do
       end
       resources :surveys, only: [:new, :create]
     end
+
+    resources :inquiries, only: [] do
+      member do
+        post :mark_as_no_value
+      end
+    end
   end
 
   namespace :volunteer do
