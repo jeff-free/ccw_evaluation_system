@@ -1,4 +1,4 @@
-class Admin::SignupTokensController < ApplicationController
+class Admin::SignupTokensController < Admin::BaseController
   def index
     @acitve_signup_tokens = SignupToken.active.recent
     @inacitve_signup_tokens = SignupToken.inactive.recent
