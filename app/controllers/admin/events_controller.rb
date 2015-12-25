@@ -29,7 +29,7 @@ class Admin::EventsController < Admin::BaseController
     @event = @evaluation.events.build(event_params)
 
     if @event.save
-      redirect_to [:admin, :events], notice: '成功新增活甕'
+      redirect_to [:admin, :events], notice: '成功新增活動'
     else
       render :new
     end

@@ -4,7 +4,6 @@ class Student::InquiriesController < Student::BaseController
   def index
     @course = current_user.course
     
-    # XXX，需求：只顯示沒有評論過的立委的質詢
     rated_congressmen = current_user.rated_congressmen
     not_available_inquiry_ids = rated_congressmen.map(&:inquiry_ids).flatten.uniq
 
