@@ -26,6 +26,7 @@ Rails.application.routes.draw do
     root to: 'congressmen#index'
     resources :congressmen, only: [:index, :show]
     resources :inquiries, only: [:show] do
+    post :mark_as_no_value, on: :member
       resources :surveys, only: [:new, :create]
     end
   end

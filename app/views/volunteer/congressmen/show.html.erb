@@ -17,7 +17,6 @@
     <td><%= inquiry.interpellation.content %></td>
     <td><%= inquiry.number %></td>
     <td><%= link_to("評鑑", new_volunteer_inquiry_survey_path(inquiry), class: "list-group-item") %></td>
-    <td><%= link_to "開始評鑑", volunteer_inquiry_path(inquiry) %></td>
   </tr>
   <% end %>
 </table>
