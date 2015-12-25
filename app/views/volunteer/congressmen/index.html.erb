@@ -5,6 +5,7 @@
   </div>
   <div class="panel-body">
   <% party.congressmen.each do |congressman| %>
+    <% next if current_user.rated_congressmen.include?(congressman) %>
     <div class="col-sm-2 col-xs-6">
       <%= link_to(congressman.name, volunteer_congressman_path(congressman), class: "thumbnail") %>
     </div>
