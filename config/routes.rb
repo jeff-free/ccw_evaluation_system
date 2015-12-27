@@ -79,6 +79,7 @@ Rails.application.routes.draw do
 
     resources :evaluations, only: [] do
       resources :analytics, only: [:index, :show]
+      post 'export', on: :member
     end
 
 

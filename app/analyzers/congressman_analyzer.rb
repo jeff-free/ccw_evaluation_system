@@ -5,7 +5,7 @@ class CongressmanAnalyzer
 
 
   # Returns:
-  # 
+  #
   # [
   #   {
   #     question => {
@@ -27,7 +27,7 @@ class CongressmanAnalyzer
       }
     end
   end
-  
+
   private
 
   # References:

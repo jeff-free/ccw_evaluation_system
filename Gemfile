@@ -41,6 +41,9 @@ gem 'annotate'
 
 # API middleware
 gem 'rest-client'
+
+# Excel export
+gem 'axlsx_rails'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
 
