@@ -23,11 +23,11 @@ en:
   hello: "Hello world"
   user:
     role:
-      student:
-      citizen:
-      volunteer:
+      student: "校園評委"
+      citizen: "公民評委"
+      volunteer: "公督盟志工"
       regular:
-      teacher:
+      teacher: "合作老師"
     gender:
       male: "男性"
       female: "女性"

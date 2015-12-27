@@ -1,6 +1,6 @@
 class Admin::EvaluationsController < Admin::BaseController
-  before_action :set_term
-  before_action :set_evaluation, only: [:show, :edit, :update, :destroy]
+  before_action :set_term, except: [:export]
+  before_action :set_evaluation, only: [:show, :edit, :update, :destroy, :export]
 
   def show
     @question_types = @evaluation.question_types.uniq
@@ -32,6 +32,11 @@ class Admin::EvaluationsController < Admin::BaseController
   end
 
   def destroy
+  end
+
+  def export
+    @congressmen = @evaluation.congressmen.includes(surveys: [:answers])
+    render xlsx: 'export.xlsx.axlsx', filename: "export.xlsx"
   end
 
   private

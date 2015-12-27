@@ -15,6 +15,7 @@ class Evaluation < ActiveRecord::Base
 
   has_many :questions, dependent: :destroy
   has_many :question_types, through: :questions
+  has_many :surveys
   has_many :congressmen_evaluations
   has_many :congressmen, through: :congressmen_evaluations
   has_many :parties, through: :congressmen_evaluations
@@ -24,7 +25,7 @@ class Evaluation < ActiveRecord::Base
 
   delegate :term_number, to: :term
 
-  validates :session_number, 
+  validates :session_number,
             presence: true,
             uniqueness: {scope: :term_id},
             numericality: {
