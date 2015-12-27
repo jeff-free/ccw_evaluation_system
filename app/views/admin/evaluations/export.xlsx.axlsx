@@ -8,7 +8,11 @@ wb.add_worksheet(name: "evaluations") do |sheet|
   sheet.add_row(header_row)
 
   @congressmen.each do |c|
-    sheet.add_row([c.name])
+    analytics = CongressmanAnalyzer.new(c)
+    congessman_analytic = analytics.analyze_by_congressman
+    sheet.add_row([c.name, "評鑑數量", c.surveys.size, "平均值:", congessman_analytic[:mean],
+                  "中位數", congessman_analytic[:median],
+                  "標準差", congessman_analytic[:standard_deviation]])
     c.surveys.each do |s|
       data_row = [nil, s.answers.pluck(:point),
         s.impression_before_and_after_watching_inquiry,
@@ -16,16 +20,22 @@ wb.add_worksheet(name: "evaluations") do |sheet|
         s.whether_to_recommend_the_inquiry,
         s.whether_inclusion_of_unappropriate_conversion,
         s.suggestion_of_survey,
-        s.user.name].flatten
+        s.user.name,
+        s.user.birthdate,
+        t("user.role.#{s.user.role}"),
+        t("user.gender.#{s.user.gender}"),
+        t("user.education.#{s.user.education}"),
+        s.user.city_district
+        ].flatten
       sheet.add_row(data_row)
     end
 
     analytics_mean_row = ["平均值"]
     analytics_median_row = ["中位數"]
     analytics_standard_deviation_row = ["標準差"]
-    congressman_analytics = CongressmanAnalyzer.new(c).analyze
-    congressman_analytics.each do |congressman_analytic|
-      congressman_analytic.each do |question, results|
+    congressman_analytics_by_question = analytics.analyze_by_question
+    congressman_analytics_by_question.each do |quesiton_analytic|
+      quesiton_analytic.each do |question, results|
         analytics_mean_row << results[:mean]
         analytics_median_row << results[:median]
         analytics_standard_deviation_row << results[:standard_deviation]

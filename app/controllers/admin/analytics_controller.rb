@@ -9,7 +9,11 @@ class Admin::AnalyticsController < Admin::BaseController
 
   def show
     @congressman = @evaluation.congressmen.find(params[:id])
-    @results_group_by_question_collection = CongressmanAnalyzer.new(@congressman).analyze
+    congressman_analytics = CongressmanAnalyzer.new(@congressman)
+    @results_group_by_question_collection = congressman_analytics.analyze_by_question
+    @congressman_mean = congressman_analytics.analyze_by_congressman[:mean]
+    @congressman_mean = congressman_analytics.analyze_by_congressman[:median]
+    @congressman_mean = congressman_analytics.analyze_by_congressman[:standard_deviation]
   end
 
   private

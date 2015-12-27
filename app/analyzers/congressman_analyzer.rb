@@ -16,7 +16,7 @@ class CongressmanAnalyzer
   #   }
   # ]
 
-  def analyze
+  def analyze_by_question
     results = answers_group_by_question.map do |question, answers|
       {
         question => {
@@ -26,6 +26,15 @@ class CongressmanAnalyzer
         }
       }
     end
+  end
+
+  def analyze_by_congressman
+    answers = answers_group_by_congressman
+    results = {
+        mean: mean(answers),
+        median: median(answers),
+        standard_deviation: standard_deviation(answers)
+      }
   end
 
   private
@@ -53,6 +62,10 @@ class CongressmanAnalyzer
 
   def answers_group_by_question
     @answers_group_by_question ||= @congressman.answers.group_by(&:question)
+  end
+
+  def answers_group_by_congressman
+    @answers_group_by_congressman ||= @congressman.answers.to_a
   end
 
 end
