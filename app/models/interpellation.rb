@@ -15,8 +15,7 @@
 class Interpellation < ActiveRecord::Base
   belongs_to :committee
   belongs_to :evaluation
-  has_many :congressmen_interpellations
-  has_many :congressmen, through: :congressmen_interpellations
+  # has_many :congressmen, through: :congressmen_interpellations
   has_many :inquiries
   has_many :events
 

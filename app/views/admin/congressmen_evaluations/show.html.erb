@@ -18,18 +18,16 @@
 </p>
 
 <h4>質詢影片</h4>
-<% if @congressman.has_interpellation_in_evaluation?(@evaluation) %>
 <div class="panel panel-default">
   <h6>新增質詢影片</h6>
     <%= simple_form_for(@inquiry, url: add_inquiry_admin_congressmen_evaluation_path(@congressmen_evaluation), method: :post) do |f| %>
       <%= f.input :number, label: "第 X 次質詢" %>
       <%= f.input :video, label: "影片網址" %>
-      <%= f.association :interpellation, collection: @congressman.interpellations.where(evaluation: @evaluation), label_method: :name, label: "會議" %>
+      <%= f.association :interpellation, collection: @congressman.committees.in_current_evaluation.first.interpellations.where(evaluation: @evaluation), label_method: :name, label: "會議" %>
       <%= f.input :content, label: "質詢內容"  %>
       <%= f.button :submit, "送出" %>
     <% end %>
 </div>
-<% end %>
 <table class="table">
   <thead>
     <tr>

@@ -4,7 +4,6 @@ class Admin::InterpellationsController < Admin::BaseController
 
   # GET /interpellations/1
   def show
-    # @congressmen_interpellation = @interpellation.congressmen_interpellations.build
     @inquiry = Inquiry.new(interpellation: @interpellation)
   end
 
@@ -46,7 +45,6 @@ class Admin::InterpellationsController < Admin::BaseController
   def add_inquiry
     @inquiry = @interpellation.inquiries.build(inquiry_params)
     if @inquiry.save
-      @congressmen_interpellation = @interpellation.congressmen_interpellations.find_or_create_by(congressman: @inquiry.congressman)
       redirect_to [:admin, @interpellation]
     else
       render :show
@@ -62,7 +60,7 @@ class Admin::InterpellationsController < Admin::BaseController
 
   private
     def set_interpellation
-      @interpellation = Interpellation.includes(:congressmen, :inquiries).find(params[:id])
+      @interpellation = Interpellation.includes(:inquiries).find(params[:id])
       @committee = @interpellation.committee
     end
 
