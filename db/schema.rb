@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20151224050012) do
+ActiveRecord::Schema.define(version: 20151228023811) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,16 +85,6 @@ ActiveRecord::Schema.define(version: 20151224050012) do
   add_index "congressmen_evaluations", ["congressman_id"], name: "index_congressmen_evaluations_on_congressman_id", using: :btree
   add_index "congressmen_evaluations", ["evaluation_id"], name: "index_congressmen_evaluations_on_evaluation_id", using: :btree
   add_index "congressmen_evaluations", ["party_id"], name: "index_congressmen_evaluations_on_party_id", using: :btree
-
-  create_table "congressmen_interpellations", force: :cascade do |t|
-    t.integer  "congressman_id"
-    t.integer  "interpellation_id"
-    t.datetime "created_at",        null: false
-    t.datetime "updated_at",        null: false
-  end
-
-  add_index "congressmen_interpellations", ["congressman_id"], name: "index_congressmen_interpellations_on_congressman_id", using: :btree
-  add_index "congressmen_interpellations", ["interpellation_id"], name: "index_congressmen_interpellations_on_interpellation_id", using: :btree
 
   create_table "course_interpellations", force: :cascade do |t|
     t.integer  "course_id"

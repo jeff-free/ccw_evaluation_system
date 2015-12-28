@@ -18,8 +18,7 @@ class Congressman < ActiveRecord::Base
   has_many :parties, through: :congressmen_evaluations
   has_many :committees, through: :congressmen_evaluations
   has_many :terms, through: :evaluations
-  has_many :congressmen_interpellations
-  has_many :interpellations, through: :congressmen_interpellations
+  # has_many :interpellations, through: :congressmen_interpellations
   has_many :inquiries
   has_many :surveys, through: :inquiries
   has_many :answers, through: :surveys
@@ -61,9 +60,5 @@ class Congressman < ActiveRecord::Base
       current_congressman_committee_data = congressman_committees_array.last
       congressman.congressmen_evaluations.find_by(evaluation: Evaluation.current_active).update(committee: Committee.find_by(name: current_congressman_committee_data[1]))
     end
-  end
-
-  def has_interpellation_in_evaluation?(evaluation)
-    interpellations.where(evaluation: evaluation).any?
   end
 end
