@@ -1,5 +1,5 @@
 <div class="form-inputs">
-  <%= f.association :evaluation, collection: Evaluation.inexistent_evaluation_on_congressman(@congressman), label_method: :full_name, label: "會期", include_blank: false %>
+  <%#= f.association :evaluation, collection: Evaluation.inexistent_evaluation_on_congressman(@congressman), label_method: :full_name, label: "會期", include_blank: false %>
   <%= f.association :party, label: "政黨", include_blank: false %>
   <%= f.association :committee, label: "委員會", include_blank: false %>
   <%= f.input :election_type, as: :radio_buttons, collection: [["區域", "regional"], ["不分區", "at_large"]], label: "當選類型", include_blank: false %>

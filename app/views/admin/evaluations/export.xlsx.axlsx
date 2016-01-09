@@ -14,7 +14,7 @@ wb.add_worksheet(name: "evaluations") do |sheet|
                   "中位數", congessman_analytic[:median],
                   "標準差", congessman_analytic[:standard_deviation]])
     c.surveys.each do |s|
-      data_row = [nil, s.answers.pluck(:point),
+      data_row = [c.name, s.answers.pluck(:point),
         s.impression_before_and_after_watching_inquiry,
         s.comment_to_the_congressman,
         s.whether_to_recommend_the_inquiry,

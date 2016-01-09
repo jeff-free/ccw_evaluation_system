@@ -1,9 +1,7 @@
-<h1>
-  課程： <%= @course.name %> <br>
-  立委： <%= @inquiry.congressman.name %> <br>
-  會議： <%= @inquiry.interpellation.name %><br>
-  質詢： <%= @inquiry.name %>
-</h1>
+<h4>課程： <%= @course.name %></h4>
+<h4>立委： <%= @inquiry.congressman.name %></h4>
+<h4>會議： <%= @inquiry.interpellation.full_name %></h4>
+<h4>質詢： <%= @inquiry.name %></h4>
 
 <%= render "common/surveys/video_section", inquiry: @inquiry %>
 影片沒有參考價值？(影片是程序影片)<%= link_to("跳過", mark_as_no_value_student_course_inquiry_path(@course, @inquiry), method: :post) %>

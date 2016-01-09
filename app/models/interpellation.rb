@@ -23,4 +23,8 @@ class Interpellation < ActiveRecord::Base
   has_many :courses, through: :course_interpellations
 
   include Classifiable
+
+  def full_name
+    "#{interpellation_date.to_date} #{name}"
+  end
 end

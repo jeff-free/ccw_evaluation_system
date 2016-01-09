@@ -1,4 +1,4 @@
-<h1>立委會期資料: <%= @congressman.name %></h1>
+<h3>編輯立委會期資料：<%= @congressman.name %><%= @evaluation.full_name %></h3>
 <%= simple_form_for([:admin, @congressmen_evaluation]) do |f| %>
   <%= render 'form', f: f %>
 <% end %>
