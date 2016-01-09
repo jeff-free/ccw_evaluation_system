@@ -15,15 +15,15 @@
       <th>會期</th>
       <th>政黨</th>
       <th>類型</th>
-      <th>分數</th>
+      <!-- <th>分數</th> -->
     </thead>
     <tbody>
       <% @congressman.congressmen_evaluations.each do |congressmen_evaluation| %>
         <tr>
           <td><%= link_to congressmen_evaluation.full_name, admin_congressmen_evaluation_path(congressmen_evaluation) %></td>
           <td><%= congressmen_evaluation.party.name %></td>
-          <td><%= congressmen_evaluation.election_type %></td>
-          <td><%= congressmen_evaluation.id %></td>
+          <td><%= t "congressmen_evaluation.election_type.#{congressmen_evaluation.election_type}" %></h4></td>
+          <!-- <td><%#= congressmen_evaluation.id %></td> -->
         </tr>
       <% end %>
     </tbody>

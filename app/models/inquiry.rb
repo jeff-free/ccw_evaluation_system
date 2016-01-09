@@ -32,7 +32,7 @@ class Inquiry < ActiveRecord::Base
   scope :in_current_evaluation, ->(evaluation){evaluation.interpellations.map(&:inquiries).flatten}
 
   def name
-    "#{number} - #{content}"
+    "#{content} - #{number}"
   end
 
   def self.import_data(file)

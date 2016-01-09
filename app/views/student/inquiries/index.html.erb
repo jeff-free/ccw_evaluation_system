@@ -5,19 +5,19 @@
 <table class="table">
   <thead>
     <tr>
-      <th></th>
-      <th>質詢</th>
       <th>立委</th>
       <th>會議</th>
+      <th>質詢</th>
+      <th></th>
     </tr>
   </thead>
   <tbody>
     <% @inquiries.each do |inquiry| %>
     <tr>
-      <td><%= link_to("評鑑", new_student_course_inquiry_survey_path(@course, inquiry), class: "list-group-item") %></td>
-      <td><%= inquiry.name %></td>
       <td><%= inquiry.congressman.name %></td>
-      <td><%= inquiry.interpellation.name %></td>
+      <td><%= inquiry.interpellation.full_name %></td>
+      <td><%= inquiry.name %></td>
+      <td><%= link_to("評鑑", new_student_course_inquiry_survey_path(@course, inquiry), class: "list-group-item") %></td>
     </tr>
     <% end %>
   </tbody>

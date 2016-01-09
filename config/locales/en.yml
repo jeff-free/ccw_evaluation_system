@@ -21,6 +21,10 @@
 
 en:
   hello: "Hello world"
+  congressmen_evaluation:
+    election_type:
+      regional: "區域立委"
+      regional: "不分區立委"
   user:
     role:
       student: "校園評委"

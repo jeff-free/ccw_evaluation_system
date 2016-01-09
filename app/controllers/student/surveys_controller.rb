@@ -25,6 +25,10 @@ class Student::SurveysController < Student::BaseController
     @course = current_user.course
   end
 
+  def set_evaluation!
+    @evaluation = Evaluation.current_active
+  end
+
   def set_inquiry!
     @inquiry = @course.inquiries.find(params[:inquiry_id])
   end
