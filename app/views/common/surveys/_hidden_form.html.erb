@@ -2,9 +2,8 @@
   <div class="page-header">
     <h3>請填寫評鑑</h3>
   </div>
-  <%= simple_form_for(resource) do |f| %>
+  <%= simple_form_for resource do |f| %>
     <%= f.error_notification %>
-
     <% if f.object.errors.present? %>
       <ul>
         <% f.object.errors.messages.each do |key, messages| %>
@@ -12,29 +11,36 @@
         <% end %>
       </ul>
     <% end %>
-
-    <div class="form-inputs">
-      <% @questions.each_with_index do |question, index| %>
-        <%= f.simple_fields_for(:answers, Answer.new) do |answer| %>
-          <div class="page-header">
+    <% @questions.each_with_index do |question, index| %>
+      <%= f.simple_fields_for(:answers, Answer.new) do |answer| %>
+      <div class="row">
+        <div class="col-xs-12">
           問題 <%= index +1 %>：<%= question.name %>
-          </div>
+        </div>
+        <div class="col-xs-12">
+          <%= answer.input :point, label: false, as: :radio_buttons,
+          wrapper: false,
+          item_wrapper_tag: false,
+          item_label_class: "radio-inline",
+          collection: 1..5 %>
           <%= answer.hidden_field :question_id, value: question.id %>
-          <%= answer.input :point, as: :radio_buttons, collection: 1..5 %>
-        <% end %>
+        </div>
+      </div>
+      <hr>
       <% end %>
-    </div>
-    <div class="form-inputs">
-      <%= f.input :impression_before_and_after_watching_inquiry %>
-      <%= f.input :comment_to_the_congressman %>
-      <%= f.input :whether_to_recommend_the_inquiry %>
-      <%= f.input :whether_inclusion_of_unappropriate_conversion %>
-      <%= f.input :suggestion_of_survey %>
-    </div>
+    <% end %>
+    <%= f.input :impression_before_and_after_watching_inquiry,
+      label: "觀看IVOD影片之前與之後，請問您對此位立法委員的印象是否改變？請寫下您的感想：（若之前不認識此位委員，則不需回答此題" %>
+    <%= f.input :comment_to_the_congressman,
+      label: "觀看IVOD影片之後，請問您對此位立法委員的評語為何？請寫下您的評語：（例如：您覺得委員表現最好的地方？最差的地方？）"%>
+    <%= f.input :whether_to_recommend_the_inquiry,
+      label: "您是否推薦此部質詢影片？為什麼？"%>
+    <%= f.input :whether_inclusion_of_unappropriate_conversion,
+      label: "質詢影片中是否有不適宜的言行？約在幾分鐘時？請概略描述。"%>
+    <%= f.input :suggestion_of_survey,
+      label: "請問您針對本評量表的題目以及活動流程有何意見？"%>
 
-    <div class="form-actions">
-      <%= f.button :submit, "送出評鑑" %>
-    </div>
+    <%= f.button :submit, "送出評鑑" %>
   <% end %>
 </div>
 
